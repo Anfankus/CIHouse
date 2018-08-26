@@ -1,19 +1,15 @@
+//处理对首页的GET请求，返回首页页面
+
+'use strict'
 const router = require('koa-router')()
 
-router.get('/', async (ctx, next) => {
-  await ctx.render('index', {
-    title: 'Hello Koa 2!'
-  })
-})
-
-router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
-})
-
-router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json'
-  }
-})
+router
+    .prefix('/index')
+    .get('/', async (ctx, next) => {
+        let parameters = {
+            title: '首页页面'
+        }
+        await ctx.render('./query', parameters);
+    })
 
 module.exports = router

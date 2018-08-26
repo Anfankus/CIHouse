@@ -1,0 +1,23 @@
+<table class="tb">
+    <thead>
+        <tr>
+            {{#each(keys)}}
+            <th class="tb-unit">{{this}}</th>
+            {{/each}}
+        </tr>
+
+    </thead>
+    <tbody>
+        {{#each(values)}}
+        <tr>
+            {{#each(this)}}
+            {{# if(xindex===0)}}
+            <td class="tb-unit"><a href="/detail/this">{{this}}</a></td>
+            {{else}}
+            <td class="tb-unit">{{this}}</td>
+            {{/ if}}
+            {{/each}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

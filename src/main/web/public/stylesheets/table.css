@@ -1,0 +1,28 @@
+.tb {
+    width:100%;
+    margin:15px auto 130px;
+  }
+  .tb,.tb th,.tb td{
+    font-size:0.95em;
+    text-align:center;
+    padding:4px;
+    border:1px solid #6ddafe;
+    border-collapse:collapse
+  }
+  .tb th {
+    background-color: #003749;
+    color:#FFFFFF
+  }
+  .tb td{
+    border: 1px solid transparent;
+  }
+  
+  .tb tr:nth-child(odd){
+    background-color:#aae9fe;
+  }
+  .tb tr:nth-child(even){
+    background-color:#fdfdfd;
+  }
+  .tb .tb-unit{
+    padding:1.5em;
+  }

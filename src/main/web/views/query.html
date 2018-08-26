@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CIHouse</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/table.css">
+</head>
+
+<body>
+    <h1>查询结果界面</h1>
+    <div id="result">
+        {{#if (!values)}}
+        <p>未查询到数据</p>
+        {{else}} 
+        {{include ("./views/table.html",{keys:keys,values:values})}} 
+        {{/if}}
+    </div>
+</body>
+
+</html>
