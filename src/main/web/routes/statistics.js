@@ -14,7 +14,7 @@ router
 
         }
 
-        await ctx.render('./statistics', data);
+        //await ctx.render('./statistics', data);
     })
 
 module.exports = router

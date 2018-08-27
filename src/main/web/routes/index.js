@@ -6,10 +6,7 @@ const router = require('koa-router')()
 router
     .prefix('/index')
     .get('/', async (ctx, next) => {
-        let parameters = {
-            title: '首页页面'
-        }
-        await ctx.render('./query', parameters);
+        await ctx.render('./index');
     })
 
 module.exports = router

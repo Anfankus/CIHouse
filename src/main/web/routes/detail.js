@@ -15,14 +15,43 @@ router
         }
     })
     .get('/:id', async (ctx, next) => {
-        let data = {};
-        if (ctx.id !== undefined) {
-            //TODO
-            //从HBASE中根据公司ID搜索企业详情
-
+        await ctx.render('./detail');
+    })
+    .get('/:id/basic',async (ctx,next)=>{
+        let data={
+            '公司名称':'张可的公司',
+            '高管':'张可',
+            '公司位置':'不知道'
         }
-
-        await ctx.render('./detail', data);
+        await ctx.render('./info/basic',{obj:data});
+    })
+    .get('/:id/finance',async (ctx,next)=>{
+        let data={
+            '营业收入':12134,
+            '营业利润':456789,
+            '净利润':123456
+        }
+        await ctx.render('./info/finance',{obj:data})
+    })
+    .get('/:id/risk',async(ctx,next)=>{
+        let data={
+            keys_1:[1,2,3],
+            values_1:[[1,1,1],[2,2,2]],
+            keys_2:[4,5,6,7],
+            values_2:[[3,3,3,3],[4,4,4,4]]
+        }
+        await ctx.render('./info/risk',data);
+    })
+    .get('/:id/history',async(ctx,next)=>{
+        let data={
+            keys_1:[1,2,3],
+            values_1:[[1,1,1],[2,2,2]],
+            keys_2:[4,5,6,7],
+            values_2:[[3,3,3,3],[4,4,4,4]],
+            keys_3:[4,5,6,7],
+            values_3:[[3,3,3,3],[4,4,4,4]] 
+        }
+        await ctx.render('./info/history',data);
     })
 
 module.exports = router

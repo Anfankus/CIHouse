@@ -1,0 +1,15 @@
+.ls {
+    width:100%;
+    /* margin:15px auto 130px; */
+  }
+  .ls,.ls-keys,.ls-vals{
+    font-size:0.95em;
+    text-align:center;
+    padding:4px;
+    border:1px solid #171b1d;
+    border-collapse:collapse
+  }
+  .ls-keys {
+    background-color: #003749;
+    color:#FFFFFF
+  }

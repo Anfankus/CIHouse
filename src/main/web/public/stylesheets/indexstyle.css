@@ -1,0 +1,368 @@
+body {
+  margin: 0;
+}
+* {
+  font-family: sans-serif; /*不要宋体*/
+}
+input {
+padding: 0;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/* 样式重置，意思是把一些浏览器之间不一样的地方先用一些css来抹平,后面再写自己的样式。  */
+
+.container {
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+}
+
+#videobanner {
+  display: block;
+  /* position: absolute; */
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  /*height: 100%;*/
+  z-index: -1;
+  /* object-fit: cover; */
+  /* left: 100px; */
+  /* top: 100px; */
+  
+  /* width: 800px; */
+  /* margin: 0 auto; */
+  /* static relative absolute fixed */
+}
+
+/* margin 的 collapse */
+.banner-slogan {
+  /* background: #cccccc;
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  border: 20px solid #888888;
+  margin: 20px;
+  box-sizing: border-box; */
+  /* color: #fff; */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* padding: 0 200px; */
+  background: rgba(0, 130, 255, 0.5);
+  /* font-size: 60px; */
+  text-align: center;
+}
+ .banner-slogan .hosttitle{
+  font-size: 60px;
+  color: #fff;
+  margin-top: 300px;
+ }
+ .singlesearch{
+     position: relative;
+     display: inline-block;
+     zoom: 1;
+ }
+  .singlesearch .searchbox{
+      display: inline-block;
+      width: 550px;
+      height: 40px;
+      margin: 10px auto;
+      box-shadow: 0 5px 15px #555;
+      /* font-size: 35px; */
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      vertical-align: middle;
+  }
+  .singlesearch .searchboxSubmit{
+      display: inline-block;
+      width:50px;
+      height:50px;
+      vertical-align: middle;
+  }
+  .back{
+      background-color:#f8f8f8;
+      position: relative;
+  }
+  .tempWrap{
+      width: 100%; 
+      height: 450px;
+      display: block;
+      padding: 30px 0;
+  }
+  .tempWrap ul{
+      height: 434px;
+      overflow: hidden;
+      text-align: center;
+      margin: 0 15px;
+  }
+  .tempWrap li{
+      display: inline-block;
+      position: relative;    /*1*/
+      width: 334px;
+      height: 434px;
+      overflow: hidden;
+      margin: 0 15px;
+  }
+  
+  .tempWrap .wenTop{
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, .5);
+  }
+  .tempWrap .wenTop .tu1 {
+      /* 所有的图标都设置 */
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 60px auto 0;
+
+      /* 图片要保持比例，不要拉长或者压扁了，不然就跟校园蜜蜂小程序那么丑 */
+      /* contain 是保持比例，尽可能放进去，cover 是保持比例，但保证充满 */
+      /* 巧记：图片/头像 = cover，图标 = contain */
+      background-size: contain;
+  }
+  .tempWrap .wenTop .ex1{
+      background-image: url(money.png);
+  }
+  .tempWrap .wenTop .ex2{
+      background-image: url(medicine.png);
+  }
+  .tempWrap .wenTop .ex3{
+      background-image: url(book.png);
+  }
+  .tempWrap .wenTop .xian2 { /* 所有的线都设置 */
+      display: block;
+      width: 2em; /* em 是一个英文字符的高度，等于两个英文字符的宽度，等于一个中文字符的宽度*/
+      height: 1px;
+      background: #fff;
+      margin: 10px auto;     
+  }
+  .tempWrap .tu{
+      position: absolute; 
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      width: 334px;
+      height: 434px;
+      vertical-align: middle;
+  }
+  .tempWrap .wzTs{
+      font-size: 35px;
+      color: #fff;
+  }
+  .tempWrap .wzTsm{
+      font-size: 15px;
+      color: #fff;
+      margin-left: 15px;
+      margin-right: 15px;
+  }
+  .tempWrap .wenBottom {
+      position: absolute; 
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #6d7ffc;
+      transform: translateY(100%);  /* 初始状态下，距离原位置向下移动100%，让它移出去 */
+      transition: 0.5s; /* 当任何一个CSS属性改变的时候，以0.5秒做动画，而不是突然改变 */
+  }
+  .tempWrap li:hover .wenBottom { /* :hover 表示前面的元素被鼠标指向的状态才会应用这个规则 */ 
+      /* 当li被鼠标指向时，其中的.wenBottom距离原位置不再向下移动，而是回到原位置 */
+      /* 因为上面设置了transition，所以会自动动画移过去 */
+      transform: translateY(0); 
+  }
+  .banner-slogan .myButton {
+      display: block;
+      margin: 40px auto;
+      font-size: 18px;
+      padding: 10px 15px;
+      text-align: center;
+      background-color: transparent;        
+  }
+  .myButton .button1{
+      margin-right:20px;
+      width:150px;
+      height:35px;
+      border: 2px solid #ddd;
+      border-radius: 3px;
+      color:#fff;
+      background: transparent;
+  }
+  .futitle{
+      text-align: center;
+      font-size: 25px;
+      color:rgb(53, 48, 48);
+  }
+  .procedure{
+      vertical-align: middle;
+      text-align: center;     
+  }
+  .procedure .gain{
+      display: inline-block;
+      width:300px;
+      height:400px;
+      border:1px solid #d7dce2;
+      border-radius: 3px;
+      margin:20px auto;
+      margin-right: 20px;
+      background-image: url(../images/ground.jpg);
+      margin-bottom: 40px;
+  }
+  .gain .pic1{
+      background-image: url(../images/download.png);
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 60px auto 0;
+      background-size: contain;
+  }
+  .gain .pic2{
+      background-image: url(../images/computer.png);
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 60px auto 0;
+      background-size: contain;
+  }
+  .gain .pic3{
+      background-image: url(../images/store.png);
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 60px auto 0;
+      background-size: contain;
+  }
+  .gain .pic4{
+      background-image: url(../images/show.png);
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 60px auto 0;
+      background-size: contain;
+  }
+  .gain .intro{
+      font-size: 20px;
+      color:rgb(36, 26, 26);
+      text-align: center;
+      margin-top: 35px;
+  }
+  .gain .work{
+      font-size: 15px;
+      color:rgb(66, 60, 60);
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 35px;
+  }
+
+  .back1{
+      background-color:#f8f8f8;
+      position: relative;
+  }
+  .tempWrap1{
+      width: 100%; 
+      height: 312px;
+      display: block;
+      padding: 15px 0;
+  }
+  .tempWrap1 ul{
+      height: 300px;
+      overflow: hidden;
+      text-align: center;
+      margin: 0 15px;
+  }
+  .tempWrap1 li{
+      display: inline-block;
+      position: relative;    /*1*/
+      width: 400px;
+      height: 300px;
+      overflow: hidden;
+      margin: 0 15px;
+  }
+  
+  .tempWrap1 .wenTop1{
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, .5);
+  }
+  .tempWrap1 .wenTop1 .tu2 {
+      /* 所有的图标都设置 */
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 50px auto 0;
+      background-image: url(member.png);
+      /* 图片要保持比例，不要拉长或者压扁了，不然就跟校园蜜蜂小程序那么丑 */
+      /* contain 是保持比例，尽可能放进去，cover 是保持比例，但保证充满 */
+      /* 巧记：图片/头像 = cover，图标 = contain */
+      background-size: contain;
+  }
+  .tempWrap1 .wenTop1 .xian2 { /* 所有的线都设置 */
+      display: block;
+      width: 4em; /* em 是一个英文字符的高度，等于两个英文字符的宽度，等于一个中文字符的宽度*/
+      height: 1px;
+      background: #fff;
+      margin: 20px auto;    
+  }
+  .tempWrap1 .tu3{
+      position: absolute; 
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      width: 400px;
+      height: 300px;
+      vertical-align: middle;
+  }
+  .tempWrap1 .wzTs{
+      font-size: 35px;
+      color: #fff;
+  }
+  .tempWrap1 .wzTsm{
+      font-size: 15px;
+      color: #fff;
+      margin-left: 15px;
+      margin-right: 15px;
+  }
+  .tempWrap1 .wenBottom1 {
+      position: absolute; 
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #60a2f3;
+      transform: translateY(100%);  /* 初始状态下，距离原位置向下移动100%，让它移出去 */
+      transition: 0.5s; /* 当任何一个CSS属性改变的时候，以0.5秒做动画，而不是突然改变 */
+  }
+  .tempWrap1 li:hover .wenBottom1 { /* :hover 表示前面的元素被鼠标指向的状态才会应用这个规则 */ 
+      /* 当li被鼠标指向时，其中的.wenBottom距离原位置不再向下移动，而是回到原位置 */
+      /* 因为上面设置了transition，所以会自动动画移过去 */
+      transform: translateY(0); 
+  }
+  
+
+  
+  

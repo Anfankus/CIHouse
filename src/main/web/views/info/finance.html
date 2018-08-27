@@ -1,0 +1,11 @@
+{{extend("./views/info/layout.html")}}
+
+{{#block("head")}}
+<link rel="stylesheet" href="/stylesheets/list.css">
+{{/block}}
+
+{{#block("body")}}
+    <div>
+        {{include ("./views/list.html",{obj:object})}}
+    </div>
+{{/block}}

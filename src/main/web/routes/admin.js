@@ -11,7 +11,7 @@ router
         //TODO
         //返回日志、查询记录
 
-        //await ctx.render('./detail',data);
+        await ctx.render('./admin',data);
     })
 
 module.exports = router

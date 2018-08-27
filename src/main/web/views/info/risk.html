@@ -1,0 +1,13 @@
+{{extend("./views/info/layout.html")}}
+{{#block( "head")}}
+    <link rel="stylesheet" href="/stylesheets/table.css">
+{{/block}}
+
+{{#block( "body")}}
+<div name='经营风险'>
+    {{include("./views/table.html",{keys:keys_1,values:values_1})}}
+</div>
+<div name='司法风险'>
+    {{include("./views/table.html",{keys:keys_2,values:values_2})}}
+</div>
+{{/block}}
