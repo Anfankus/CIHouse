@@ -45,5 +45,5 @@ $(function () {
         }]
     };
     lineChart.setOption(option_line);
-
+    
 })

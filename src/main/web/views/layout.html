@@ -5,8 +5,13 @@
         <title>CIHouse</title>
         <link rel="stylesheet" href="/stylesheets/style.css">
         <script src="/javascripts/jquery-3.3.1.min.js"></script>
+        {{{block("head")}}}
     </head>
     <body>
         {{{block ("body")}}}
+        <div>
+            <iframe id="content" src style="border:0"></iframe>
+        </div>
+    
     </body>
 </html>
