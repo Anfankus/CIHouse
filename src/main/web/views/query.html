@@ -4,19 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <title>CIHouse</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="stylesheet" href="/stylesheets/table.css">
+    <link rel="stylesheet" href="/stylesheets/perform.css">
+    <!-- <link rel="stylesheet" href="/stylesheets/table.css"> -->
 </head>
 
 <body>
-    <h1>查询结果界面</h1>
-    <div id="result">
+    <div class="backpic">
+        <img class="pic" src="ground3.jpg"/>
+        <div class="host">
+            <p class="hosttitle">CIHouse查询</p>
+            <div class="singlesearch">
+                <input class="searchbox" name="q" title="输入搜索词" value="" role="combobox">
+                <img class="searchboxSubmit" src="search1.png"/>
+            </div>
+        </div>
+        <div class="goback">
+            <a class="backbut" href="">首页</a>
+        </div>
+    </div>
+
+    <!-- <div id="result">
         {{#if (!values)}}
         <p>未查询到数据</p>
         {{else}} 
         {{include ("./views/table.html",{keys:keys,values:values})}} 
         {{/if}}
-    </div>
+    </div> -->
 </body>
 
 </html>

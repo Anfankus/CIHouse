@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+}
+* {
+    font-family: sans-serif; /*不要宋体*/
+}
+input {
+  padding: 0;
+}
+input[type="search"] {
+    -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+.backpic{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 75%;
+}
+.backpic .pic{
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width:100%;
+    height:100%;
+    z-index: -1;
+    object-fit: cover;
+}
+.host{
+    text-align: center;
+    position: absolute;
+    left: 120px;
+    right: 0;
+    top: 150px;
+    bottom: 0;
+}
+.hosttitle{
+    font-size: 60px;
+    color:rgba(255, 255, 255, 0.705);
+}
+.singlesearch{
+    position: absolute;
+    display: inline-block;
+    zoom: 1;
+    left: 50px;
+    right: 0;
+    top: 155px;
+    bottom: 0;
+}
+ .singlesearch .searchbox{
+     display: inline-block;
+     width: 470px;
+     height: 40px;
+     margin: 10px auto;
+     box-shadow: 0 5px 15px #555;
+     /* font-size: 35px; */
+     padding: 10px 15px;
+     border: 1px solid #ddd;
+     border-radius: 3px;
+     vertical-align: middle;
+ }
+ .singlesearch .searchboxSubmit{
+     display: inline-block;
+     width:50px;
+     height:50px;
+     vertical-align: middle;
+ }
+ .goback{
+     font-size:16px;
+     color:#fff;
+     text-align: left;
+     position: absolute;
+     left: 20px;
+     right: 0;
+     top: 20px;
+     bottom: 0;
+ }
+ a, a:hover, a:active, a:visited {
+     color: #fff;
+     text-decoration: none;
+}
+/*  首先 a, a:hover, a:active, a:visited 有默认样式 
+    text-decoration: underline，表示下划线，
+    用 a, a:hover, a:active, a:visited {text-decoration: none;}来去掉下划线 */
+/*  其次，a, a:hover, a:active 默认是蓝色，
+    a:visited 默认是紫色 */
+/*  用 a, a:hover, a:active, a:visited {color: ......;}来清除颜色 */
