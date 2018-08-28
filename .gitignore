@@ -144,3 +144,4 @@ hs_err_pid*
 /src/main/web/node_modules/
 /.idea
 /.vscode
+.DS_Store
