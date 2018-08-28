@@ -21,11 +21,10 @@
 <div id="bar" style="width:600px;height:500px"></div>
 <div id="line" style="width:600px;height:500px"></div>
 <script type="text/javascript">
-    let op={{d}};
     var barCharts = echarts.init(document.getElementById('bar'),'dark');
-    barCharts.setOption({{option1}});
+    barCharts.setOption({{{option1}}});
 
     let lineChart=echarts.init(document.getElementById('line'),'dark');
-    lineChart.setOption({{option2}});
+    lineChart.setOption({{{option2}}});
 </script>
 {{/block}}

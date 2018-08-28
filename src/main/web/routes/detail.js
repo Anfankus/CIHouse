@@ -34,6 +34,17 @@ router
         await ctx.render('./info/finance',{obj:data})
     })
     .get('/:id/risk',async(ctx,next)=>{
+        let data={
+            keys_1:[1,2,3],
+            values_1:[[1,1,1],[2,2,2]],
+            keys_2:[4,5,6,7],
+            values_2:[[3,3,3,3],[4,4,4,4]],
+            d:'123'
+        }
+
+        await ctx.render('./info/risk',data);
+    })
+    .get('/:id/history',async(ctx,next)=>{
         var option_1 = {
             title: {
                 text: '条形图'
@@ -74,27 +85,16 @@ router
                 data:[130,160,200,250]
             }]
         };
-        let dic={
-            test:'sdasd'
-        }
-        let data={
-            keys_1:[1,2,3],
-            values_1:[[1,1,1],[2,2,2]],
-            keys_2:[4,5,6,7],
-            values_2:[[3,3,3,3],[4,4,4,4]],
-            d:'123'
-        }
 
-        await ctx.render('./info/risk',data);
-    })
-    .get('/:id/history',async(ctx,next)=>{
         let data={
             keys_1:[1,2,3],
             values_1:[[1,1,1],[2,2,2]],
             keys_2:[4,5,6,7],
             values_2:[[3,3,3,3],[4,4,4,4]],
             keys_3:[4,5,6,7],
-            values_3:[[3,3,3,3],[4,4,4,4]] 
+            values_3:[[3,3,3,3],[4,4,4,4]],
+            option1:JSON.stringify(option_1),
+            option2:JSON.stringify(option_2) 
         }
         await ctx.render('./info/history',data);
     })
