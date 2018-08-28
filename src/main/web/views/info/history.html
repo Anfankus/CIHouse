@@ -6,7 +6,6 @@
 
 <script src="/javascripts/echarts.js"></script>
 <script src="/javascripts/theme.js"></script>
-<script src="/javascripts/draw.js"></script>
 {{/block}}
 {{#block("body")}}
 <div name="利润">
@@ -21,5 +20,12 @@
 
 <div id="bar" style="width:600px;height:500px"></div>
 <div id="line" style="width:600px;height:500px"></div>
+<script type="text/javascript">
+    let op={{d}};
+    var barCharts = echarts.init(document.getElementById('bar'),'dark');
+    barCharts.setOption({{option1}});
 
+    let lineChart=echarts.init(document.getElementById('line'),'dark');
+    lineChart.setOption({{option2}});
+</script>
 {{/block}}
