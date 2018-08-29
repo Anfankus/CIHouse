@@ -58,7 +58,7 @@ input[type="search"]::-webkit-search-decoration {
  .singlesearch .searchbox{
      display: inline-block;
      width: 440px;
-     /* height: 30px; */
+     /* height: 40px; */
      margin: 10px auto;
      box-shadow: 0 5px 15px #555;
      font-size: 18px;
