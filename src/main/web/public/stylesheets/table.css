@@ -1,11 +1,11 @@
-.tb {
+  .tb {
     width:100%;
     /* margin:15px auto 130px; */
   }
   .tb,.tb th,.tb td{
-    font-size:0.95em;
+    font-size:16px;
     text-align:center;
-    padding:4px;
+    padding:5px 5px;
     border:1px solid #6ddafe;
     border-collapse:collapse
   }
@@ -24,5 +24,5 @@
     background-color:#fdfdfd;
   }
   .tb .tb-unit{
-    padding:1.5em;
+    padding:15px;
   }

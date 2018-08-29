@@ -13,6 +13,7 @@
             <button class="buttons">产业结构</button>
             <button class="buttons">发展方向</button> -->
             <div class="header">腾讯科技</div>
+            <!-- 后面用js去修改这个公司名称，这个暂时先不动 -->
             <table class="xtree">
                 <tbody>
                     <tr class="hiddenrow"></tr>
@@ -21,62 +22,34 @@
                         <td class="mytd" colspan="3">
                             <table class="xtree_node">
                                 <tbody>
-                                    <tr>
-                                        <td class="standartTreeImage">
-                                            <img src="folder.png" class="pic"/>
-                                        </td>
-
-                                        <td class="xtree_nodeitem">
-                                            <span class="standartTreeRow" title="公司简介">公司简介</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                            <td class="standartTreeImage">
-                                                <img src="folder.png" class="pic"/>
-                                            </td>
-                                                    
-                                            <td class="xtree_nodeitem">
-                                                <span class="standartTreeRow" title="数据展示">数据展示</span>
-                                            </td>
-                                    </tr>
-
-                                    <tr>
-                                            <td class="standartTreeImage">
-                                                <img src="folder.png" class="pic"/>
-                                            </td>
-                                                    
-                                            <td class="xtree_nodeitem">
-                                                <span class="standartTreeRow" title="增长情况">增长情况</span>
-                                            </td>
-                                    </tr>
-
+                                    {{{block("nav")}}}
                                 </tbody>
                             </table>
                         </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> 
             
         <div id="section">
-            <p class="section-title">基本信息</p>
+            <!-- <p class="section-title">基本信息</p>
             <p>
             图，这是一个计算出来的图。
             </p>
             <p>
             表，这是一个计算出来的表。
-            </p>
+            </p> -->
+            {{{block ("body")}}}
+            <div>
+                <iframe id="content" src style="border:0"></iframe>
+            </div>
         </div>
             
         <div id="footer">
            CIHouse开发部
         </div>
 
-        <!-- {{{block ("body")}}}
-        <div>
-            <iframe id="content" src style="border:0"></iframe>
-        </div> -->
+        
     
     </body>
 </html>

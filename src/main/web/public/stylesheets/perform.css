@@ -43,7 +43,7 @@ input[type="search"]::-webkit-search-decoration {
     bottom: 0;
 }
 .hosttitle{
-    font-size: 60px;
+    font-size: 50px;
     color:rgba(255, 255, 255, 0.705);
 }
 .singlesearch{
@@ -57,11 +57,11 @@ input[type="search"]::-webkit-search-decoration {
 }
  .singlesearch .searchbox{
      display: inline-block;
-     width: 470px;
-     height: 40px;
+     width: 440px;
+     /* height: 30px; */
      margin: 10px auto;
      box-shadow: 0 5px 15px #555;
-     /* font-size: 35px; */
+     font-size: 18px;
      padding: 10px 15px;
      border: 1px solid #ddd;
      border-radius: 3px;
@@ -74,14 +74,14 @@ input[type="search"]::-webkit-search-decoration {
      vertical-align: middle;
  }
  .goback{
-     font-size:16px;
-     color:#fff;
-     text-align: left;
-     position: absolute;
-     left: 20px;
-     right: 0;
-     top: 20px;
-     bottom: 0;
+    font-size:16px;
+    color:#fff;
+    text-align: left;
+    position: absolute;
+    left: 20px;
+    right: 400px;
+    top: 20px;
+    bottom: 500px;
  }
  a, a:hover, a:active, a:visited {
      color: #fff;
@@ -93,3 +93,12 @@ input[type="search"]::-webkit-search-decoration {
 /*  其次，a, a:hover, a:active 默认是蓝色，
     a:visited 默认是紫色 */
 /*  用 a, a:hover, a:active, a:visited {color: ......;}来清除颜色 */
+#result{
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 700px; 
+    bottom: 100px;
+    left:250px;
+    right:250px;
+}

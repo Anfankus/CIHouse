@@ -3,3 +3,32 @@
 {{#block("head")}}
     <script src="/javascripts/initial.js"></script>
 {{/block}}
+{{#block("nav")}}
+    <!-- 这个是对 nav 这个 block 的实现 -->
+    <tr>
+        <td class="standartTreeImage">
+            <img src="/images/folder.png" class="pic" />
+        </td>
+        <td class="item">
+            <span id="menu001" onclick="clickmenu(this)" title="公司简介">公司简介</span>
+        </td>
+    </tr>
+    
+    <tr>
+        <td class="standartTreeImage">
+            <img src="/images/folder.png" class="pic" />
+        </td>
+        <td class="item">
+            <span id="menu002" onclick="clickmenu(this)" title="数据展示">数据展示</span>
+        </td>
+    </tr>
+    
+    <tr>
+        <td class="standartTreeImage">
+            <img src="/images/folder.png" class="pic" />
+        </td>
+        <td class="item">
+            <span id="menu003" onclick="clickmenu(this)"title="增长情况">增长情况</span>
+        </td>
+    </tr>
+{{/block}} 
