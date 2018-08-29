@@ -23,7 +23,7 @@ router
             '高管':'张可',
             '公司位置':'不知道'
         }
-        await ctx.render('./info/basic',{obj:data});
+        await ctx.render('./info/basic',{title:'基本信息',obj:data});
     })
     .get('/:id/finance',async (ctx,next)=>{
         let data={
@@ -31,41 +31,27 @@ router
             '营业利润':456789,
             '净利润':123456
         }
-        await ctx.render('./info/finance',{obj:data})
+        await ctx.render('./info/finance',{title:'财务信息',obj:data})
     })
     .get('/:id/risk',async(ctx,next)=>{
         let data={
+            title_1:'经营风险',
+            titile_2:'司法风险',
             keys_1:[1,2,3],
             values_1:[[1,1,1],[2,2,2]],
             keys_2:[4,5,6,7],
             values_2:[[3,3,3,3],[4,4,4,4]],
-            d:'123'
         }
 
         await ctx.render('./info/risk',data);
     })
     .get('/:id/history',async(ctx,next)=>{
-        var option_1 = {
-            title: {
-                text: '条形图'
-            },
-            tooltip: {},
-            legend: {
-                data: ['销量']
-            },
-            xAxis: {
-                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
-        let option_2={
+        let title1='利润';
+        let title2='资产负债';
+        let title3='现金流量';
+        let option1={
             title:{
-                text:'折线图'
+                text:'利润'
             },
             tooltip:{},
             legend:{
@@ -87,14 +73,18 @@ router
         };
 
         let data={
+            title_1:title1,
+            title_2:title2,
+            title_3:title3,
+
             keys_1:[1,2,3],
             values_1:[[1,1,1],[2,2,2]],
             keys_2:[4,5,6,7],
             values_2:[[3,3,3,3],[4,4,4,4]],
             keys_3:[4,5,6,7],
             values_3:[[3,3,3,3],[4,4,4,4]],
-            option1:JSON.stringify(option_1),
-            option2:JSON.stringify(option_2) 
+            option_1:JSON.stringify(option1),
+            option_2:JSON.stringify(option1) 
         }
         await ctx.render('./info/history',data);
     })
