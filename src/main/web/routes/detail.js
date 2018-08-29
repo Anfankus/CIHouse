@@ -14,11 +14,9 @@ router
             return false;
         }
     })
-    
-    // 进入详情时默认先展示 basic
-    // .get('/:id', async (ctx, next) => {
-    //     await ctx.render('./detail');
-    // })
+    .get('/:id', async (ctx, next) => {
+        await ctx.render('./detail');
+    })
 
     // 基本信息
     .get('/:id/basic',async (ctx,next)=>{

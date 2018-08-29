@@ -103,7 +103,13 @@ table, tr, td {
     color:#eeeeee;
 } */
 #section {
-    padding: 25px 25px 80px 225px;
+    /* padding: 25px 25px 80px 225px; */
+    top:25px;
+    right: 0;
+    bottom: 40px;
+    left: 225px;
+    position: absolute;
+    
 }
 #section .section-title {
     font-size: 24px;
