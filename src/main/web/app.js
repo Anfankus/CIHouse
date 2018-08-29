@@ -5,9 +5,9 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-const xtpl=require('koa-xtpl')
+const xtpl = require('koa-xtpl')
 
-const path=require('path');
+const path = require('path');
 
 const index = require('./routes/index')
 const detail=require('./routes/detail')

@@ -74,14 +74,14 @@ input[type="search"]::-webkit-search-decoration {
      vertical-align: middle;
  }
  .goback{
-     font-size:16px;
-     color:#fff;
-     text-align: left;
-     position: absolute;
-     left: 20px;
-     right: 0;
-     top: 20px;
-     bottom: 0;
+    font-size:16px;
+    color:#fff;
+    text-align: left;
+    position: absolute;
+    left: 20px;
+    right: 400px;
+    top: 20px;
+    bottom: 500px;
  }
  a, a:hover, a:active, a:visited {
      color: #fff;
@@ -93,3 +93,12 @@ input[type="search"]::-webkit-search-decoration {
 /*  其次，a, a:hover, a:active 默认是蓝色，
     a:visited 默认是紫色 */
 /*  用 a, a:hover, a:active, a:visited {color: ......;}来清除颜色 */
+#result{
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 700px; 
+    bottom: 100px;
+    left:250px;
+    right:250px;
+}

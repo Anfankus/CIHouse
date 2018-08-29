@@ -12,20 +12,44 @@
             <!-- <button class="buttons">基本信息</button>
             <button class="buttons">产业结构</button>
             <button class="buttons">发展方向</button> -->
-            {{{block("left")}}}
-
+            <div class="header">腾讯科技</div>
+            <!-- 后面用js去修改这个公司名称，这个暂时先不动 -->
+            <table class="xtree">
+                <tbody>
+                    <tr class="hiddenrow"></tr>
+                    <tr>
+                        <td class="xtree_blank_root"></td>
+                        <td class="mytd" colspan="3">
+                            <table class="xtree_node">
+                                <tbody>
+                                    {{{block("nav")}}}
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-        </div>
+        </div> 
             
         <div id="section">
-            <iframe id="content" src style="border:0"></iframe>
+            <!-- <p class="section-title">基本信息</p>
+            <p>
+            图，这是一个计算出来的图。
+            </p>
+            <p>
+            表，这是一个计算出来的表。
+            </p> -->
+            {{{block ("body")}}}
+            <div>
+                <iframe id="content" src style="border:0"></iframe>
+            </div>
         </div>
             
         <div id="footer">
            CIHouse开发部
         </div>
 
-        <!-- {{{block ("body")}}}-->
+        
     
     </body>
 </html>

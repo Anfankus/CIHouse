@@ -5,7 +5,7 @@ const router = require('koa-router')()
 //const hbase = require('hbase-server');
 
 router
-    .prefix('/detail')
+    .prefix('/detail')  
     .param('id', async (id, ctx, next) => {
         if (!isNaN(id)&&id.length===6) {
             ctx.id = parseInt(id);
@@ -14,9 +14,13 @@ router
             return false;
         }
     })
-    .get('/:id', async (ctx, next) => {
-        await ctx.render('./detail');
-    })
+    
+    // 进入详情时默认先展示 basic
+    // .get('/:id', async (ctx, next) => {
+    //     await ctx.render('./detail');
+    // })
+
+    // 基本信息
     .get('/:id/basic',async (ctx,next)=>{
         let data={
             '公司名称':'张可的公司',
@@ -25,6 +29,8 @@ router
         }
         await ctx.render('./info/basic',{title:'基本信息',obj:data});
     })
+
+    // 营收情况
     .get('/:id/finance',async (ctx,next)=>{
         let data={
             '营业收入':12134,
@@ -33,6 +39,8 @@ router
         }
         await ctx.render('./info/finance',{title:'财务信息',obj:data})
     })
+
+    // 风险评估
     .get('/:id/risk',async(ctx,next)=>{
         let data={
             title_1:'经营风险',
@@ -45,6 +53,8 @@ router
 
         await ctx.render('./info/risk',data);
     })
+
+    // 
     .get('/:id/history',async(ctx,next)=>{
         let title1='利润';
         let title2='资产负债';
