@@ -6,30 +6,52 @@
     <title>CIHouse</title>
     <link rel="stylesheet" href="/stylesheets/perform.css">
     <link rel="stylesheet" href="/stylesheets/table.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+
 </head>
 
 <body>
     <div class="backpic">
-        <img class="pic" src="/images/ground3.jpg"/>
+        <img class="pic" src="/images/ground3.jpg" />
+        <div class=" py-4 mb-2 " style="width: fit-content;margin: 0 auto">
+            <nav class="nav ">
+                <a class="pr-5 pl-5  headtagborder" href="#">首页</a>
+                <a class="pr-5 pl-5  headtagborder" href="#">统计</a>
+                <a class="pr-5 pl-5  headtagborder" href="#">排名</a>
+                <a class="pr-5 pl-5 " href="#">对比</a>
+            </nav>
+        </div>
         <div class="host">
-            <p class="hosttitle">CIHouse查询</p>
-            <div class="singlesearch">
-                <input class="searchbox" name="q" title="输入搜索词" value="" role="combobox">
-                <img class="searchboxSubmit" src="/images/search1.png"/>
+            <p class="hosttitle fit-center">CIHouse查询</p>
+            <form class="fit-center">
+                <input class="searchbox" value="输入搜索词" type="text" name="search">
+                <input class="searchboxSubmit" value="" type="submit">
+            </form>
+        </div>
+    </div>
+    <div class="row" style="text-align:center;margin: 0 0 30px">
+        <div class="col-lg-8 fit-center" style="border-bottom: 2px solid">
+            <p style="font-size:20px">{{querySrc}}的搜索结果，共<span>{{count}}</span>个匹配项</p>
+        </div>
+
+        <div class="col-lg-6 fit-center" style="margin-left:0.7rem 25% 1rem 25%">
+            <div id="result">
+                {{#if (!values)}}
+                    <p>未查询到数据</p>
+                {{else}}
+                    {{include ("./views/table.html",{keys:keys,values:values})}}
+                {{/if}}
             </div>
         </div>
-        <div class="goback">
-            <a class="backbut" href="/index">首页</a>
+    </div>
+    <footer class="footer" style="text-align:center;background-color: #eaeaea">
+        <div class="container">
+          <span class="text-muted">CIHouse工作组</span>
         </div>
-    </div>
+      </footer>
+    <script src="/javascripts/jquery-3.3.1.min.js"></script>
+    <script src="/javascripts/bootstrap.bundle.min.js"></script>
 
-    <div id="result" style="padding:50% 20% 0 20%">
-        {{#if (!values)}}
-        <p>未查询到数据</p>
-        {{else}} 
-        {{include ("./views/table.html",{keys:keys,values:values})}} 
-        {{/if}}
-    </div>
 </body>
 
 </html>

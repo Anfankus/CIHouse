@@ -1,5 +1,5 @@
 <h3>{{title}}</h3>
-<table class="tb">
+<table class="table table-striped">
     <thead>
         <tr>
             {{#each(keys)}}
@@ -13,7 +13,7 @@
         <tr>
             {{#each(this)}}
             {{# if(xindex===0)}}
-            <td class="tb-unit first"><a href="/detail/{{this}}"></a>{{this}}</a></td>
+            <td class="tb-unit first"><a href="/detail/{{this}}">{{this}}</a></td>
             {{else}}
             <td class="tb-unit">{{this}}</td>
             {{/ if}}

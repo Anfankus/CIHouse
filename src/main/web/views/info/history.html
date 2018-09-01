@@ -8,23 +8,26 @@
 <script src="/javascripts/theme.js"></script>
 {{/block}}
 {{#block("body")}}
-<div name={{title_1}}>
-    {{include("./views/table.html",{title:title_1,keys:keys_1,values:values_1})}}
-</div>
-<div name={{title_2}}>
-    {{include("./views/table.html",{title:title_2,keys:keys_2,values:values_2})}}
-</div>
-<div name={{title_3}}>
-    {{include("./views/table.html",{title:title_3,keys:keys_3,values:values_3})}}
-</div>
 
-<div id="bar" style="width:600px;height:500px"></div>
-<div id="line" style="width:600px;height:500px"></div>
+{{#each(tables)}}
+<div name={{this.title}}>
+    {{include("./views/table.html",{title:this.title,keys:this.keys,values:this.values})}}
+</div>
+{{/each}}
+
+<div id="chart1" style="width:600px;height:500px"></div>
+<div id="chart2" style="width:600px;height:500px"></div>
+<div id="chart3" style="width:600px;height:500px"></div>
+
 <script type="text/javascript">
-    var barCharts = echarts.init(document.getElementById('bar'),'dark');
-    barCharts.setOption({{{option_1}}});
+    var barCharts = echarts.init(document.getElementById('chart1'),'dark');
+    barCharts.setOption({{{ optionLine[0] }}});
 
-    let lineChart=echarts.init(document.getElementById('line'),'dark');
-    lineChart.setOption({{{option_2}}});
+    let lineChart=echarts.init(document.getElementById('chart2'),'dark');
+    lineChart.setOption({{{ optionLine[1] }}});
+
+    let lineChart=echarts.init(document.getElementById('chart3'),'dark');
+    lineChart.setOption({{{ optionLine[2] }}});
+
 </script>
 {{/block}}

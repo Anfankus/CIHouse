@@ -87,7 +87,7 @@ table, tr, td {
     width:160px;
     height:42px;
 }
-.standartTreeRow{
+.item{
     font-size: 16px; 
     color: #fef;
 }
@@ -109,7 +109,7 @@ table, tr, td {
     bottom: 40px;
     left: 225px;
     position: absolute;
-    
+
 }
 #section .section-title {
     font-size: 24px;
