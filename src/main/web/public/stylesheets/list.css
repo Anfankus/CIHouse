@@ -1,6 +1,6 @@
-.ls {
-    width:100%;
-    /* margin:15px auto 130px; */
+  .ls {
+    width:600px;
+    margin:15px auto 130px;
   }
   .ls,.ls-keys,.ls-vals{
     font-size:0.95em;
@@ -10,6 +10,9 @@
     border-collapse:collapse
   }
   .ls-keys {
-    background-color: #003749;
-    color:#FFFFFF
+    background-color: #eef4f8;
+    color:#5e5959;
   }
+  /* .company{
+    display: block;
+  } */

@@ -1,4 +1,4 @@
-{{extend("./views/info/layout.html")}}
+{{extend("./layout.html")}}
 
 
 {{#block("head")}}
@@ -6,19 +6,29 @@
 
 <script src="/javascripts/echarts.js"></script>
 <script src="/javascripts/theme.js"></script>
+
+<style>
+.data-table {
+    margin-bottom: 20px;
+}
+</style>
 {{/block}}
 {{#block("body")}}
-<div name="利润">
-    {{include("./views/table.html",{keys:keys_1,values:values_1})}}
+<div class="data-table" name="利润">
+    <p class="intro">利润情况</p>
+    {{include("../table.html",{keys:keys_1,values:values_1})}}
 </div>
-<div name="资产负债">
-    {{include("./views/table.html",{keys:keys_2,values:values_2})}}
+<div class="data-table" name="资产负债">
+    <p class="intro">资产负债</p>
+    {{include("../table.html",{keys:keys_2,values:values_2})}}
 </div>
-<div name="现金流量">
-    {{include("./views/table.html",{keys:keys_3,values:values_3})}}
+<div class="data-table" name="现金流量">
+    <p class="intro">现金流量</p>
+    {{include("../table.html",{keys:keys_3,values:values_3})}}
 </div>
 
 <div id="bar" style="width:600px;height:500px"></div>
+<br/><br/>
 <div id="line" style="width:600px;height:500px"></div>
 <script type="text/javascript">
     var barCharts = echarts.init(document.getElementById('bar'),'dark');

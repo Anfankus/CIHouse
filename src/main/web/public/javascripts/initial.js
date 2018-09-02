@@ -6,32 +6,66 @@ $(function(){
 
     //根据iframe内容调整外部div元素的高度和宽度到相同大小（仅body部分的大小）+
     iframe.on('load',function() {
-            iframe.css('height',iframe[0].contentDocument.body.scrollHeight);
-            iframe.css('width',iframe[0].contentDocument.body.scrollWidth)
-        })
+        iframe.css('height',iframe[0].contentDocument.body.scrollHeight);
+        //iframe.css('width',iframe[0].contentDocument.body.scrollWidth)
+    })
 })
-function clickmenu(id)
+function clickmenu(element)
 {  
-    changecolor(id);
-    switch(id)
-    {case menu001 :menuclick();break;
-     case menu002 :menuclick();break;
-     case menu003 :menuclick();break;
-     default:   break;
+    changecolor(element);
+    switch(element.id) {
+    case 'menu001':
+        menuclick('basic');
+        break;
+    case 'menu002':
+        menuclick('history');
+        break;
+    case 'menu003':
+        menuclick('finance');
+        break;
+    default:
+        break;
     }
 }
 
 //这个函数用于改变文字颜色
-function changecolor(id)
+function changecolor(element)
 {
-    menu001.style.color="white";
-    menu002.style.color="white";
-    menu003.style.color="white";
-    id.style.color="Aqua";
+    // var element1 = document.getElementById('menu001');
+    // var element2 = document.getElementById('menu002');
+    // var element3 = document.getElementById('menu003');
+    // if (element1.id == element.id) {
+    //     element1.style.color = 'aqua'
+    // } else {
+    //     element1.style.color = '#fef'
+    // }
+     
+    // if (element2.id == element.id) {
+    //     element2.style.color = 'aqua'
+    // } else {
+    //     element2.style.color = '#fef'
+    // }
+     
+    // if (element3.id == element.id) {
+    //     element3.style.color = 'aqua'
+    // } else {
+    //     element3.style.color = '#fef'
+    // }
+
+    for (var i = 1; i <= 3; i++) {
+        var element_i = document.getElementById('menu00' + i)
+        if (element_i.id == element.id) {
+            element_i.style.color = 'aqua'
+        } else {
+            element_i.style.color = '#fef'
+        }
+    }
 }
 
 //用于控制"服务日志查询"的点击效果
-function menuclick()
+function menuclick(page)
 {
-    item.style.display="block"; 
+    var newLocation = location.href + '/' + page
+    // document.getElementById('content').src = newLocation
+    $('#content').attr('src', newLocation)
 }

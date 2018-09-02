@@ -1,4 +1,4 @@
-{{extend("./views/layout.html")}}
+{{extend("./layout.html")}}
 
 {{#block("head")}}
     <script src="/javascripts/initial.js"></script>
@@ -10,7 +10,7 @@
             <img src="/images/folder.png" class="pic" />
         </td>
         <td class="item">
-            <span id="menu001" onclick="clickmenu(this)" title="公司简介">公司简介</span>
+            <span id="menu001" onclick="clickmenu(this)" title="公司信息">公司信息</span>
         </td>
     </tr>
     
@@ -19,7 +19,7 @@
             <img src="/images/folder.png" class="pic" />
         </td>
         <td class="item">
-            <span id="menu002" onclick="clickmenu(this)" title="数据展示">数据展示</span>
+            <span id="menu002" onclick="clickmenu(this)" title="历史数据">历史数据</span>
         </td>
     </tr>
     
@@ -28,7 +28,12 @@
             <img src="/images/folder.png" class="pic" />
         </td>
         <td class="item">
-            <span id="menu003" onclick="clickmenu(this)"title="增长情况">增长情况</span>
+            <span id="menu003" onclick="clickmenu(this)" title="财务信息">财务信息</span>
         </td>
     </tr>
 {{/block}} 
+{{#block("body")}}
+<div>
+    <iframe id="content" src style="border:0;width: 100%"></iframe>
+</div>
+{{/block}}

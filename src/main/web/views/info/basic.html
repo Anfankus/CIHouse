@@ -1,10 +1,10 @@
-{{extend("./views/info/layout.html")}}
+{{extend("./layout.html")}}
 {{#block("head")}}
 <link rel="stylesheet" href="/stylesheets/list.css">
 
 {{/block}}
 {{#block( "body")}}
-<div style="width:100%">
-    {{include ("./views/list.html",{obj:object})}}
+<div data-tablestyle="width:100%">
+    {{include ("../list.html",{obj:object})}}
 </div>
 {{/block}}
