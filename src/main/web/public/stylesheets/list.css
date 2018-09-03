@@ -1,6 +1,7 @@
-  .ls {
-    width:600px;
-    margin:15px auto 130px;
+.ls {
+    margin:20px 0 0 0;
+    width:100%;
+    /* margin:15px auto 130px; */
   }
   .ls,.ls-keys,.ls-vals{
     font-size:0.95em;

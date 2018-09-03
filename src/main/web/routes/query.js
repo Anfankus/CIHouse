@@ -25,12 +25,14 @@ router
         }
         //=====测试用数据
         let parameters = {
-            keys: ["公司名称", 2, 3, 4, 5],
+            querySrc:`\"${ctx.query.search}\"`,
+            keys: ["公司代码", "公司名称", "公司位置", "总股本", "总市值","净利润"],
             values: [
-                [145623, 2, 3, 4, 5],
-                [112255, 22, 33, 44, 55]
-            ]
+                [145623, 2, 3, 4, 5,6],
+                [112255, 22, 33, 44, 55,66]
+            ],
         }
+        parameters.count=parameters.values.length;
         //======================================//
 
         await ctx.render('./query', parameters);

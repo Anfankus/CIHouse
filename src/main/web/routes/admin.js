@@ -7,11 +7,16 @@ const router = require('koa-router')()
 router
     .prefix('/admin')
     .get('/', async (ctx, next) => {
-        let data = {};
         //TODO
         //返回日志、查询记录
 
-        await ctx.render('./admin',data);
+        await ctx.render('./admin');
+    })
+    .get('/log', async(ctx,next)=>{
+        ctx.body='test';
+    })
+    .get('/record',async(ctx,next)=>{
+        
     })
 
 module.exports = router

@@ -14,27 +14,26 @@
 </style>
 {{/block}}
 {{#block("body")}}
-<div class="data-table" name="利润">
-    <p class="intro">利润情况</p>
-    {{include("../table.html",{keys:keys_1,values:values_1})}}
-</div>
-<div class="data-table" name="资产负债">
-    <p class="intro">资产负债</p>
-    {{include("../table.html",{keys:keys_2,values:values_2})}}
-</div>
-<div class="data-table" name="现金流量">
-    <p class="intro">现金流量</p>
-    {{include("../table.html",{keys:keys_3,values:values_3})}}
-</div>
 
-<div id="bar" style="width:600px;height:500px"></div>
-<br/><br/>
-<div id="line" style="width:600px;height:500px"></div>
+{{#each(tables)}}
+<div name={{this.title}}>
+    {{include("./table.html",{title:this.title,keys:this.keys,values:this.values})}}
+</div>
+{{/each}}
+
+<div id="chart1" style="width:600px;height:500px"></div>
+<div id="chart2" style="width:600px;height:500px"></div>
+<div id="chart3" style="width:600px;height:500px"></div>
+
 <script type="text/javascript">
-    var barCharts = echarts.init(document.getElementById('bar'),'dark');
-    barCharts.setOption({{{option1}}});
+    var barCharts = echarts.init(document.getElementById('chart1'),'dark');
+    barCharts.setOption({{{ optionLine[0] }}});
 
-    let lineChart=echarts.init(document.getElementById('line'),'dark');
-    lineChart.setOption({{{option2}}});
+    let lineChart=echarts.init(document.getElementById('chart2'),'dark');
+    lineChart.setOption({{{ optionLine[1] }}});
+
+    let lineChart=echarts.init(document.getElementById('chart3'),'dark');
+    lineChart.setOption({{{ optionLine[2] }}});
+
 </script>
 {{/block}}

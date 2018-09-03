@@ -1,21 +1,7 @@
-  .tb {
-    width: 600px;
-    margin:15px auto;
-  }
-  .data-table{
-    display: block;
-    text-align: center;
-    /* margin-left: 290px; */
-  }
-  #bar{
-    display: block;
-    text-align: center;
-    margin-left: 290px;
-  }
-  #line{
-    display: block;
-    text-align: center;
-    margin-left: 290px;
+.tb {
+  margin:20px 0 0 0;
+    width:100%;
+    /* margin:15px auto 130px; */
   }
   .tb,.tb th,.tb td{
     font-size:16px;

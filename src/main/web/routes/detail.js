@@ -5,108 +5,89 @@ const router = require('koa-router')()
 //const hbase = require('hbase-server');
 
 router
-    .prefix('/detail')  
+    .prefix('/detail')
     .param('id', async (id, ctx, next) => {
-        if (!isNaN(id)&&id.length===6) {
+        if (!isNaN(id) && id.length === 6) {
             ctx.id = parseInt(id);
             return next();
         } else {
             return false;
         }
     })
-    
-    // 进入详情时默认先展示 basic
     .get('/:id', async (ctx, next) => {
-        await ctx.render('./detail');
+        await ctx.render('./detail', {
+            pagetitle: '公司信息'
+        });
     })
 
     // 基本信息
-    .get('/:id/basic',async (ctx,next)=>{
-        let data={
-            '公司名称':'张可的公司',
-            '高管':'张可',
-            '公司位置':'不知道'
-        }
-        await ctx.render('./info/basic',{obj:data});
+    .get('/:id/basic', async (ctx, next) => {
+        //TODO 获取数据，格式为对象
+        //hbase.get().then(async datas=>{
+        await ctx.render('./info/basic', {
+            title: '基本信息',
+            obj: data
+        });
     })
 
     // 营收情况
-    .get('/:id/finance',async (ctx,next)=>{
-        let data={
-            '营业收入':12134,
-            '营业利润':456789,
-            '净利润':123456
-        }
-        await ctx.render('./info/finance',{obj:data})
+    .get('/:id/finance', async (ctx, next) => {
+        //TODO 获取数据，格式为对象
+        //hbase.get().then(async datas=>{
+        await ctx.render('./info/finance', {
+            title: '财务信息',
+            obj: data
+        })
     })
 
     // 风险评估
-    .get('/:id/risk',async(ctx,next)=>{
-        let data={
-            keys_1:[1,2,3],
-            values_1:[[1,1,1],[2,2,2]],
-            keys_2:[4,5,6,7],
-            values_2:[[3,3,3,3],[4,4,4,4]],
-            d:'123'
+    .get('/:id/risk', async (ctx, next) => {
+        let data = {
+
         }
 
-        await ctx.render('./info/risk',data);
+        await ctx.render('./info/risk', data);
     })
 
     // 
-    .get('/:id/history',async(ctx,next)=>{
-        var option_1 = {
-            title: {
-                text: '条形图'
-            },
-            tooltip: {},
-            legend: {
-                data: ['销量']
-            },
-            xAxis: {
-                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
-        let option_2={
-            title:{
-                text:'折线图'
-            },
-            tooltip:{},
-            legend:{
-                data:['净利润','销售费用']
-            },
-            xAxis:{
-                data:['2014年','2015年','2016年','2017年']
-            },
-            yAxis:{},
-            series:[{
-                name:'净利润',
-                type:'line',
-                data:[100,120,150,180]
-            },{
-                name:'销售费用',
-                type:'line',
-                data:[130,160,200,250]
-            }]
-        };
-
-        let data={
-            keys_1:[1,2,3],
-            values_1:[[1,1,1],[2,2,2]],
-            keys_2:[4,5,6,7],
-            values_2:[[3,3,3,3],[4,4,4,4]],
-            keys_3:[4,5,6,7],
-            values_3:[[3,3,3,3],[4,4,4,4]],
-            option1:JSON.stringify(option_1),
-            option2:JSON.stringify(option_2) 
+    .get('/:id/history', async (ctx, next) => {
+        //TODO 获取数据，一次调用，三个对象（利润，资产负债，现金流量），
+        ///每个对象为{keys:[],vals:[[],...]},代表表格第一行和余下行
+        //hbase.get().then(async datas=>{
+        
+        let op_legends_data = [];
+        let op_xAxis = [];
+        let op_series = [];
+        let titles=['利润','资产负债','现金流量'];
+        datas.forEach(element => {
+            op_xAxis.push(element.keys.slice(1));
+            op_series.push(element.vals.map(each => {
+                op_legends_data.push(each[0]);
+                return {
+                    name: each[0],
+                    type: 'line',
+                    data: each.slice(1)
+                };
+            }));
+        });
+        let lineOps=[];
+        for(let i=0;i<3;i++){
+            lineOps.push({
+                title:{text:titles[i]},
+                tooltip:{},
+                legend:{data:op_legends_data[i]},
+                xAxis:{data:op_xAxis[i]},
+                yAxis:{},
+                series:op_series[i]
+            })
         }
-        await ctx.render('./info/history',data);
+        let pagaParam = {
+            tables: [0,1,2].map(
+                index=>{return {title:titles[index],keys:datas[index].keys,values: data[index].values}}),
+            optionLine:lineOps.map(each=>JSON.stringify(each))
+            // option_2: JSON.stringify(option2)
+        }
+        await ctx.render('./info/history', pagaParam);
     })
 
 module.exports = router
