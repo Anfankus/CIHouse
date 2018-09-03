@@ -1,4 +1,4 @@
-{{extend("./layout.html")}}
+{{extend("./views/info/layout.html")}}
 
 
 {{#block("head")}}
@@ -16,15 +16,10 @@
 {{#block("body")}}
 
 {{#each(tables)}}
-<<<<<<< HEAD
 <div class="col-lg-10" name={{this.title}}>
     {{include("./views/table.html",{title:this.title,a:false,keys:this.keys,values:this.values})}}
     <div id="chart{{xindex}}" style="width:100%;height:500px"></div>
 
-=======
-<div name={{this.title}}>
-    {{include("./table.html",{title:this.title,keys:this.keys,values:this.values})}}
->>>>>>> bdd95c877980a36f73dfa94d4a6ad89c50316f3a
 </div>
 {{/each}}
 

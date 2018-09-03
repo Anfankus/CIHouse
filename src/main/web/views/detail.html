@@ -1,4 +1,4 @@
-{{extend("./layout.html")}}
+{{extend("./views/layout.html")}}
 
 {{#block("head")}}
     <script src="/javascripts/initial.js"></script>
@@ -33,7 +33,5 @@
     </tr>
 {{/block}} 
 {{#block("body")}}
-<div>
-    <iframe id="content" src style="border:0;width: 100%"></iframe>
-</div>
+<iframe id="content" src style="border:0;width: 100%;height:100%;"></iframe>
 {{/block}}
