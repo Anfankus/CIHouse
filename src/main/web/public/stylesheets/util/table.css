@@ -10,15 +10,15 @@
     border-collapse:collapse
   }
   .tb th,.tb .first {
-    background-color: #003749;
-    color:#FFFFFF
+    background-color: #eef4f8;
+    color:#5e5959;
   }
   /* .tb td{
     border: 1px solid transparent;
   } */
   
   .tb tr:nth-child(odd){
-    background-color:#aae9fe;
+    background-color:rgb(253, 227, 231);
   }
   .tb tr:nth-child(even){
     background-color:#fdfdfd;
@@ -26,3 +26,9 @@
   .tb .tb-unit{
     padding:1em;
   }
+  .intro{
+    display: block;
+    color:#5e5959;
+    font-size: 18px;
+  }
+
