@@ -25,13 +25,45 @@ router
         //TODO 获取数据，格式为对象
         //hbase.get().then(async datas=>{
 
-        let data={
-            '1':'1',
-            '2':'2'
+        let data = {
+            '1': '1',
+            '2': '2'
+        }
+        let op = {
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                type: 'scroll',
+                orient: 'vertical',
+                right: 10,
+                top: 20,
+                bottom: 20,
+            },
+            series: [{
+                name: 'ratios',
+                type: 'pie',
+                radius: ['45%', '65%'],
+                center: ['50%', '40%'],
+                data: [{name:1,value:15},{name:2,value:24},{name:3,value:24},{name:4,value:34},{name:5,value:23},{name:6,value:23}],
+                label:{
+                    fontSize:17
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
         }
         await ctx.render('./info/basic', {
-            title: '基本信息',
-            obj: data
+            title: '公司详情',
+            listtitle: '公司概况',
+            obj: data,
+            option:JSON.stringify(op)
         });
     })
 
@@ -39,6 +71,11 @@ router
     .get('/:id/finance', async (ctx, next) => {
         //TODO 获取数据，格式为对象
         //hbase.get().then(async datas=>{
+        let data = {
+            '1': '1',
+            '2': '2'
+        }
+
         await ctx.render('./info/finance', {
             title: '财务信息',
             obj: data
@@ -59,19 +96,39 @@ router
         //TODO 获取数据，一次调用，三个对象（利润，资产负债，现金流量），
         ///每个对象为{keys:[年份],vals:[[单个统计量],...]},代表表格第一行和余下行
         //hbase.get().then(async datas=>{
-        let datas=[{keys:[1,2,3,4,5,6],values:[[0,0,0,0,0,0],[1,1,1,1,1,1]]},
-                    {keys:[1,2,3,4,5,6],values:[[3,3,3,3,3,3],[4,4,4,4,4,4]]},
-                    {keys:[1,2,3,4,5,6],values:[[5,5,5,5,5,5],[6,6,6,6,6,6]]}];
+        let datas = [{
+                keys: [1, 2, 3, 4, 5, 6],
+                values: [
+                    [0, 0, 0, 0, 0, 0],
+                    [1, 1, 1, 1, 1, 1]
+                ]
+            },
+            {
+                keys: [1, 2, 3, 4, 5, 6],
+                values: [
+                    [3, 3, 3, 3, 3, 3],
+                    [4, 4, 4, 4, 4, 4]
+                ]
+            },
+            {
+                keys: [1, 2, 3, 4, 5, 6],
+                values: [
+                    [5, 5, 5, 5, 5, 5],
+                    [6, 6, 6, 6, 6, 6]
+                ]
+            }
+        ];
 
-        let rep=/率$/.compile();
-        let op_legends_data = [];//统计量名，即每行数据第一列
+        let rep = /率$/.compile();
+        let op_legends_data = []; //统计量名，即每行数据第一列
         let op_xAxis = [];
-        let op_series = [];     //每个统计量的图表内容即样式
-        let titles=['利润','资产负债','现金流量'];
+        let op_series = []; //每个统计量的图表内容即样式
+        let titles = ['利润', '资产负债', '现金流量'];
         datas.forEach(element => {
+            let temp = [];
             op_xAxis.push(element.keys.slice(1));
             op_series.push(element.values.map(each => {
-                op_legends_data.push(each[0]);
+                temp.push(each[0]);
                 return {
                     name: each[0],
                     type: 'line',
@@ -79,35 +136,51 @@ router
                     data: each.slice(1)
                 };
             }));
+            op_legends_data.push(temp);
         });
-        let lineOps=[];
-        for(let i=0;i<3;i++){
+        let lineOps = [];
+        for (let i = 0; i < 3; i++) {
             lineOps.push({
-                title:{
-                    x:'center',
-                    text:titles[i]
+                // title:{
+                //     x:'center',
+                //     text:titles[i]
+                // },    
+                grid: {
+                    left: '1%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
                 },
-                tooltip:{},
-                legend:{
-                    width:'1000px',
+                tooltip: {},
+                legend: {
+                    width: '1000px',
                     orient: 'vertical',
-                    right:10,
-                    data:op_legends_data[i]
+                    right: 10,
+                    //data:op_legends_data[i]
                 },
-                xAxis:{data:op_xAxis[i]},
-                yAxis:[{
-                    name:'金额',
-                    type:'value'
+                xAxis: {
+                    data: op_xAxis[i]
+                },
+                yAxis: [{
+                    name: '金额',
+                    type: 'value'
                 }],
-                series:op_series[i]
+                series: op_series[i]
             })
         }
 
 
         let pagaParam = {
-            tables: [0,1,2].map(
-                index=>{return {title:titles[index],keys:datas[index].keys,values: datas[index].values}}),
-            optionLine:lineOps.map(each=>JSON.stringify(each))
+            title: '历史数据',
+            tables: [0, 1, 2].map(
+                index => {
+                    return {
+                        title: titles[index],
+                        keys: datas[index].keys,
+                        values: datas[index].values
+                    }
+                }),
+            optionLine: lineOps.map(each => JSON.stringify(each))
             // option_2: JSON.stringify(option2)
         }
         await ctx.render('./info/history', pagaParam);

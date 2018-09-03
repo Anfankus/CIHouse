@@ -5,7 +5,10 @@
 {{/block}}
 
 {{#block("body")}}
-    <div>
-        {{include ("./list.html",{obj:object})}}
+    <div class="col-11 pt-3 ml-3 mb-4 text-center" name={{this.title}} style="padding-left: 7%;padding-right: 7%;background-color: #f4f4f4;">
+        {{include ("./views/util/list.html",{obj:object})}}
     </div>
+{{/block}}
+{{#block("body-js")}}
+    $('.title-cell>div').css("background-color","#4bde51")
 {{/block}}

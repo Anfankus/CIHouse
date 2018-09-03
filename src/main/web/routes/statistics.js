@@ -11,10 +11,10 @@ router
 
             //TODO
             //从HBASE中根据所需统计量搜索
-
         }
-
-        //await ctx.render('./statistics', data);
+        await ctx.render('./statistics');
     })
-
+    .get('/map',async (ctx,next)=>{
+        await ctx.render('./info/map');
+    });
 module.exports = router

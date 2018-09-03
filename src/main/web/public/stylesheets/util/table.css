@@ -32,3 +32,12 @@
     font-size: 18px;
   }
 
+.table .tb-unit{
+ border-bottom: 1px solid #636363;
+}
+.tableTag{
+padding: 0.7rem 1rem 0.7rem 1rem;
+background: #007bff;
+color: white;
+border-radius: 0.8rem;
+}

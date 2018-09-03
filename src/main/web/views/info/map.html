@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body><div id="map" style="width:800px;height: 500px;"></div>
+<script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
+<script src="https://data.jianshukeji.com/geochina/china.js"></script>
+<script>
+var data = [{"name":"北京","value":54},{"name":"天津","value":38},{"name":"河北","value":75},{"name":"山西","value":99},{"name":"内蒙古","value":98},{"name":"辽宁","value":41},{"name":"吉林","value":74},{"name":"黑龙江","value":5},{"name":"上海","value":12},{"name":"江苏","value":96},{"name":"浙江","value":71},{"name":"安徽","value":68},{"name":"福建","value":17},{"name":"江西","value":70},{"name":"山东","value":49},{"name":"河南","value":45},{"name":"湖北","value":65},{"name":"湖南","value":86},{"name":"广东","value":82},{"name":"广西","value":97},{"name":"海南","value":19},{"name":"重庆","value":11},{"name":"四川","value":75},{"name":"贵州","value":36},{"name":"云南","value":88},{"name":"西藏","value":27},{"name":"陕西","value":64},{"name":"甘肃","value":8},{"name":"青海","value":56},{"name":"宁夏","value":31},{"name":"新疆","value":13},{"name":"台湾","value":58},{"name":"香港","value":16},{"name":"澳门","value":65},{"name":"南海诸岛","value":74},{"name":"南海诸岛","value":65}];
+var map = new Highcharts.Map('map', {
+  title: {
+    text: ''
+  },
+  colorAxis: {
+    min: 0,
+    minColor: 'rgb(255,255,255)',
+    maxColor: '#002199'
+  },
+  series: [{
+    data: data,
+    name: '随机数据',
+    mapData: Highcharts.maps['cn/china'],
+    joinBy: 'name' // 根据 name 属性进行关联
+  }]
+});
+</script></body></html>

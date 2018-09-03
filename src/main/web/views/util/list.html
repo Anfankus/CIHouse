@@ -1,9 +1,9 @@
-<h3>{{title}}</h3>
-<table class="ls">
+<h5 class="col-3 mt-3 tableTag">{{title}}</h5>
+<table class="table table-hover mt-4">
     <tbody>
         {{#each(obj,"value","key")}}
         <tr>
-            <td class="ls-keys">{{key}}</td>
+            <th class="ls-keys">{{key}}</td>
             <td class="ls-vals">{{value}}</td>
         </tr>
         {{/each}}
