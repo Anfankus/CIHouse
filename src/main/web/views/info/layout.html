@@ -2,13 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-        <script src="/javascripts/jquery-3.3.1.min.js"></script>
-        <script src="/javascripts/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="/stylesheets/util/bootstrap.min.css">
+        <script src="/javascripts/lib/jquery-3.3.1.min.js"></script>
 
         {{{block("head")}}}
     </head>
     <body style="margin:0;border: 0">
+        <div class="container">
+            <div class="row">
         {{{block("body")}}}
+           </div>
+        </div>
+    <script src="/javascripts/lib/popper.min.js"></script>
+    <script src="/javascripts/lib/bootstrap.min.js"></script>
     </body>
 </html>

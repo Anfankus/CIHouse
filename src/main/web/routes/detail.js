@@ -24,6 +24,11 @@ router
     .get('/:id/basic', async (ctx, next) => {
         //TODO 获取数据，格式为对象
         //hbase.get().then(async datas=>{
+
+        let data={
+            '1':'1',
+            '2':'2'
+        }
         await ctx.render('./info/basic', {
             title: '基本信息',
             obj: data
@@ -52,20 +57,25 @@ router
     // 
     .get('/:id/history', async (ctx, next) => {
         //TODO 获取数据，一次调用，三个对象（利润，资产负债，现金流量），
-        ///每个对象为{keys:[],vals:[[],...]},代表表格第一行和余下行
+        ///每个对象为{keys:[年份],vals:[[单个统计量],...]},代表表格第一行和余下行
         //hbase.get().then(async datas=>{
-        
-        let op_legends_data = [];
+        let datas=[{keys:[1,2,3,4,5,6],values:[[0,0,0,0,0,0],[1,1,1,1,1,1]]},
+                    {keys:[1,2,3,4,5,6],values:[[3,3,3,3,3,3],[4,4,4,4,4,4]]},
+                    {keys:[1,2,3,4,5,6],values:[[5,5,5,5,5,5],[6,6,6,6,6,6]]}];
+
+        let rep=/率$/.compile();
+        let op_legends_data = [];//统计量名，即每行数据第一列
         let op_xAxis = [];
-        let op_series = [];
+        let op_series = [];     //每个统计量的图表内容即样式
         let titles=['利润','资产负债','现金流量'];
         datas.forEach(element => {
             op_xAxis.push(element.keys.slice(1));
-            op_series.push(element.vals.map(each => {
+            op_series.push(element.values.map(each => {
                 op_legends_data.push(each[0]);
                 return {
                     name: each[0],
                     type: 'line',
+                    //yAxisIndex:rep.test(each[0])?1:0,
                     data: each.slice(1)
                 };
             }));
@@ -73,17 +83,30 @@ router
         let lineOps=[];
         for(let i=0;i<3;i++){
             lineOps.push({
-                title:{text:titles[i]},
+                title:{
+                    x:'center',
+                    text:titles[i]
+                },
                 tooltip:{},
-                legend:{data:op_legends_data[i]},
+                legend:{
+                    width:'1000px',
+                    orient: 'vertical',
+                    right:10,
+                    data:op_legends_data[i]
+                },
                 xAxis:{data:op_xAxis[i]},
-                yAxis:{},
+                yAxis:[{
+                    name:'金额',
+                    type:'value'
+                }],
                 series:op_series[i]
             })
         }
+
+
         let pagaParam = {
             tables: [0,1,2].map(
-                index=>{return {title:titles[index],keys:datas[index].keys,values: data[index].values}}),
+                index=>{return {title:titles[index],keys:datas[index].keys,values: datas[index].values}}),
             optionLine:lineOps.map(each=>JSON.stringify(each))
             // option_2: JSON.stringify(option2)
         }

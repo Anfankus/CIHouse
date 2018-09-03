@@ -8,6 +8,9 @@ const logger = require('koa-logger')
 const xtpl = require('koa-xtpl')
 
 const path = require('path');
+const fs=require('fs');
+
+const mylogger=require('./middlewares/logger')
 
 const index = require('./routes/index')
 const detail=require('./routes/detail')
@@ -26,6 +29,9 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
+let loggerfile=fs.createWriteStream('./logs/access.log',{flags:'a',encoding:'utf-8'});
+app.use(mylogger(loggerfile));
+
 app.use(require('koa-static')(__dirname + '/public'));
 
 app.use(xtpl({
@@ -37,10 +43,7 @@ app.use(async (ctx, next) => {
   if(ctx.originalUrl==='/')
     ctx.redirect('/index');
   else{
-    const start = new Date()
     await next()
-    const ms = new Date() - start
-    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
    }
 })
 

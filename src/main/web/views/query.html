@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>CIHouse</title>
     <link rel="stylesheet" href="/stylesheets/perform.css">
-    <link rel="stylesheet" href="/stylesheets/table.css">
-    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/util/table.css">
+    <link rel="stylesheet" href="/stylesheets/util/bootstrap.min.css">
 
 </head>
 
@@ -39,7 +39,7 @@
                 {{#if (!values)}}
                     <p>未查询到数据</p>
                 {{else}}
-                    {{include ("./views/table.html",{keys:keys,values:values})}}
+                    {{include ("./views/table.html",{a:true,keys:keys,values:values})}}
                 {{/if}}
             </div>
         </div>
@@ -49,9 +49,9 @@
           <span class="text-muted">CIHouse工作组</span>
         </div>
       </footer>
-    <script src="/javascripts/jquery-3.3.1.min.js"></script>
-    <script src="/javascripts/bootstrap.bundle.min.js"></script>
-
+    <script src="/javascripts/lib/jquery-3.3.1.min.js"></script>
+    <script src="/javascripts/lib/popper.min.js"></script>
+    <script src="/javascripts/lib/bootstrap.min.js"></script>
 </body>
 
 </html>

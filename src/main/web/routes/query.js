@@ -12,16 +12,13 @@ router
         let data = {};
         if (ctx.queryString) {
             let query = ctx.query;
-            if (query.id) {
-                //TODO
-                //调用hbase根据id搜索
-            } else if (query.name) {
-                //TODO
-                //根据query.name搜索
-            } else if (query.field) {
-                //TODO 
-                //根据query.field
+            if(isNaN(query.search)){
+                let name=query.search;
             }
+            else{
+                let id=query.search;
+            }
+
         }
         //=====测试用数据
         let parameters = {

@@ -20,20 +20,24 @@
         log('ECharts is not Loaded');
         return;
     }
-    echarts.registerTheme('dark', {
+    echarts.registerTheme('light', {
         "color": [
-            "#3fb1e3",
+            "#3fb8e3",
             "#6be6c1",
             "#626c91",
             "#a0a7e6",
             "#c4ebad",
-            "#96dee8"
+            "#409aa5",
+            "#81e14a",
+            "rgba(170,54,238,0.83)",
+            "#ff6323",
+            "#e0f02d"
         ],
-        "backgroundColor": "#1e1e1e",
+        "backgroundColor": "rgba(252,252,252,0)",
         "textStyle": {},
         "title": {
             "textStyle": {
-                "color": "#ebebeb"
+                "color": "#666666"
             },
             "subtextStyle": {
                 "color": "#999999"
@@ -193,12 +197,16 @@
             "symbol": "emptyCircle",
             "smooth": false,
             "color": [
-                "#3fb1e3",
+                "#3fb8e3",
                 "#6be6c1",
                 "#626c91",
                 "#a0a7e6",
                 "#c4ebad",
-                "#96dee8"
+                "#409aa5",
+                "#81e14a",
+                "rgba(170,54,238,0.83)",
+                "#ff6323",
+                "#e0f02d"
             ],
             "label": {
                 "normal": {

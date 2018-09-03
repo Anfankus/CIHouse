@@ -13,7 +13,13 @@
         <tr>
             {{#each(this)}}
             {{# if(xindex===0)}}
-            <td class="tb-unit first"><a href="/detail/{{this}}">{{this}}</a></td>
+            <td class="tb-unit first">
+            {{# if(a)}}
+            <a href="/detail/{{this}}">{{this}}</a>
+            {{else}}
+            {{this}}
+            {{/ if}}
+            </td>
             {{else}}
             <td class="tb-unit">{{this}}</td>
             {{/ if}}
