@@ -1,4 +1,4 @@
-{{extend("./views/info/layout.html")}}
+{{extend("./layout.html")}}
 {{#block("head")}}
 <link rel="stylesheet" href="/stylesheets/util/list.css">
 
@@ -6,6 +6,6 @@
 {{#block( "body")}}
 
 <div class="col-lg-8 offset-lg-2">
-    {{include ("./views/list.html",{obj:object})}}
+    {{include ("../list.html",{obj:object})}}
 </div>
 {{/block}}
