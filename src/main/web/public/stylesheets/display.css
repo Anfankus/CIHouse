@@ -15,7 +15,6 @@ body {
     left: 0;
     width: 200px;
     bottom: 30px;
-    padding: 5px; 
     box-sizing: border-box;
 }
 #nav1 .header {
@@ -121,14 +120,15 @@ table, tr, td {
 }
 .navbar .nav-input{
     position: absolute;
-    width: 1150px;
+    left: 200px;
+    width: 80%;
     height: 44px;
     border-radius: 5px;
-    right: 90px;
-    padding: 10px 15px; 
+    /* right: 10%; */
+    padding: 10px 15px;
+    border: solid;
     border-color: rgb(67, 67, 105);
-    background-color: rgb(67, 67, 105);
-}
+    background-color: rgb(67, 67, 105);}
 .nav-input:focus{
     background:white;
 }
@@ -137,11 +137,9 @@ table, tr, td {
 }
 .navbar-nav{
     position: absolute;
-    left: 1364px;
     right: 0;
-    top: 0;
-    bottom: 0;
-}
+    width: 5%;
+    padding-right: 1%;}
 .navbar-nav .nav-link{
     font-size:18px;
     color: #fef;
