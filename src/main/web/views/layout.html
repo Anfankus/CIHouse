@@ -10,25 +10,22 @@
         {{{block("head")}}}
     </head>
     <body>
-        <div id="nav" style="float:left">
-            <!-- <button class="buttons">基本信息</button>
-            <button class="buttons">产业结构</button>
-            <button class="buttons">发展方向</button> -->
+        <nav class="navbar">
+            <a class="navbar-brand" href="#">CIHouse首页</a>
+            <input class="nav-input" id="navsearch" onclick="click(this)" type="text" placeholder="Search" aria-label="Search">
+            <ul class="navbar-nav">
+                <li class="nav-content">
+                    <a class="nav-link" href="#">Search</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="nav1" style="float:left">
             <div class="header">{{pagetitle}}</div>
-            <!-- 后面用js去修改这个公司名称，这个暂时先不动 -->
-            <table class="xtree">
+            <img class="ball" src="../images/browser.png"/>
+            <table class="xtree_node">
                 <tbody>
-                    <tr class="hiddenrow"></tr>
-                    <tr>
-                        <td class="xtree_blank_root"></td>
-                        <td class="mytd" colspan="3">
-                            <table class="xtree_node">
-                                <tbody>
-                                    {{{block("nav")}}}
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
+                    {{{block("nav")}}}
                 </tbody>
             </table>
         </div> 

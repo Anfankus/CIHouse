@@ -139,13 +139,13 @@ input[type="search"]::-webkit-search-decoration {
       background-size: contain;
   }
   .tempWrap .wenTop .ex1{
-      background-image: url(money.png);
+      background-image: url(../images/money.png);
   }
   .tempWrap .wenTop .ex2{
-      background-image: url(medicine.png);
+      background-image: url(../images/medicine.png);
   }
   .tempWrap .wenTop .ex3{
-      background-image: url(book.png);
+      background-image: url(../images/book.png);
   }
   .tempWrap .wenTop .xian2 { /* 所有的线都设置 */
       display: block;
@@ -265,35 +265,160 @@ input[type="search"]::-webkit-search-decoration {
       text-align: center;
       margin-top: 35px;
   }
-  .gain .work{
-      font-size: 15px;
-      color:rgb(66, 60, 60);
-      margin-left: 10px;
-      margin-right: 10px;
-      margin-top: 35px;
-  }
+.gain .work{
+    font-size: 15px;
+    color:rgb(66, 60, 60);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 35px;
+}
 
-  .back1{
+.flipboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: 60px 0;
+}
+
+.flipboard .flipcard {
+  width: 320px;
+  height: 240px;
+  margin: 0 20px;
+  background-image: url(../images/ground2.jpg);
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.flipboard .flipcard .side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, .5);
+}
+
+.flipboard .flipcard .side.alternative {
+  display: none;
+}
+
+.flipboard .flipcard .side .name {
+  font-size: 22px;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 20px;
+}
+
+.flipboard .arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 10px solid #333;
+  cursor: pointer;
+}
+
+.flipboard .arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 10px solid #333;
+  cursor: pointer;
+}
+
+@keyframes flip-left {
+  0% {
+    transform: perspective(500px) rotateY(0);
+  }
+  50% {
+    transform: perspective(500px) rotateY(-90deg);
+  }
+  51% {
+    transform: perspective(500px) rotateY(90deg);
+  }
+  100% {
+    transform: perspective(500px) rotateY(0);
+  }
+}
+
+@keyframes flip-right {
+  0% {
+    transform: perspective(500px) rotateY(0);
+  }
+  50% {
+    transform: perspective(500px) rotateY(90deg);
+  }
+  51% {
+    transform: perspective(500px) rotateY(-90deg);
+  }
+  100% {
+    transform: perspective(500px) rotateY(0);
+  }
+}
+
+.flipboard .flipcard.flip-left {
+  animation-name: flip-left;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+.flipboard .flipcard.flip-right {
+  animation-name: flip-right;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+
+.tempWrap1 .wenBottom1 {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #60a2f3;
+    transform: translateY(100%);  /* 初始状态下，距离原位置向下移动100%，让它移出去 */
+    /* transition: 0.5s; 当任何一个CSS属性改变的时候，以0.5秒做动画，而不是突然改变 */
+}
+.tempWrap1 li:hover .wenBottom1 { /* :hover 表示前面的元素被鼠标指向的状态才会应用这个规则 */ 
+    /* 当li被鼠标指向时，其中的.wenBottom距离原位置不再向下移动，而是回到原位置 */
+    /* 因为上面设置了transition，所以会自动动画移过去 */
+    transform: translateY(0); 
+}
+ /* .back1{
       background-color:#f8f8f8;
       position: relative;
   }
   .tempWrap1{
-      width: 100%; 
-      height: 312px;
+      width: 1200px; 
+      height: 220px;
       display: block;
       padding: 15px 0;
+      vertical-align: middle;
+      text-align: center;
+      margin-left: 100px;
   }
   .tempWrap1 ul{
-      height: 300px;
+      height: 210px;
       overflow: hidden;
       text-align: center;
       margin: 0 15px;
   }
   .tempWrap1 li{
       display: inline-block;
-      position: relative;    /*1*/
-      width: 400px;
-      height: 300px;
+      position: relative;    
+      width: 280px;
+      height: 210px;
       overflow: hidden;
       margin: 0 15px;
   }
@@ -306,39 +431,40 @@ input[type="search"]::-webkit-search-decoration {
       top: 0;
       bottom: 0;
       background: rgba(0, 0, 0, .5);
-  }
-  .tempWrap1 .wenTop1 .tu2 {
+  } */
+  /* .tempWrap1 .wenTop1 .tu2 { */
       /* 所有的图标都设置 */
-      display: block;
-      width: 64px;
-      height: 64px;
+      /* display: block;
+      width: 32px;
+      height: 32px;
       margin: 50px auto 0;
-      background-image: url(member.png);
+      background-image: url(../images/ground2.png); */
       /* 图片要保持比例，不要拉长或者压扁了，不然就跟校园蜜蜂小程序那么丑 */
       /* contain 是保持比例，尽可能放进去，cover 是保持比例，但保证充满 */
       /* 巧记：图片/头像 = cover，图标 = contain */
-      background-size: contain;
-  }
-  .tempWrap1 .wenTop1 .xian2 { /* 所有的线都设置 */
+      /* background-size: contain;
+  } */
+  /* .tempWrap1 .wenTop1 .xian2 { 所有的线都设置
       display: block;
       width: 4em; /* em 是一个英文字符的高度，等于两个英文字符的宽度，等于一个中文字符的宽度*/
-      height: 1px;
+   /* height: 1px;
       background: #fff;
+      margin-top: 30px;
       margin: 20px auto;    
-  }
-  .tempWrap1 .tu3{
+  } */ 
+  /* .tempWrap1 .tu3{
       position: absolute; 
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       text-align: center;
-      width: 400px;
-      height: 300px;
+      width: 280px;
+      height: 210px;
       vertical-align: middle;
   }
   .tempWrap1 .wzTs{
-      font-size: 35px;
+      font-size: 20px;
       color: #fff;
   }
   .tempWrap1 .wzTsm{
@@ -346,23 +472,7 @@ input[type="search"]::-webkit-search-decoration {
       color: #fff;
       margin-left: 15px;
       margin-right: 15px;
-  }
-  .tempWrap1 .wenBottom1 {
-      position: absolute; 
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: #60a2f3;
-      transform: translateY(100%);  /* 初始状态下，距离原位置向下移动100%，让它移出去 */
-      transition: 0.5s; /* 当任何一个CSS属性改变的时候，以0.5秒做动画，而不是突然改变 */
-  }
-  .tempWrap1 li:hover .wenBottom1 { /* :hover 表示前面的元素被鼠标指向的状态才会应用这个规则 */ 
-      /* 当li被鼠标指向时，其中的.wenBottom距离原位置不再向下移动，而是回到原位置 */
-      /* 因为上面设置了transition，所以会自动动画移过去 */
-      transform: translateY(0); 
-  }
-  
+  } */
 
   
   

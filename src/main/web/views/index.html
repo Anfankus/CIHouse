@@ -4,6 +4,8 @@
         <title>CIHouse新三板企业征信平台</title>
         <link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/stylesheets/indexstyle.css"/>
+        <script src="/javascripts/lib/jquery-3.3.1.min.js"></script>
+        <script src="/javascripts/operation.js"></script>
     </head>
     <body>
         <div class="container">
@@ -116,118 +118,39 @@
         <div class="futitle">
             <h2 class="title2">CIHouse开发人员</h2>
         </div>
-        <div class="back1">
-                <div class="tempWrap1">
-                    <ul>
-                        <li>
-                            <img class="tu3" src="/images/ground2.jpg" alt="金融" title="金融">
-                            <div class="wenTop1">
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">张可</h6>
-                            </div>
-                            <div class="wenBottom1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb1.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">张可</h6>
-                                <p class="wzTsm">张可，组长，主要完成的任务。</p>
-                                <!-- <a class="moreD" target="_blank" href="/cases/taxation/527.html">查看详情</a> -->
-                            </div>
-                        </li>
-                        <li>
-                            <img class="tu3" src="/images/ground2.jpg" alt="卫生" title="卫生">
-                            <div class="wenTop1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb3.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">刘相君</h6>
-                            </div>
-                            <div class="wenBottom1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb3.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">刘相君</h6>
-                                <p class="wzTsm">刘相君，前端工作，主要完成的任务。</p>
-                                <!-- <a class="moreD" target="_blank" href="/cases/hygiene/549.html">查看详情</a> -->
-                            </div>
-                        </li>
-                        <li>
-                            <img class="tu3" src="/images/ground2.jpg" alt="教育" title="教育">
-                            <div class="wenTop1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb6.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">李行健</h6>
-                            </div>
-                            <div class="wenBottom1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb6.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">李行健</h6>
-                                <p class="wzTsm">李行健，前端管理员页面，主要完成的工作。</p>
-                                <!-- <a class="moreD" target="_blank" href="/cases/education/544.html">查看详情</a> -->
-                            </div>
-                        </li>
-                    </ul>
-                </div> 
+        <div class="flipboard">
+            <div class="arrow-left"></div>
+            <div class="flipcard" id="flip1">
+                <div class="side">
+                    <p class="name">张可</p>
+                    <p class="detail">组长</p>
+                </div>
+                <div class="side alternative">
+                    <p class="name">李嘉兴</p>
+                    <p class="detail">数据处理</p>
+                </div>
             </div>
-            <div class="back1">
-                <div class="tempWrap1">
-                    <ul>
-                        <li>
-                            <img class="tu3" src="/images/ground2.jpg" alt="金融" title="金融">
-                            <div class="wenTop1">
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">李嘉兴</h6>
-                            </div>
-                            <div class="wenBottom1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb1.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">李嘉兴</h6>
-                                <p class="wzTsm">李嘉兴，数据处理，主要完成的任务。</p>
-                                <!-- <a class="moreD" target="_blank" href="/cases/taxation/527.html">查看详情</a> -->
-                            </div>
-                        </li>
-                        <li>
-                            <img class="tu3" src="/images/ground2.jpg" alt="卫生" title="卫生">
-                            <div class="wenTop1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb3.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">王洪泽</h6>
-                            </div>
-                            <div class="wenBottom1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb3.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">王洪泽</h6>
-                                <p class="wzTsm">王洪泽，数据处理，主要完成的任务。</p>
-                                <!-- <a class="moreD" target="_blank" href="/cases/hygiene/549.html">查看详情</a> -->
-                            </div>
-                        </li>
-                        <li>
-                            <img class="tu3" src="/images/ground2.jpg" alt="教育" title="教育">
-                            <div class="wenTop1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb6.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">管聪</h6>
-                            </div>
-                            <div class="wenBottom1">
-                                <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb6.png" />-->
-                                <div class="tu2"></div>
-                                <span class="xian2"></span>
-                                <h6 class="wzTs">管聪</h6>
-                                <p class="wzTsm">管聪，数据爬取，主要完成的工作。</p>
-                                <!-- <a class="moreD" target="_blank" href="/cases/education/544.html">查看详情</a> -->
-                            </div>
-                        </li>
-                    </ul>
-                </div> 
+            <div class="flipcard" id="flip2">
+                <div class="side">
+                    <p class="name">刘相君</p>
+                    <p class="detail">前端开发</p>
+                </div>
+                <div class="side alternative">
+                    <p class="name">王洪泽</p>
+                    <p class="detail">数据处理</p>
+                </div>
             </div>
-
+            <div class="flipcard" id="flip3">
+                <div class="side">
+                    <p class="name">李行健</p>
+                    <p class="detail">前端开发</p>
+                </div>
+                <div class="side alternative">
+                    <p class="name">管聪</p>
+                    <p class="detail">数据爬取</p>
+                </div>
+            </div>
+            <div class="arrow-right"></div>
+        </div>        
     </body>   
 </html>

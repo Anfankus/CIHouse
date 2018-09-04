@@ -2,7 +2,7 @@
 
 $(function(){
     let targetUid=/\d+$/.exec(window.location.pathname)
-    let iframe=$('#content').attr('src', `/detail/${targetUid}/basic`)
+    $('#content').attr('src', `/detail/${targetUid[0]}/basic`)
 
     //根据iframe内容调整外部div元素的高度和宽度到相同大小（仅body部分的大小）+
     // iframe.on('load',function() {
@@ -14,13 +14,13 @@ function clickmenu(element)
 {  
     changecolor(element);
     switch(element.id) {
-    case 'menu001':
+    case 'arow001':
         menuclick('basic');
         break;
-    case 'menu002':
+    case 'arow002':
         menuclick('history');
         break;
-    case 'menu003':
+    case 'arow003':
         menuclick('finance');
         break;
     default:
@@ -31,41 +31,50 @@ function clickmenu(element)
 //这个函数用于改变文字颜色
 function changecolor(element)
 {
-    // var element1 = document.getElementById('menu001');
-    // var element2 = document.getElementById('menu002');
-    // var element3 = document.getElementById('menu003');
-    // if (element1.id == element.id) {
-    //     element1.style.color = 'aqua'
-    // } else {
-    //     element1.style.color = '#fef'
-    // }
-     
-    // if (element2.id == element.id) {
-    //     element2.style.color = 'aqua'
-    // } else {
-    //     element2.style.color = '#fef'
-    // }
-     
-    // if (element3.id == element.id) {
-    //     element3.style.color = 'aqua'
-    // } else {
-    //     element3.style.color = '#fef'
-    // }
-
-    for (var i = 1; i <= 3; i++) {
-        var element_i = document.getElementById('menu00' + i)
-        if (element_i.id == element.id) {
-            element_i.style.color = 'aqua'
-        } else {
-            element_i.style.color = '#fef'
-        }
+    var element1 = document.getElementById('arow001');
+    var element2 = document.getElementById('arow002');
+    var element3 = document.getElementById('arow003');
+    if (element1.id == element.id) {
+        $(element1).addClass('selected')
+    } else {
+        $(element1).removeClass('selected')
     }
+     
+    if (element2.id == element.id) {
+        $(element2).addClass('selected')
+    } else {
+        $(element2).removeClass('selected')
+    }
+     
+    if (element3.id == element.id) {
+        $(element3).addClass('selected')
+    } else {
+        $(element3).removeClass('selected')
+    }
+
+    // 可以改成
+    // $('.nav-item').each(function() {
+    //     if (this.id == element.id) {
+    //         $(this).addClass('selected')
+    //     } else {
+    //         $(this).removeClass('selected')
+    //     }
+    // })
+
+    // for (var i = 1; i <= 3; i++) {
+    //     var element_i = document.getElementById('arow00' + i)
+    //     if (element_i.id == element.id) {
+    //         element_i.style.color = 'aqua'
+    //     } else {
+    //         element_i.style.color = '#fef'
+    //     }
+    // }
+    // $('#arow001').addClass('selected')
 }
 
 //用于控制"服务日志查询"的点击效果
 function menuclick(page)
 {
-    var newLocation = location.href + '/' + page
-    // document.getElementById('content').src = newLocation
-    $('#content').attr('src', newLocation)
+    let targetUid = /\d+$/.exec(window.location.pathname)
+    $('#content').attr('src', `/detail/${targetUid[0]}/${page}`)
 }

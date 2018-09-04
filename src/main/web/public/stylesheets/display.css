@@ -5,23 +5,23 @@ body {
     font-family: sans-serif; /*不要宋体*/
 }
 
-#nav {
+#nav1 {
     display: block;
     line-height:30px;
     background-color:#224;
     /* height:300px; */
     position: fixed;
-    top: 0;
+    top: 48px;
     left: 0;
     width: 200px;
     bottom: 30px;
     padding: 5px; 
     box-sizing: border-box;
 }
-#nav .header {
+#nav1 .header {
     color:#fff;
     font-size: 24px;
-    padding: 80px 25px;
+    padding: 30px 25px;
     text-align: center;
 }
 table {
@@ -35,18 +35,19 @@ table {
 }
 table, tr, td {
     padding: 10px 5px;
-    margin: 80px 0px;
-}
-.row{
-    bottom: 50px;
-}
-.mytd{
+    /* margin: 80px 40px; */
     width:100%;
 }
-.xtree_blank_root{
-   padding-left: 20px; 
+.nav-item{
+    color:#fef;
+    background-color: #224;
+    cursor: pointer;
 }
-.mytd .xtree_node{
+.nav-item.selected{
+    color:#2f7bdf;
+    background-color:#ecf3f7;
+}
+.xtree_node{
     border: 0 none;
     padding: 0px 0px;
     height: 42px;
@@ -56,49 +57,40 @@ table, tr, td {
     border-right-width: 0px;
     border-bottom-width: 0px;
     border-left-width: 0px;
+    margin-top:130px;
 }
-
 .standartTreeImage{
     width: 21px; 
     height:100%;
     padding: 0px; 
     vertical-align: middle;
 }
-.pic{
+.standartTreeImage .pic{
     padding: 0px; 
     margin: 0px 0px 0px 3px; 
     width: 16px; 
     height: 16px;
+    margin-left:65px;
 }
-.xtree_nodeitem{
+.item .menu{
+    margin-left:65px;
+}
+/* .xtree_node{
     padding: 0px 0px 0px 3px; 
     vertical-align: middle;
     width:160px;
     height:42px;
-}
+} */
 .item{
     font-size: 16px; 
-    color: #fef;
 }
-/* .buttons{
-    display: block;
-    width:250px;
-    text-align: left;
-    font-size:15px;
-    padding:10px 15px;
-    margin-top: 10px;
-    border: 0 none;
-    background-color: transparent;
-    color:#eeeeee;
-} */
 #section {
     /* padding: 25px 25px 80px 225px; */
-    top:25px;
+    top:52px;
     right: 0;
     bottom: 40px;
     left: 225px;
-    position: absolute;
-
+    position: absolute;    
 }
 #section .section-title {
     font-size: 24px;
@@ -117,4 +109,46 @@ table, tr, td {
     height: 30px;
     line-height: 30px; /* 行高跟整个元素高度相等就会垂直居中 */
     box-sizing: border-box;
+}
+.navbar{
+    background-color: #224;
+    height: 48px;
+}
+.navbar .navbar-brand{
+    font-size: 20px;
+    margin-left: 35px;
+    color: #fef;
+}
+.navbar .nav-input{
+    position: absolute;
+    width: 1150px;
+    height: 44px;
+    border-radius: 5px;
+    right: 90px;
+    padding: 10px 15px; 
+    border-color: rgb(67, 67, 105);
+    background-color: rgb(67, 67, 105);
+}
+.nav-input:focus{
+    background:white;
+}
+.nav-input.clicked{
+    background-color: #fef;
+}
+.navbar-nav{
+    position: absolute;
+    left: 1364px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.navbar-nav .nav-link{
+    font-size:18px;
+    color: #fef;
+}
+.ball{
+    width:70px;
+    height:70px;
+    margin-left: 60px;
+    margin-bottom: 15px;
 }

@@ -5,30 +5,30 @@
 {{/block}}
 {{#block("nav")}}
     <!-- 这个是对 nav 这个 block 的实现 -->
-    <tr>
+    <tr class="nav-item" id="arow001" onclick="clickmenu(this)">
         <td class="standartTreeImage">
             <img src="/images/folder.png" class="pic" />
         </td>
         <td class="item">
-            <span id="menu001" onclick="clickmenu(this)" title="公司信息">公司信息</span>
+            <span class="menu" title="公司信息">公司信息</span>
         </td>
     </tr>
     
-    <tr>
+    <tr class="nav-item" id="arow002" onclick="clickmenu(this)">
         <td class="standartTreeImage">
             <img src="/images/folder.png" class="pic" />
         </td>
         <td class="item">
-            <span id="menu002" onclick="clickmenu(this)" title="历史数据">历史数据</span>
+            <span class="menu" title="历史数据">历史数据</span>
         </td>
     </tr>
     
-    <tr>
+    <tr class="nav-item" id="arow003" onclick="clickmenu(this)">
         <td class="standartTreeImage">
             <img src="/images/folder.png" class="pic" />
         </td>
         <td class="item">
-            <span id="menu003" onclick="clickmenu(this)" title="财务信息">财务信息</span>
+            <span class="menu" title="财务信息">财务信息</span>
         </td>
     </tr>
 {{/block}} 
