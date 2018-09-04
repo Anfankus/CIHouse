@@ -2,13 +2,13 @@
 
 'use strict'
 const router = require('koa-router')()
-//const hbase = require('hbase-server');
+const hbase = require('../hbase/hbase-server');
 
 router
     .prefix('/detail')
     .param('id', async (id, ctx, next) => {
         if (!isNaN(id) && id.length === 6) {
-            ctx.id = parseInt(id);
+            ctx.id =id;
             return next();
         } else {
             return false;
@@ -24,47 +24,50 @@ router
     .get('/:id/basic', async (ctx, next) => {
         //TODO 获取数据，格式为对象
         //hbase.get().then(async datas=>{
-
+        hbase.basic(ctx.id).then(async data=>{
+            let op = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    type: 'scroll',
+                    orient: 'vertical',
+                    right: 10,
+                    top: 20,
+                    bottom: 20,
+                },
+                series: [{
+                    name: 'ratios',
+                    type: 'pie',
+                    radius: ['45%', '65%'],
+                    center: ['50%', '40%'],
+                    data: [{name:1,value:15},{name:2,value:24},{name:3,value:24},{name:4,value:34},{name:5,value:23},{name:6,value:23}],
+                    label:{
+                        fontSize:17
+                    },
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }]
+            }
+            await ctx.render('./info/basic', {
+                title: '公司详情',
+                listtitle: '公司概况',
+                obj: data,
+                option:JSON.stringify(op)
+            });
+    
+        }).catch(err=>{
+        })
         let data = {
             '1': '1',
             '2': '2'
         }
-        let op = {
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            legend: {
-                type: 'scroll',
-                orient: 'vertical',
-                right: 10,
-                top: 20,
-                bottom: 20,
-            },
-            series: [{
-                name: 'ratios',
-                type: 'pie',
-                radius: ['45%', '65%'],
-                center: ['50%', '40%'],
-                data: [{name:1,value:15},{name:2,value:24},{name:3,value:24},{name:4,value:34},{name:5,value:23},{name:6,value:23}],
-                label:{
-                    fontSize:17
-                },
-                itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        }
-        await ctx.render('./info/basic', {
-            title: '公司详情',
-            listtitle: '公司概况',
-            obj: data,
-            option:JSON.stringify(op)
-        });
     })
 
     // 营收情况
