@@ -7,45 +7,45 @@ var client=hbase({
     port: 8585 
 });
 
-function Test(value)
-{
-    //this.name=value[2].$;
-    //this.manager=value[1].$;
-    this.profit=value[0].$;
-    //this.netAsset=value[3].$;
-}
+// function Test(value)
+// {
+//     //this.name=value[2].$;
+//     //this.manager=value[1].$;
+//     this.profit=value[0].$;
+//     //this.netAsset=value[3].$;
+// }
 
 
 
-client.table('basicinfo')
-        .row('10001')
-        .get('finance',(err, value) => {
-            if(value){
-                let x=value[0].column.split(':');
-                console.log(x[1]);
-            }
-});   
-function ttttest(x)
-{
-    return new Promise(function(resolve,rejected){
-        client.table('basicinfo')
-        .row(x)
-        .get((err, value) => {
-            if(value){
-                let t=new Test(value);
-                resolve(t);
-            }
-            if(err){
-                rejected(err);
-            }
-        });
+// client.table('basicinfo')
+//         .row('10001')
+//         .get('finance',(err, value) => {
+//             if(value){
+//                 let x=value[0].column.split(':');
+//                 console.log(x[1]);
+//             }
+// });   
+// function ttttest(x)
+// {
+//     return new Promise(function(resolve,rejected){
+//         client.table('basicinfo')
+//         .row(x)
+//         .get((err, value) => {
+//             if(value){
+//                 let t=new Test(value);
+//                 resolve(t);
+//             }
+//             if(err){
+//                 rejected(err);
+//             }
+//         });
     
-    })
-}
-ttttest('10001')
-.then(val=>{console.log('2:');console.log(val)})
-.catch(err=>console.log(err));
-console.log('3')
+//     })
+// }
+// ttttest('10001')
+// .then(val=>{console.log('2:');console.log(val)})
+// .catch(err=>console.log(err));
+// console.log('3')
 
 //基本信息构造函数
 function BasicInfo(value){
