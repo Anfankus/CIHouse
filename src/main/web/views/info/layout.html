@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/stylesheets/util/bootstrap.min.css">
-        <script src="/javascripts/lib/jquery-3.3.1.min.js"></script>
 
-        {{{block("head")}}}
-    </head>
-    
-    <body style="margin:0;border: 0">
-        <div class="container">
-            <div class="row">
-        {{{block("body")}}}
-           </div>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/util/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/titleTag.css">
+    <script src="/javascripts/lib/jquery-3.3.1.min.js"></script>
+    <script src="/javascripts/lib/echarts.js"></script>
+    <script src="/javascripts/theme.js"></script>
+
+    {{{block("head")}}}
+</head>
+
+<body style="margin:0;border: 0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-11 m-4 pb-3 pl-0 title-cell" style="padding-left: 6rem;border-bottom: 2px solid #212529;">
+                <div></div>
+                <h1 class="bd-title" >{{title}}</h2>
+            </div>
+            {{{block("body")}}}
         </div>
+    </div>
+    <script type="text/javascript">
+    {{{block("body-js")}}}
+    </script>
     <script src="/javascripts/lib/popper.min.js"></script>
     <script src="/javascripts/lib/bootstrap.min.js"></script>
-    </body>
+</body>
+
 </html>

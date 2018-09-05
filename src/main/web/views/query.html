@@ -39,7 +39,7 @@
                 {{#if (!values)}}
                     <p>未查询到数据</p>
                 {{else}}
-                    {{include ("./table.html",{a:true,keys:keys,values:values})}}
+                    {{include ("./util/table.html",{tag:true,a:true,keys:keys,values:values})}}
                 {{/if}}
             </div>
         </div>

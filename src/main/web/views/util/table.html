@@ -1,6 +1,8 @@
-<h3>{{title}}</h3>
-<table class="table table-striped">
-    <thead>
+{{# if(!tag)}}
+<h5 class="col-3 mt-3 tableTag" >{{title}}</h3>
+{{/if}}
+<table class="table table-hover mt-4">
+    <thead class="thead-dark">
         <tr>
             {{#each(keys)}}
             <th class="tb-unit">{{this}}</th>
@@ -9,15 +11,15 @@
     </thead>
     <tbody>
         {{#each(values)}}
-        <tr>
+        <tr style="border-bottom: 1px solid #636363;">
             {{#each(this)}}
             {{# if(xindex===0)}}
-            <td class="tb-unit first">
-            {{# if(a)}}
+            <th class="tb-unit first">
+                {{# if(a)}}
             <a href="/detail/{{this}}">{{this}}</a>
-            {{else}}
-            {{this}}
-            {{/ if}}
+                {{else}}
+                {{this}}
+                {{/ if}}
             </td>
             {{else}}
             <td class="tb-unit">{{this}}</td>

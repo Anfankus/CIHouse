@@ -2,9 +2,18 @@
 {{#block("head")}}
 <link rel="stylesheet" href="/stylesheets/util/list.css">
 {{/block}}
-
 {{#block( "body")}}
-<div class="col-lg-8 offset-lg-2">
-    {{include ("../list.html",{obj:object})}}
+<div class="col-5 mr-3 text-center" name={{this.title}} style="background-color: #f4f4f4;padding: 1rem 2rem 0 2rem;margin-left: 4rem;">
+    {{include ("../util/list.html",{title:listtitle,obj:object})}}
 </div>
+<div class="col-5 pt-3" >
+    <h5 class="col-3 mt-3 tableTag">十大股东</h5>
+    <div id="chart" style="width:100%;height: 500px;">
+    </div>
+</div>
+{{/block}}
+{{#block("body-js")}}
+    $('.title-cell>div').css("background-color","#ed930d")
+    let Chart = echarts.init(document.getElementById('chart'),'default');
+    Chart.setOption({{{ option}}});
 {{/block}}
