@@ -24,7 +24,7 @@ router
     .get('/:id/basic', async (ctx, next) => {
         //TODO 获取数据，格式为对象
         //hbase.get().then(async datas=>{
-        hbase.basic(ctx.id).then(async data=>{
+        await hbase.basic(ctx.id).then(async data=>{
             let op = {
                 tooltip: {
                     trigger: 'item',
@@ -63,11 +63,9 @@ router
             });
     
         }).catch(err=>{
+            console.log(err);
+            ctx.status=404;
         })
-        let data = {
-            '1': '1',
-            '2': '2'
-        }
     })
 
     // 营收情况

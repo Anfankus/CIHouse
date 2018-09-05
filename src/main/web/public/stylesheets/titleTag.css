@@ -4,7 +4,7 @@
     float: left;
     margin-right: 1rem;
 }
-.title-cell>h1{
-    width: 15rem;
+.title-cell>h2{
     margin-bottom: 0;
+    float: left;
 }

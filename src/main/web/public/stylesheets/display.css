@@ -115,8 +115,8 @@ table, tr, td {
 }
 .navbar .navbar-brand{
     font-size: 20px;
-    margin-left: 35px;
-    color: #fef;
+    margin-left: 20px;
+    color: rgb(255, 255, 255);
 }
 .navbar .nav-input{
     position: absolute;
