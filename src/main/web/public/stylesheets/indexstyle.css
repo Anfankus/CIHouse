@@ -86,12 +86,31 @@ input[type="search"]::-webkit-search-decoration {
       border-radius: 3px;
       vertical-align: middle;
   }
-  .singlesearch .searchboxSubmit{
+  /* .singlesearch .searchboxSubmit{
+      
+  } */
+   .btn-outline-light {
+      background-color: transparent;
       display: inline-block;
       width:50px;
       height:50px;
       vertical-align: middle;
-  }
+      cursor: pointer;
+      background-image: url(../images/search_fix.png);
+      overflow: hidden;
+      border: 0;
+    }
+    .btn {
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: .375rem .75rem;
+    }
   .back{
       background-color:#f8f8f8;
       position: relative;
@@ -111,10 +130,12 @@ input[type="search"]::-webkit-search-decoration {
   .tempWrap li{
       display: inline-block;
       position: relative;    /*1*/
-      width: 334px;
-      height: 434px;
+      width: 300px;
+      height: 400px;
       overflow: hidden;
       margin: 0 15px;
+      border:1px solid rgb(73, 72, 72);
+      border-radius: 5px;
   }
   
   .tempWrap .wenTop{
@@ -139,14 +160,17 @@ input[type="search"]::-webkit-search-decoration {
       background-size: contain;
   }
   .tempWrap .wenTop .ex1{
-      background-image: url(../images/money.png);
+      background-image: url(../images/download.png);
   }
   .tempWrap .wenTop .ex2{
-      background-image: url(../images/medicine.png);
+      background-image: url(../images/computer.png);
   }
   .tempWrap .wenTop .ex3{
-      background-image: url(../images/book.png);
+      background-image: url(../images/store.png);
   }
+  .tempWrap .wenTop .ex4{
+    background-image: url(../images/show.png);
+}
   .tempWrap .wenTop .xian2 { /* 所有的线都设置 */
       display: block;
       width: 2em; /* em 是一个英文字符的高度，等于两个英文字符的宽度，等于一个中文字符的宽度*/
@@ -161,8 +185,8 @@ input[type="search"]::-webkit-search-decoration {
       right: 0;
       bottom: 0;
       text-align: center;
-      width: 334px;
-      height: 434px;
+      width: 300px;
+      height: 400px;
       vertical-align: middle;
   }
   .tempWrap .wzTs{
@@ -181,7 +205,7 @@ input[type="search"]::-webkit-search-decoration {
       left: 0;
       right: 0;
       bottom: 0;
-      background: #6d7ffc;
+      background: #60a2f3;
       transform: translateY(100%);  /* 初始状态下，距离原位置向下移动100%，让它移出去 */
       transition: 0.5s; /* 当任何一个CSS属性改变的时候，以0.5秒做动画，而不是突然改变 */
   }
@@ -206,13 +230,121 @@ input[type="search"]::-webkit-search-decoration {
       border-radius: 3px;
       color:#fff;
       background: transparent;
+      cursor: pointer;
   }
   .futitle{
       text-align: center;
       font-size: 25px;
       color:rgb(53, 48, 48);
   }
-  .procedure{
+
+  .flipboard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 60px 0;
+  }
+  
+  .flipboard .flipcard {
+    width: 320px;
+    height: 240px;
+    margin: 0 20px;
+    background-image: url(../images/ground2.jpg);
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .flipboard .flipcard .side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+  }
+  
+  .flipboard .flipcard .side.alternative {
+    display: none;
+  }
+  
+  .flipboard .flipcard .side .name {
+    font-size: 22px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+  }
+  
+  .flipboard .arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 10px solid #333;
+    cursor: pointer;
+  }
+  
+  .flipboard .arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid #333;
+    cursor: pointer;
+  }
+  
+  @keyframes flip-left {
+    0% {
+      transform: perspective(500px) rotateY(0);
+    }
+    50% {
+      transform: perspective(500px) rotateY(-90deg);
+    }
+    51% {
+      transform: perspective(500px) rotateY(90deg);
+    }
+    100% {
+      transform: perspective(500px) rotateY(0);
+    }
+  }
+  
+  @keyframes flip-right {
+    0% {
+      transform: perspective(500px) rotateY(0);
+    }
+    50% {
+      transform: perspective(500px) rotateY(90deg);
+    }
+    51% {
+      transform: perspective(500px) rotateY(-90deg);
+    }
+    100% {
+      transform: perspective(500px) rotateY(0);
+    }
+  }
+  
+  .flipboard .flipcard.flip-left {
+    animation-name: flip-left;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+  }
+  
+  .flipboard .flipcard.flip-right {
+    animation-name: flip-right;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+  }
+  
+  /* .procedure{
       vertical-align: middle;
       text-align: center;     
   }
@@ -271,113 +403,8 @@ input[type="search"]::-webkit-search-decoration {
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 35px;
-}
+} */
 
-.flipboard {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  margin: 60px 0;
-}
-
-.flipboard .flipcard {
-  width: 320px;
-  height: 240px;
-  margin: 0 20px;
-  background-image: url(../images/ground2.jpg);
-  background-size: cover;
-  position: relative;
-  cursor: pointer;
-  color: #fff;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.flipboard .flipcard .side {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, .5);
-}
-
-.flipboard .flipcard .side.alternative {
-  display: none;
-}
-
-.flipboard .flipcard .side .name {
-  font-size: 22px;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 20px;
-}
-
-.flipboard .arrow-left {
-  width: 0;
-  height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-right: 10px solid #333;
-  cursor: pointer;
-}
-
-.flipboard .arrow-right {
-  width: 0;
-  height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 10px solid #333;
-  cursor: pointer;
-}
-
-@keyframes flip-left {
-  0% {
-    transform: perspective(500px) rotateY(0);
-  }
-  50% {
-    transform: perspective(500px) rotateY(-90deg);
-  }
-  51% {
-    transform: perspective(500px) rotateY(90deg);
-  }
-  100% {
-    transform: perspective(500px) rotateY(0);
-  }
-}
-
-@keyframes flip-right {
-  0% {
-    transform: perspective(500px) rotateY(0);
-  }
-  50% {
-    transform: perspective(500px) rotateY(90deg);
-  }
-  51% {
-    transform: perspective(500px) rotateY(-90deg);
-  }
-  100% {
-    transform: perspective(500px) rotateY(0);
-  }
-}
-
-.flipboard .flipcard.flip-left {
-  animation-name: flip-left;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-}
-
-.flipboard .flipcard.flip-right {
-  animation-name: flip-right;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-}
 
 
 .tempWrap1 .wenBottom1 {
