@@ -25,6 +25,9 @@ router
         //TODO 获取数据，格式为对象
         //hbase.get().then(async datas=>{
         await hbase.basic(ctx.id).then(async data=>{
+            let tempholder=data.shareholder.split(' ');
+            let tempcount=data.account.split(' ');
+            let pieData=tempholder.map((each,index)=>{return {name:each,value:tempcount[index]}});
             let op = {
                 tooltip: {
                     trigger: 'item',
@@ -38,11 +41,11 @@ router
                     bottom: 20,
                 },
                 series: [{
-                    name: 'ratios',
+                    name: '占比',
                     type: 'pie',
                     radius: ['45%', '65%'],
                     center: ['50%', '40%'],
-                    data: [{name:1,value:15},{name:2,value:24},{name:3,value:24},{name:4,value:34},{name:5,value:23},{name:6,value:23}],
+                    data: pieData,
                     label:{
                         fontSize:17
                     },
@@ -58,7 +61,7 @@ router
             await ctx.render('./info/basic', {
                 title: '公司详情',
                 listtitle: '公司概况',
-                obj: data,
+                obj: data.info,
                 option:JSON.stringify(op)
             });
     
@@ -71,18 +74,18 @@ router
     // 营收情况
     .get('/:id/finance', async (ctx, next) => {
         //TODO 获取数据，格式为对象
-        //hbase.get().then(async datas=>{
-        let data = {
-            '1': '1',
-            '2': '2'
-        }
+        await hbase.finance(ctx.id).then(async data => {
+            // let data = {
+            //     '1': '1',
+            //     '2': '2'
+            // }
 
-        await ctx.render('./info/finance', {
-            title: '财务信息',
-            obj: data
+            await ctx.render('./info/finance', {
+                title: '财务信息',
+                obj: data.info
+            })
         })
     })
-
     // 风险评估
     .get('/:id/risk', async (ctx, next) => {
         let data = {
@@ -96,29 +99,29 @@ router
     .get('/:id/history', async (ctx, next) => {
         //TODO 获取数据，一次调用，三个对象（利润，资产负债，现金流量），
         ///每个对象为{keys:[年份],vals:[[单个统计量],...]},代表表格第一行和余下行
-        //hbase.get().then(async datas=>{
-        let datas = [{
-                keys: [1, 2, 3, 4, 5, 6],
-                values: [
-                    [0, 0, 0, 0, 0, 0],
-                    [1, 1, 1, 1, 1, 1]
-                ]
-            },
-            {
-                keys: [1, 2, 3, 4, 5, 6],
-                values: [
-                    [3, 3, 3, 3, 3, 3],
-                    [4, 4, 4, 4, 4, 4]
-                ]
-            },
-            {
-                keys: [1, 2, 3, 4, 5, 6],
-                values: [
-                    [5, 5, 5, 5, 5, 5],
-                    [6, 6, 6, 6, 6, 6]
-                ]
-            }
-        ];
+        hbase.historyTable(ctx.id).then(async datas=>{
+        // let datas = [{
+        //         keys: [1, 2, 3, 4, 5, 6],
+        //         values: [
+        //             [0, 0, 0, 0, 0, 0],
+        //             [1, 1, 1, 1, 1, 1]
+        //         ]
+        //     },
+        //     {
+        //         keys: [1, 2, 3, 4, 5, 6],
+        //         values: [
+        //             [3, 3, 3, 3, 3, 3],
+        //             [4, 4, 4, 4, 4, 4]
+        //         ]
+        //     },
+        //     {
+        //         keys: [1, 2, 3, 4, 5, 6],
+        //         values: [
+        //             [5, 5, 5, 5, 5, 5],
+        //             [6, 6, 6, 6, 6, 6]
+        //         ]
+        //     }
+        // ];
 
         let rep = /率$/.compile();
         let op_legends_data = []; //统计量名，即每行数据第一列
@@ -185,6 +188,7 @@ router
             // option_2: JSON.stringify(option2)
         }
         await ctx.render('./info/history', pagaParam);
-    })
+    });
+})
 
 module.exports = router

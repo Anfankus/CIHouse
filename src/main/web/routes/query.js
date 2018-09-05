@@ -4,34 +4,34 @@
 'use strict'
 
 const router = require('koa-router')();
-//const hbase = require('hbase-server');
+
+const hbase = require('../hbase/hbase-server');
 
 router
     .prefix('/query')
     .get('/', async (ctx, next) => {
-        let data = {};
+        let parameters = {
+            querySrc:`\"${ctx.query.search}\"`,
+            keys: ["公司代码", "公司名称", "公司位置", "总股本", "总市值","净利润"],
+            values:[]
+        };
         if (ctx.queryString) {
             let query = ctx.query;
             if(isNaN(query.search)){
                 let name=query.search;
+                await hbase.simple_name(name).then(data=>{
+                    parameters.values=data.map(each=>each.simpleinfo);
+
+                })
             }
             else{
                 let id=query.search;
+                await hbase.simple_ID(id).then(data=>{
+                    parameters.values.push(data.simpleinfo);
+                })
             }
-
-        }
-        //=====测试用数据
-        let parameters = {
-            querySrc:`\"${ctx.query.search}\"`,
-            keys: ["公司代码", "公司名称", "公司位置", "总股本", "总市值","净利润"],
-            values: [
-                [145623, 2, 3, 4, 5,6],
-                [112255, 22, 33, 44, 55,66]
-            ],
         }
         parameters.count=parameters.values.length;
-        //======================================//
-
         await ctx.render('./query', parameters);
     })
 
