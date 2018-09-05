@@ -15,6 +15,6 @@ router
         await ctx.render('./statistics');
     })
     .get('/map',async (ctx,next)=>{
-        await ctx.render('./info/map');
+        await ctx.render('./info/map',{title:'全国各省统计数据'});
     });
 module.exports = router
