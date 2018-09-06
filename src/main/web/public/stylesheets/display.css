@@ -8,13 +8,14 @@ body {
 #nav1 {
     display: block;
     line-height:30px;
-    background-color:#224;
+    /* background-color:#224; */
+    background-color:#101f59;
     /* height:300px; */
     position: fixed;
     top: 48px;
     left: 0;
     width: 200px;
-    bottom: 30px;
+    bottom: 0;
     box-sizing: border-box;
 }
 #nav1 .header {
@@ -39,7 +40,8 @@ table, tr, td {
 }
 .nav-item{
     color:#fef;
-    background-color: #224;
+    /* background-color:#224; */
+    background-color:#101f59;
     cursor: pointer;
 }
 .nav-item.selected{
@@ -67,9 +69,10 @@ table, tr, td {
 .standartTreeImage .pic{
     padding: 0px; 
     margin: 0px 0px 0px 3px; 
-    width: 16px; 
-    height: 16px;
+    width: 18px; 
+    height: 18px;
     margin-left:65px;
+    vertical-align: -3px;
 }
 .item .menu{
     margin-left:65px;
@@ -87,66 +90,76 @@ table, tr, td {
     /* padding: 25px 25px 80px 225px; */
     top:52px;
     right: 0;
-    bottom: 40px;
-    left: 225px;
+    bottom: 0;
+    left: 200px;
     position: absolute;    
 }
 #section .section-title {
     font-size: 24px;
     margin-bottom: 10px;
 }
-#footer {
-    display: block;
-    background-color:#224;
-    color:white;
-    clear:both;
-    text-align:center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 30px;
-    line-height: 30px; /* 行高跟整个元素高度相等就会垂直居中 */
-    box-sizing: border-box;
-}
 .navbar{
-    background-color: #224;
+    /* background-color: #224; */
+    background-color:#101f59;
     height: 48px;
 }
 .navbar .navbar-brand{
     font-size: 20px;
-    margin-left: 20px;
+    margin-left: 43px;
     color: rgb(255, 255, 255);
 }
 .navbar .nav-input{
-    position: absolute;
-    left: 200px;
-    width: 80%;
-    height: 44px;
-    border-radius: 5px;
-    /* right: 10%; */
-    padding: 10px 15px;
-    border: solid;
     border-color: rgb(67, 67, 105);
-    background-color: rgb(67, 67, 105);}
+    background-color: rgb(67, 67, 105);
+}
 .nav-input:focus{
     background:white;
 }
-.nav-input.clicked{
-    background-color: #fef;
-}
-.navbar-nav{
-    position: absolute;
-    right: 0;
-    width: 5%;
-    padding-right: 1%;}
-.navbar-nav .nav-link{
-    font-size:18px;
-    color: #fef;
-}
+
 .ball{
     width:70px;
     height:70px;
+    margin-top:20px;
     margin-left: 60px;
     margin-bottom: 15px;
+}
+.ins{
+    color:rgb(189, 190, 193);
+    font-size: 20px;
+    text-align: center;
+    margin-top:100px;
+    margin-bottom: 40px;
+}
+.fork{
+    margin-top: 0;
+}
+.nav-item1{
+    color:rgb(189, 190, 193);
+    /* background-color:#224; */
+}
+
+.standartTreeImage1{
+    width: 21px; 
+    height:100%;
+    padding: 0px; 
+    vertical-align: middle;
+}
+.standartTreeImage1 .pic1{
+    padding: 0px; 
+    margin: 0px 0px 0px 3px; 
+    width: 18px; 
+    height: 18px;
+    margin-left:60px;
+}
+.item1 .menu1{
+    margin-left:60px;
+}
+/* .xtree_node{
+    padding: 0px 0px 0px 3px; 
+    vertical-align: middle;
+    width:160px;
+    height:42px;
+} */
+.item1{
+    font-size: 18px; 
 }

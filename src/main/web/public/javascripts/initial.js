@@ -32,20 +32,26 @@ function changecolor(element)
     var element3 = document.getElementById('arow003');
     if (element1.id == element.id) {
         $(element1).addClass('selected')
+        $(element1).find('img').attr('src', '/images/基本信息.png')
     } else {
         $(element1).removeClass('selected')
+        $(element1).find('img').attr('src', '/images/基本信息1.png')
     }
      
     if (element2.id == element.id) {
         $(element2).addClass('selected')
+        $(element2).find('img').attr('src', '/images/历史数据.png')
     } else {
         $(element2).removeClass('selected')
+        $(element2).find('img').attr('src', '/images/历史数据1.png')
     }
      
     if (element3.id == element.id) {
         $(element3).addClass('selected')
+        $(element3).find('img').attr('src', '/images/财务信息.png')
     } else {
         $(element3).removeClass('selected')
+        $(element3).find('img').attr('src', '/images/财务信息1.png')
     }
 
     // 可以改成
@@ -56,16 +62,6 @@ function changecolor(element)
     //         $(this).removeClass('selected')
     //     }
     // })
-
-    // for (var i = 1; i <= 3; i++) {
-    //     var element_i = document.getElementById('arow00' + i)
-    //     if (element_i.id == element.id) {
-    //         element_i.style.color = 'aqua'
-    //     } else {
-    //         element_i.style.color = '#fef'
-    //     }
-    // }
-    // $('#arow001').addClass('selected')
 }
 
 //用于控制"服务日志查询"的点击效果

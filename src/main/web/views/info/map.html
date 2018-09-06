@@ -1,4 +1,4 @@
-{{extend("./views/info/layout.html")}}
+{{extend("./layout.html")}}
 
 {{#block("head")}}
 <link rel="stylesheet" href="/stylesheets/util/list.css">
@@ -6,13 +6,14 @@
 
 {{#block("body")}}
 <div class="col-3">
-<ul class="list-group">
+  <ul class="list-group">
     <a href="javascript:;" class="list-group-item active">公司数量</a>
     <a href="javascript:;" class="list-group-item">总资产</a>
     <a href="javascript:;" class="list-group-item">总利润</a>
-    <!-- <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item">Vestibulum at eros</a> -->
-  </ul></div>
+  </ul>
+</div>
+
+
 <div id="map"  style="width:800px;height: 600px;"></div>
 <script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
 <script src="https://data.jianshukeji.com/geochina/china.js"></script>
