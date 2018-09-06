@@ -16,10 +16,16 @@ router
     })
     .get('/map',async (ctx,next)=>{
         let type='totalNum';
-        if(ctx.queryString){
+        if(ctx.querystring){
             type=ctx.query.type;
         }
         let data=await hbase.returnAreaInfo(type).then(data=>data);
         await ctx.render('./info/map',{title:'全国各省统计数据',mapdata:JSON.stringify(data.info)});
+    })
+    .post('/map',async (ctx,next)=>{
+        let type=ctx.request.body.type;
+        ctx.body=await hbase.returnAreaInfo(type).then(data=>data.info);
     });
+;
+
 module.exports = router

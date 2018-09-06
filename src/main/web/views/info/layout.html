@@ -12,9 +12,9 @@
     {{{block("head")}}}
 </head>
 
-<body style="margin:0;border: 0">
+<body style="margin-top:20px;border: 0;">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row ml-4">
             <div class="col-11 m-4 pb-3 pl-0 title-cell" style="padding-left: 6rem;border-bottom: 2px solid #212529;">
                 <div></div>
                 <h2 class="bd-title" >{{title}}</h2>
@@ -23,9 +23,14 @@
         </div>
     </div>
 
-    <div id="footer">
+    <!-- <div id="footer">
         CIHouse开发部
-    </div>
+    </div> -->
+    <footer class="footer mt-4" style="text-align:center;background-color: #eaeaea">
+        <div class="container">
+          <span class="text-muted">CIHouse工作组</span>
+        </div>
+      </footer>
     
     <script type="text/javascript">
     {{{block("body-js")}}}

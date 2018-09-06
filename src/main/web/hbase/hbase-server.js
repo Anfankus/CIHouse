@@ -188,11 +188,11 @@ function BalanceSheet(value){
     y[4]='流动资产 '+value[15].$;
     y[5]='非流动资产 '+value[16].$;
     y[6]='资产总计 '+value[17].$;
-    y[7]='季度信息 '+value[23].$;
-    y[8]='负债合计 '+value[19].$;
-    y[9]='股东权益 '+value[20].$;
+    //y[7]='季度信息 '+value[23].$;
+    y[7]='负债合计 '+value[19].$;
+    y[8]='股东权益 '+value[20].$;
     this.values=new Array();
-    for(var i=0;i<10;i++){
+    for(var i=0;i<y.length;i++){
         this.values[i]=y[i].split(' ').slice(0,9);
     }  
 }

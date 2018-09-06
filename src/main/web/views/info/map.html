@@ -2,6 +2,7 @@
 
 {{#block("head")}}
 <link rel="stylesheet" href="/stylesheets/util/list.css">
+<script src="/javascripts/mapevent.js"></script>
 {{/block}}
 
 {{#block("body")}}
@@ -55,14 +56,14 @@ var map = Highcharts.mapChart('map', {
 },
   series: [{
     data: {{{mapdata}}},
-    name: '随机数据',
+    name: '公司总数',
     mapData: Highcharts.maps['cn/china'],
     states: {
       hover: {
           color: '#a4edba'
       }
   },
-    joinBy: 'name' // 根据 name 属性进行关联
+    joinBy: 'name'
   }]
 });
 {{/block}}
