@@ -41,3 +41,6 @@ background: #007bff;
 color: white;
 border-radius: 0.8rem;
 }
+.table thead th{
+  white-space: nowrap;
+}
