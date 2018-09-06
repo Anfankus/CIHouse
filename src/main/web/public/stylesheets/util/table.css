@@ -1,7 +1,6 @@
 .tb {
-  margin:20px 0 0 0;
+    margin:20px 0 0 0;
     width:100%;
-    /* margin:15px auto 130px; */
   }
   .tb,.tb th,.tb td{
     font-size:16px;
@@ -13,10 +12,6 @@
     background-color: #eef4f8;
     color:#5e5959;
   }
-  /* .tb td{
-    border: 1px solid transparent;
-  } */
-  
   .tb tr:nth-child(odd){
     background-color:rgb(253, 227, 231);
   }
@@ -31,7 +26,6 @@
     color:#5e5959;
     font-size: 18px;
   }
-
 .table .tb-unit{
  border-bottom: 1px solid #636363;
 }
@@ -43,4 +37,8 @@ border-radius: 0.8rem;
 }
 .table thead th{
   white-space: nowrap;
+}
+.table .first{
+  color: #2c2c2c;
+  font-family: Microsoft Yahei;
 }

@@ -12,23 +12,29 @@
             <video id="videobanner" loop muted="muted" preload="auto" autoplay="autoplay">
                 <source src="http://www.esensoft.com/static/images/xiaoyi_2018/banner1Trim.mp4" type="video/mp4">
             </video>
-            
+
             <div class="banner-slogan">
                 <p class="hosttitle">CIHouse新三板企业征信平台</p>
-                <div class="singlesearch">
-                    <input class="searchbox" name="q" title="输入搜索词" value="" role="combobox">
-                    <img class="searchboxSubmit" src="/images/search.png"/>
-                </div>  
+                <form class="singlesearch" action="/query">
+                    <input class="searchbox" name="search" title="输入搜索词" placeholder="公司代码或公司名称关键字" aria-label="Search" role="combobox">
+                    <input type="submit" class="btn btn-outline-light my-sm-0" value="">
+                </form> 
                 <div class="myButton">
-                    <button class="button1">统计信息</button>
-                    <button class="button1">企业对比</button>
-                    <button class="button1">企业排名</button>
+                    <a href="/statistics">
+                        <button class="button1">统计信息</button>
+                    </a>
+                    <a href="/compare">
+                        <button class="button1">企业对比</button>
+                    </a>
+                    <a href="/rank">
+                        <button class="button1">企业排名</button>
+                    </a>
                 </div> 
             </div>
         </div>
 
         <div class="futitle">
-                <h2 class="title2">案例成果</h2>
+                <h2 class="title2">数据全生命周期产品线</h2>
         </div> 
         <div class="back">
             <div class="tempWrap">
@@ -38,81 +44,59 @@
                         <div class="wenTop">
                             <div class="tu1 ex1"></div>
                             <span class="xian2"></span>
-                            <h6 class="wzTs">金融</h6>
+                            <h6 class="wzTs">数据获取</h6>
                         </div>
                         <div class="wenBottom">
-                            <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb1.png" />-->
                             <div class="tu1"></div>
                             <span class="xian2"></span>
-                            <h6 class="wzTs">金融</h6>
-                            <p class="wzTsm">CIHouse对于金融公司的定位分析，从资金、股本、增长值角度对企业进行评估，对于投资、查询了解企业现状有很大帮助。</p>
-                            <!-- <a class="moreD" target="_blank" href="/cases/taxation/527.html">查看详情</a> -->
+                            <h6 class="wzTs">数据获取</h6>
+                            <p class="wzTsm">使用什么工具。数据获取做了什么，得到了什么，有什么意义。</p>
                         </div>
                     </li>
                     <li>
-                        <img class="tu" src="/images/health.jpg" alt="卫生" title="卫生">
+                        <img class="tu" src="/images/learn.png" alt="卫生" title="卫生">
                         <div class="wenTop">
-                            <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb3.png" />-->
                             <div class="tu1 ex2"></div>
                             <span class="xian2"></span>
-                            <h6 class="wzTs">卫生</h6>
+                            <h6 class="wzTs">数据处理</h6>
                         </div>
                         <div class="wenBottom">
-                            <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb3.png" />-->
                             <div class="tu1"></div>
                             <span class="xian2"></span>
-                            <h6 class="wzTs">卫生</h6>
-                            <p class="wzTsm">基于大数据为各卫生部门提供更透明更精准的数据，优化各环节，搭建专业完善的数据系统，为各部门决策提供可靠支持。</p>
-                            <!-- <a class="moreD" target="_blank" href="/cases/hygiene/549.html">查看详情</a> -->
+                            <h6 class="wzTs">数据处理</h6>
+                            <p class="wzTsm">使用什么工具。数据处理做了什么，得到了什么，有什么意义。</p>
                         </div>
                     </li>
                     <li>
                         <img class="tu" src="/images/edu.png" alt="教育" title="教育">
                         <div class="wenTop">
-                            <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb6.png" />-->
                             <div class="tu1 ex3"></div>
                             <span class="xian2"></span>
-                            <h6 class="wzTs">教育</h6>
+                            <h6 class="wzTs">数据存储</h6>
                         </div>
                         <div class="wenBottom">
-                            <!--<img class="tu1" src="/static/images/xiaoyi_2018/syCtb6.png" />-->
                             <div class="tu1"></div>
                             <span class="xian2"></span>
-                            <h6 class="wzTs">教育</h6>
-                            <p class="wzTsm">针对教育预测、聚类、相关性挖掘，CIHouse为教育行业提供了因材施教，多元教育的可行方案，让教育不再是单一维度，实现过程性评价。</p>
-                            <!-- <a class="moreD" target="_blank" href="/cases/education/544.html">查看详情</a> -->
+                            <h6 class="wzTs">数据存储</h6>
+                            <p class="wzTsm">使用什么工具。数据存储做了什么，得到了什么，有什么意义。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img class="tu" src="/images/work.png" alt="教育" title="教育">
+                        <div class="wenTop">
+                            <div class="tu1 ex4"></div>
+                            <span class="xian2"></span>
+                            <h6 class="wzTs">数据展示</h6>
+                        </div>
+                        <div class="wenBottom">
+                            <div class="tu1"></div>
+                            <span class="xian2"></span>
+                            <h6 class="wzTs">数据展示</h6>
+                            <p class="wzTsm">使用html、css、JavaScript进行编写前端页面。数据展示部分详细美观的呈现了公司的基本信息、历史情况、财务信息等，并通过公司对比功能为用户提供了准确参考，同时统计信息页面以宏观角度表现了企业信息。</p>
                         </div>
                     </li>
                 </ul>
             </div> 
-        </div>
-
-        
-        <div class="futitle">
-            <h2 class="title2">数据全生命周期产品线</h2>
-        </div> 
-       
-        <div class="procedure">
-            <div class="gain">
-                <div class="bl pic1"></div>
-                <p class="intro">数据获取</p>
-                <p class="work">使用什么工具。数据获取做了什么，得到了什么，有什么意义。</p>
-            </div>
-            <div class="gain">
-                <div class="bl pic2"></div>
-                <p class="intro">数据处理</p>
-                <p class="work">使用什么工具。数据处理做了什么，得到了什么，有什么意义。</p>
-            </div>
-            <div class="gain">
-                <div class="bl pic3"></div>
-                <p class="intro">数据存储</p>
-                <p class="work">使用什么工具。数据存储做了什么，得到了什么，有什么意义。</p>
-            </div>
-            <div class="gain">
-                <div class="bl pic4"></div>
-                <p class="intro">数据展示</p>
-                <p class="work">使用什么工具。数据展示做了什么，得到了什么，有什么意义。</p>
-            </div>
         </div>
 
         <div class="futitle">
@@ -154,3 +138,32 @@
         </div>        
     </body>   
 </html>
+
+<!-- 
+        
+        <div class="futitle">
+            <h2 class="title2">数据全生命周期产品线</h2>
+        </div> 
+       
+        <div class="procedure">
+            <div class="gain">
+                <div class="bl pic1"></div>
+                <p class="intro">数据获取</p>
+                <p class="work">使用什么工具。数据获取做了什么，得到了什么，有什么意义。</p>
+            </div>
+            <div class="gain">
+                <div class="bl pic2"></div>
+                <p class="intro">数据处理</p>
+                <p class="work">使用什么工具。数据处理做了什么，得到了什么，有什么意义。</p>
+            </div>
+            <div class="gain">
+                <div class="bl pic3"></div>
+                <p class="intro">数据存储</p>
+                <p class="work">使用什么工具。数据存储做了什么，得到了什么，有什么意义。</p>
+            </div>
+            <div class="gain">
+                <div class="bl pic4"></div>
+                <p class="intro">数据展示</p>
+                <p class="work">使用什么工具。数据展示做了什么，得到了什么，有什么意义。</p>
+            </div>
+        </div> -->
