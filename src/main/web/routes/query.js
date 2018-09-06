@@ -15,7 +15,7 @@ router
             keys: ["公司代码", "公司名称", "公司位置", "总股本", "总市值","净利润"],
             values:[]
         };
-        if (ctx.queryString) {
+        if (ctx.querystring) {
             let query = ctx.query;
             if(isNaN(query.search)){
                 let name=query.search;

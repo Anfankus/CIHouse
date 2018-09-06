@@ -99,7 +99,7 @@ router
     .get('/:id/history', async (ctx, next) => {
         //TODO 获取数据，一次调用，三个对象（利润，资产负债，现金流量），
         ///每个对象为{keys:[年份],vals:[[单个统计量],...]},代表表格第一行和余下行
-        hbase.historyTable(ctx.id).then(async datas=>{
+        await hbase.historyTable(ctx.id).then(async datas=>{
         // let datas = [{
         //         keys: [1, 2, 3, 4, 5, 6],
         //         values: [

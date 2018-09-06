@@ -41,3 +41,7 @@ background: #007bff;
 color: white;
 border-radius: 0.8rem;
 }
+.table .first{
+  color: #2c2c2c;
+  font-family: Microsoft Yahei;
+}

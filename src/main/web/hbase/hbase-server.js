@@ -1,9 +1,10 @@
 var assert = require('assert');
 var hbase = require('hbase');
+var loa= require('lodash');
 
 //连接HBase
 var client=hbase({ 
-    host: '192.168.161.128',
+    host: '192.168.142.3',
     port: 8585 
 });
 
@@ -47,7 +48,8 @@ function basic(x){
 
 //简单信息构造函数
 function SimpleInfo(value){
-    this.simpleinfo=[value[1].$,value[10].$,value[3].$,value[15].$,value[17].$,value[9].$];
+    let index=[1,10,3,15,17,9];
+    this.simpleinfo=index.map(each=>value[each]?value[each].$:'-');
 }
 
 function returnSimple(x){
@@ -74,7 +76,7 @@ function searchByName(value){
          filter: {
             "op":"EQUAL",
             "type":"ValueFilter",
-            "comparator":{"value":`${value}.+`,"type":"RegexStringComparator"}
+            "comparator":{"value":`${value}`,"type":"RegexStringComparator"}
             }
         }, (error, cells) => {
          if(cells){
@@ -82,7 +84,8 @@ function searchByName(value){
              for(var i=0;i<cells.length;i++){
               x.push(cells[i].key);    
              }
-             resolve(x);
+             var y = loa.uniqWith(x,loa.isEqual);
+             resolve(y);
         }
     });
  });  
@@ -151,11 +154,12 @@ function finance(x){
 
 //利润表构造函数
 function Profit(value){
-    let x='- '+value[24].$;
+    let x='- '+value[23].$;
     this.keys=x.split(' ');
+    this.keys.pop();
     var y=new Array();
     y[0]='营业收入 '+value[1].$;
-    y[1]='同比增长率 '+value[2];
+    y[1]='同比增长率 '+value[2].$;
     y[2]='净利润 '+value[3].$;
     y[3]='同比增长率 '+value[4].$;
     y[4]='净利润(扣费) '+value[5].$;
@@ -165,18 +169,20 @@ function Profit(value){
     y[8]='财务费用 '+value[9].$;
     y[9]='每股收益 '+value[0].$;
     this.values=new Array();
-    for(var i=0;i<=y.length;y++){
-        this.values[i]=y[i].split(' ');
+    for(var i=0;i<10;i++){
+        this.values[i]=y[i].split(' ').slice(0,9);
     }
 }
 
 //资产负债表
 function BalanceSheet(value){
-    let x='- '+value[24].$;
+    let x='- '+value[23].$;
     this.keys=x.split(' ');
+    this.keys.pop();
+
     var y=new Array();
     y[0]='资产负债率 '+value[14].$;
-    y[1]='每股净资产 '+value[18];
+    y[1]='每股净资产 '+value[18].$;
     y[2]='净资产收益率 '+value[21].$;
     y[3]='净资产收益率(摊薄) '+value[22].$;
     y[4]='流动资产 '+value[15].$;
@@ -186,23 +192,25 @@ function BalanceSheet(value){
     y[8]='负债合计 '+value[19].$;
     y[9]='股东权益 '+value[20].$;
     this.values=new Array();
-    for(var i=0;i<=y.length;y++){
-        this.values[i]=y[i].split(' ');
+    for(var i=0;i<10;i++){
+        this.values[i]=y[i].split(' ').slice(0,9);
     }  
 }
 
 //现金流量表
 function CashFlow(value){
-    let x='- '+value[24].$;
+    let x='- '+value[23].$;
     this.keys=x.split(' ');
+    this.keys.pop();
+
     var y=new Array();
     y[0]='每股现金流净额 '+value[13].$;
-    y[1]='经营现金流净额 '+value[10];
+    y[1]='经营现金流净额 '+value[10].$;
     y[2]='投资现金流净额 '+value[12].$;
     y[3]='筹资现金流净额 '+value[11].$;
     this.values=new Array();
-    for(var i=0;i<=y.length;y++){
-        this.values[i]=y[i].split(' ');
+    for(var i=0;i<4;i++){
+        this.values[i]=y[i].split(' ').slice(0,9);
     }  
 }
 
@@ -214,9 +222,9 @@ function historyTable(x){
         .get('history_inf',(err, value) => {
             if(value){
                 let t=[];
-                 t[0]=new Profit(value);
-                 t[1]=new BalanceSheet(value);
-                 t[2]=new CashFlow(value);
+                 t.push(new Profit(value));
+                 t.push(new BalanceSheet(value));
+                 t.push(new CashFlow(value));
                 resolve(t);
             }
             if(err){
@@ -241,7 +249,7 @@ function returnAreaInfo(x){
     return new Promise(function(resolve,rejected){
         client.table('SameAddTable')
         .row(x)
-        .get('Statistics',(err, value) => {
+        .get((err, value) => {
             if(value){
                 let t=new Statistics(value);
                 resolve(t);
