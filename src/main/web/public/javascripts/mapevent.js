@@ -4,7 +4,7 @@ $(function(){
     $('.listgroup>a').onclick=function(){
         let type=this.attr('name');
         $.ajax('/map',{
-            method:'POST',
+            method:'get',
             data:{type:type}
         }).done(data=>{
             Highcharts.mapChart('map', {

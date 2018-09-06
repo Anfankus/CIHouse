@@ -15,8 +15,11 @@ router
         await ctx.render('./statistics');
     })
     .get('/map',async (ctx,next)=>{
-        await hbase.returnAreaInfo('totalNum').then(async data=>{
-            await ctx.render('./info/map',{title:'全国各省统计数据',mapdata:JSON.stringify(data.info)});
-        })
+        let type='totalNum';
+        if(ctx.queryString){
+            type=ctx.query.type;
+        }
+        let data=await hbase.returnAreaInfo(type).then(data=>data);
+        await ctx.render('./info/map',{title:'全国各省统计数据',mapdata:JSON.stringify(data.info)});
     });
 module.exports = router
