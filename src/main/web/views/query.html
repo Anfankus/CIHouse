@@ -12,7 +12,7 @@
 
 <body>
     <div class="backpic">
-        <img class="pic" src="/images/ground3.jpg" />
+        <img class="pic" src="../images/ground3.jpg" />
         <div class=" py-4 mb-2 " style="width: fit-content;margin: 0 auto">
             <nav class="nav ">
                 <a class="pr-5 pl-5  headtagborder" href="/">首页</a>
@@ -37,7 +37,7 @@
         <div class="col-lg-9 fit-center">
             <div id="result">
                 {{#if (values)}}
-                    {{include ("./views/util/table.html",{tag:true,a:true,keys:keys,values:values})}}
+                    {{include ("./util/table.html",{tag:true,a:true,keys:keys,values:values})}}
                 {{/if}}
             </div>
         </div>
