@@ -34,4 +34,14 @@ padding: 0.7rem 1rem 0.7rem 1rem;
 background: #007bff;
 color: white;
 border-radius: 0.8rem;
+min-width: 150px;
+width:fit-content;
+margin-left: 1rem;
+}
+.table thead th{
+  white-space: nowrap;
+}
+.table .first{
+  color: #2c2c2c;
+  font-family: Microsoft Yahei;
 }

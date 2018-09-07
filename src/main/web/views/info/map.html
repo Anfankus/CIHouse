@@ -1,19 +1,19 @@
-{{extend("./layout.html")}}
+{{extend("./views/info/layout.html")}}
 
 {{#block("head")}}
 <link rel="stylesheet" href="/stylesheets/util/list.css">
+<script src="/javascripts/mapevent.js"></script>
 {{/block}}
 
 {{#block("body")}}
 <div class="col-3">
-  <ul class="list-group">
-    <a href="javascript:;" class="list-group-item active">公司数量</a>
-    <a href="javascript:;" class="list-group-item">总资产</a>
-    <a href="javascript:;" class="list-group-item">总利润</a>
-  </ul>
-</div>
-
-
+<ul class="list-group">
+    <a href="javascript:;" class="list-group-item active" name="totalNum">公司数量</a>
+    <a href="javascript:;" class="list-group-item" name="totalMoney">总资产</a>
+    <a href="javascript:;" class="list-group-item" name="tradingProfit">总利润</a>
+    <!-- <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+    <a href="#" class="list-group-item">Vestibulum at eros</a> -->
+  </ul></div>
 <div id="map"  style="width:800px;height: 600px;"></div>
 <script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
 <script src="https://data.jianshukeji.com/geochina/china.js"></script>
@@ -22,8 +22,7 @@
 {{#block("body-js")}}
 $('.title-cell>div').css("background-color","#00f1cf")
 
-//let data={{{mapdata}}};
-var data = [{"name":"北京","value":54},{"name":"天津","value":38},{"name":"河北","value":75},{"name":"山西","value":99},{"name":"内蒙古","value":98},{"name":"辽宁","value":41},{"name":"吉林","value":74},{"name":"黑龙江","value":5},{"name":"上海","value":12},{"name":"江苏","value":96},{"name":"浙江","value":71},{"name":"安徽","value":68},{"name":"福建","value":17},{"name":"江西","value":70},{"name":"山东","value":49},{"name":"河南","value":45},{"name":"湖北","value":65},{"name":"湖南","value":86},{"name":"广东","value":82},{"name":"广西","value":97},{"name":"海南","value":19},{"name":"重庆","value":11},{"name":"四川","value":75},{"name":"贵州","value":36},{"name":"云南","value":88},{"name":"西藏","value":27},{"name":"陕西","value":64},{"name":"甘肃","value":8},{"name":"青海","value":56},{"name":"宁夏","value":31},{"name":"新疆","value":13},{"name":"台湾","value":58},{"name":"香港","value":16},{"name":"澳门","value":65},{"name":"南海诸岛","value":74},{"name":"南海诸岛","value":65}];
+//var data = [{"name":"北京","value":54},{"name":"天津","value":38},{"name":"河北","value":75},{"name":"山西","value":99},{"name":"内蒙古","value":98},{"name":"辽宁","value":41},{"name":"吉林","value":74},{"name":"黑龙江","value":5},{"name":"上海","value":12},{"name":"江苏","value":96},{"name":"浙江","value":71},{"name":"安徽","value":68},{"name":"福建","value":17},{"name":"江西","value":70},{"name":"山东","value":49},{"name":"河南","value":45},{"name":"湖北","value":65},{"name":"湖南","value":86},{"name":"广东","value":82},{"name":"广西","value":97},{"name":"海南","value":19},{"name":"重庆","value":11},{"name":"四川","value":75},{"name":"贵州","value":36},{"name":"云南","value":88},{"name":"西藏","value":27},{"name":"陕西","value":64},{"name":"甘肃","value":8},{"name":"青海","value":56},{"name":"宁夏","value":31},{"name":"新疆","value":13},{"name":"台湾","value":58},{"name":"香港","value":16},{"name":"澳门","value":65},{"name":"南海诸岛","value":74},{"name":"南海诸岛","value":65}];
 var map = Highcharts.mapChart('map', {
   title: {
     text: ''
@@ -56,15 +55,15 @@ var map = Highcharts.mapChart('map', {
     }]
 },
   series: [{
-    data: data,
-    name: '随机数据',
+    data: {{{mapdata}}},
+    name: '公司总数',
     mapData: Highcharts.maps['cn/china'],
     states: {
       hover: {
           color: '#a4edba'
       }
   },
-    joinBy: 'name' // 根据 name 属性进行关联
+    joinBy: 'name'
   }]
 });
 {{/block}}

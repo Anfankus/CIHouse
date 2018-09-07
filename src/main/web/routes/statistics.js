@@ -1,6 +1,6 @@
 'use strict'
 const router = require('koa-router')()
-//const hbase = require('hbase-server');
+const hbase = require('../hbase/hbase-server');
 
 router
     .prefix('/statistics')
@@ -15,6 +15,17 @@ router
         await ctx.render('./statistics');
     })
     .get('/map',async (ctx,next)=>{
-        await ctx.render('./info/map',{title:'全国各省统计数据'});
+        let type='totalNum';
+        if(ctx.querystring){
+            type=ctx.query.type;
+        }
+        let data=await hbase.returnAreaInfo(type).then(data=>data);
+        await ctx.render('./info/map',{title:'全国各省统计数据',mapdata:JSON.stringify(data.info)});
+    })
+    .post('/map',async (ctx,next)=>{
+        let type=ctx.request.body.type;
+        ctx.body=await hbase.returnAreaInfo(type).then(data=>data.info);
     });
+;
+
 module.exports = router
