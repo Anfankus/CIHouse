@@ -103,9 +103,17 @@ table, tr, td {
     background-color:#101f59;
     height: 48px;
 }
+.navbar-intro{
+    margin-left: 210px;
+}
+.logo{
+    height:35px;
+    width: 35px;
+    vertical-align: middle;
+}
 .navbar .navbar-brand{
     font-size: 20px;
-    margin-left: 43px;
+    vertical-align: middle;
     color: rgb(255, 255, 255);
 }
 .navbar .nav-input{
