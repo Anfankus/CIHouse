@@ -11,28 +11,31 @@ router
     .prefix('/query')
     .get('/', async (ctx, next) => {
         let parameters = {
-            querySrc:`\"${ctx.query.search}\"`,
-            keys: ["公司代码", "公司名称", "公司位置", "总股本", "总市值","净利润"],
-            values:[]
+            querySrc: `\"${ctx.query.search}\"`,
+            keys: ["公司代码", "公司名称", "公司位置", "总股本", "总市值", "净利润"],
+            values: []
         };
-        if (ctx.querystring) {
+        if (ctx.query.search) {
             let query = ctx.query;
-            if(isNaN(query.search)){
-                let name=query.search;
-                await hbase.simple_name(name).then(data=>{
-                    parameters.values=data.map(each=>each.simpleinfo);
+            if (isNaN(query.search)) {
+                let name = query.search;
+                await hbase.simple_name(name).then(data => {
+                    parameters.values = data.map(each => each.simpleinfo);
 
                 })
             }
-            else{
-                let id=query.search;
-                await hbase.simple_ID(id).then(data=>{
+            else {
+                let id = query.search;
+                await hbase.simple_ID(id).then(data => {
                     parameters.values.push(data.simpleinfo);
                 })
             }
+            parameters.count = parameters.values.length;
+            await ctx.render('./query', parameters);
+
         }
-        parameters.count=parameters.values.length;
-        await ctx.render('./query', parameters);
+        else
+            await ctx.redirect('./index');
     })
 
 module.exports = router

@@ -4,8 +4,8 @@ var loa= require('lodash');
 
 //连接HBase
 var client=hbase({ 
-    host: '192.168.142.3',
-    port: 8585 
+    host: '192.168.43.27',
+    port: 8111
 });
 
 //基本信息构造函数
