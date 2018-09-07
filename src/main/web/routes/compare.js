@@ -8,21 +8,24 @@ router
         let re = /^\d{6}-\d{6}$/;
         if (re.test(ids)) {
             let paras = ids.split('-');
-            ctx.ids = paras.map(x => parseInt(x));
-            next();
+            ctx.ids = paras;
+            return next();
         }
+        else
+            return false;
     })
     .get('/:ids', async (ctx, next) => {
-        let data = {};
-        if (ctx.ids !== undefined) {
-            console.log(ctx.ids);
 
-            //TODO
-            //从HBASE中根据公司ID搜索企业详情
+        //await hbase.get(ctx.id[0],ctx.id[1]).then(datas=>{}
+        //companynames=datas.keys.slice(1)
+        let data = {
+            title:'企业信息对比',
+            keys:['-','1','2'],
+            values:[['1','2','3'],['1','2','3'],['1','2','3']]
+        };
 
-        }
-
-        //await ctx.render('./compare',data);
+        //chartdatas=companynames.map(each)
+        await ctx.render('./info/compare',data);
     })
 
 module.exports = router
