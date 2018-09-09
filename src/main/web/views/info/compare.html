@@ -1,0 +1,63 @@
+{{extend("./views/info/layout.html")}}
+
+{{#block("head")}}
+<link rel="stylesheet" href="/stylesheets/util/list.css">
+{{/block}}
+
+{{#block("body")}}
+    <div class="col-11 pt-3 ml-3 mb-4 text-center" name={{this.title}} style="padding-left: 7%;padding-right: 7%;background-color: #f4f4f4;">
+        {{include ("./views/util/table.html",{keys:this.keys,values:this.values})}}
+    </div>
+    <div class="col-6">
+        <div id="radarChart" style="width:100%;height:600px;"></div>
+    </div>
+{{/block}}
+{{#block("body-js")}}
+    $('.title-cell>div').css("background-color","#4bde51")
+    let Chart = echarts.init(document.getElementById('radarChart'),'default');
+    let datas={{{chartdatas}}};
+    option = {
+        title: {
+            text: '基础雷达图'
+        },
+        tooltip: {},
+        legend: {
+            data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+        },
+        radar: {
+            // shape: 'circle',
+            name: {
+                textStyle: {
+                    color: '#fff',
+                    backgroundColor: '#999',
+                    borderRadius: 3,
+                    padding: [3, 5]
+               }
+            },
+            indicator: [
+               { name: '销售（sales）', max: 6500},
+               { name: '管理（Administration）', max: 16000},
+               { name: '信息技术（Information Techology）', max: 30000},
+               { name: '客服（Customer Support）', max: 38000},
+               { name: '研发（Development）', max: 52000},
+               { name: '市场（Marketing）', max: 25000}
+            ]
+        },
+        series: [{
+            name: '预算 vs 开销（Budget vs spending）',
+            type: 'radar',
+            // areaStyle: {normal: {}},
+            data : [
+                {
+                    value : [4300, 10000, 28000, 35000, 50000, 19000],//datas[0].values,
+                    name : '预算分配（Allocated Budget）'//data[0].name
+                },
+                 {
+                    value : [5000, 14000, 28000, 31000, 42000, 21000],//datas[1].values,
+                    name : '实际开销（Actual Spending）'//data[1].name
+                }
+            ]
+        }]
+    };
+    Chart.setOption(option);
+{{/block}}

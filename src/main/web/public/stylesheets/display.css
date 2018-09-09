@@ -2,7 +2,7 @@ body {
     margin: 0;
 }
 * {
-    font-family: sans-serif; /*不要宋体*/
+    font-family: sans-serif; 
 }
 
 #nav1 {
@@ -11,7 +11,7 @@ body {
     /* background-color:#224; */
     background-color:#101f59;
     /* height:300px; */
-    position: fixed;
+    position: absolute;
     top: 48px;
     left: 0;
     width: 200px;
@@ -88,11 +88,12 @@ table, tr, td {
 }
 #section {
     /* padding: 25px 25px 80px 225px; */
-    top:52px;
+    top:48px;
     right: 0;
     bottom: 0;
     left: 200px;
     position: absolute;    
+    overflow: hidden;
 }
 #section .section-title {
     font-size: 24px;
@@ -103,9 +104,17 @@ table, tr, td {
     background-color:#101f59;
     height: 48px;
 }
+.navbar-intro{
+    margin-left: 210px;
+}
+.logo{
+    height:35px;
+    width: 35px;
+    vertical-align: middle;
+}
 .navbar .navbar-brand{
     font-size: 20px;
-    margin-left: 43px;
+    vertical-align: middle;
     color: rgb(255, 255, 255);
 }
 .navbar .nav-input{

@@ -217,20 +217,23 @@ input[type="search"]::-webkit-search-decoration {
   .banner-slogan .myButton {
       display: block;
       margin: 40px auto;
-      font-size: 18px;
+      font-size: 19px;
       padding: 10px 15px;
       text-align: center;
       background-color: transparent;        
   }
   .myButton .button1{
       margin-right:20px;
-      width:150px;
-      height:35px;
+      width:160px;
+      height:38px;
       border: 2px solid #ddd;
-      border-radius: 3px;
+      border-radius: 6px;
       color:#fff;
       background: transparent;
       cursor: pointer;
+  }
+  .button1:hover{
+      background-color: #6170d3;
   }
   .futitle{
       text-align: center;

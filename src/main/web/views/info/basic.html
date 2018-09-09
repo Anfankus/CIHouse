@@ -3,10 +3,10 @@
 <link rel="stylesheet" href="/stylesheets/util/list.css">
 {{/block}}
 {{#block( "body")}}
-<div class="col-5 mr-3 text-center" name={{this.title}} style="background-color: #f4f4f4;padding: 1rem 2rem 0 2rem;margin-left: 4rem;">
-    {{include ("../util/list.html",{title:listtitle,obj:object})}}
+<div class="col-5 mr-3 text-center" name={{this.title}} style="background-color: #f4f4f4;padding-top: 1rem;margin-left: 1.5rem;">
+    {{include ("./views/util/list.html",{title:listtitle,obj:object})}}
 </div>
-<div class="col-5 pt-3" >
+<div class="col-6 pt-3" >
     <h5 class="col-3 mt-3 tableTag">十大股东</h5>
     <div id="chart" style="width:100%;height: 500px;">
     </div>
@@ -15,5 +15,36 @@
 {{#block("body-js")}}
     $('.title-cell>div').css("background-color","#ed930d")
     let Chart = echarts.init(document.getElementById('chart'),'default');
-    Chart.setOption({{{ option}}});
+    let data={{{pie}}};
+    let op = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            type: 'scroll',
+            //orient: 'vertical',
+            right: 10,
+            //top: 20,
+            bottom: 10,
+        },
+        series: [{
+            name: '占比',
+            type: 'pie',
+            radius: ['45%', '65%'],
+            center: ['50%', '50%'],
+            data: data,
+            label:{
+                fontSize:17
+            },
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }]
+    }
+Chart.setOption(op);
 {{/block}}
