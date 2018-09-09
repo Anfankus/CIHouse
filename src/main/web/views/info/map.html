@@ -36,23 +36,7 @@ var map = Highcharts.mapChart('map', {
     symbolRadius: 0
   },
   colorAxis: {
-    dataClasses: [{
-        to: 20
-    }, {
-        from: 20,
-        to: 40
-    }, {
-        from: 40,
-        to: 100
-    }, {
-        from: 100,
-        to: 300
-    }, {
-        from: 300,
-        to: 800
-    }, {
-        from: 800
-    }]
+    dataClasses: nameMap['totalNum'][1]
 },
   series: [{
     data: {{{mapdata}}},

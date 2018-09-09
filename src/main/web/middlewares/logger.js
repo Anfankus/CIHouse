@@ -6,7 +6,7 @@ const logger=stream=>{
         const start = new Date()
         await next();
         let ms = new Date() - start
-        stream.write(`${ctx.method}  ${ctx.url}  ${ctx.hostname}  ${ctx.status}  --${ms}ms \n`);
+        stream.write(`${ctx.method}  ${ctx.ip} ${ctx.url}  ${ctx.hostname}  ${ctx.status}  --${ms}ms \n`);
 
     }
 }

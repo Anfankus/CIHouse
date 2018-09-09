@@ -1,63 +1,181 @@
 {{extend("./views/info/layout.html")}}
 
 {{#block("head")}}
-<link rel="stylesheet" href="/stylesheets/util/list.css">
+<link rel="stylesheet" href="/stylesheets/util/comparetable.css">
 {{/block}}
 
 {{#block("body")}}
-    <div class="col-11 pt-3 ml-3 mb-4 text-center" name={{this.title}} style="padding-left: 7%;padding-right: 7%;background-color: #f4f4f4;">
-        {{include ("./views/util/table.html",{keys:this.keys,values:this.values})}}
+<div class="col-11 pt-3 ml-4 mb-4 text-center" name={{this.title}} style="padding-left: 7%;padding-right: 7%;background-color: #f4f4f4;">
+    {{include ("./views/util/table.html",{keys:this.keys,values:this.values})}}
+    <div class="col-12 p-0">
+        <div id="barChart" style="width:100%;height:600px;"></div>
     </div>
-    <div class="col-6">
-        <div id="radarChart" style="width:100%;height:600px;"></div>
-    </div>
+</div>
+
 {{/block}}
 {{#block("body-js")}}
     $('.title-cell>div').css("background-color","#4bde51")
-    let Chart = echarts.init(document.getElementById('radarChart'),'default');
-    let datas={{{chartdatas}}};
-    option = {
-        title: {
-            text: '基础雷达图'
-        },
+    let bChart = echarts.init(document.getElementById('barChart'),'default');
+    //let data={{{data}}}
+    var builderJson = {
+      "all": 10887,
+      "charts": {
+        "map": 3237,
+        "lines": 2164,
+        "bar": 7561,
+        "line": 7778,
+        "pie": 7355,
+        "scatter": 2405,
+        "candlestick": 1842,
+        "radar": 2090,
+        "heatmap": 1762,
+        "treemap": 1593,
+        "graph": 2060,
+        "boxplot": 1537
+      },
+      "components": {
+        "geo": 2788,
+        "title": 9575,
+        "legend": 9400,
+        "tooltip": 9466,
+        "grid": 9266,
+        "markPoint": 3419,
+        "markLine": 2984,
+        "timeline": 2739,
+        "dataZoom": 2744,
+        "visualMap": 2466,
+        "toolbox": 3034,
+        "polar": 1945
+      },
+      "ie": 9743
+    };
+    
+    let baroption = {    
         tooltip: {},
-        legend: {
-            data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
-        },
+        title: [{
+            text: '在线构建',                                   //=========
+            subtext: '总计 ' + builderJson.all,                 //========
+            x: '25%',
+            textAlign: 'center'
+        }],
+        grid: [{
+            top: 50,
+            left: 10,
+            width:'50%',
+            containLabel: true
+        }],
+        xAxis: [{
+            type: 'value',
+            max: builderJson.all,                               //=========
+            splitLine: {
+                show: false
+            }
+        }],
+        yAxis: [{
+            type: 'category',
+            data: Object.keys(builderJson.charts),              //=========keys.slice(1)
+        }],
         radar: {
             // shape: 'circle',
+            splitArea:{
+                areaStyle:{
+                    color:['rgba(255,255,255)','rgba(0,0,0,0.1)'],
+                    shadowColor:'rgba(107,107,107,0.3)',
+                    shadowBlur:10,
+                    shadowOffsetX:5,
+                    shadowOffsetY:8
+                }  
+              },
             name: {
                 textStyle: {
                     color: '#fff',
                     backgroundColor: '#999',
                     borderRadius: 3,
-                    padding: [3, 5]
+                    padding: [4,6]
                }
             },
+            center:['75%','50%'],
+            radius:'65%',
             indicator: [
-               { name: '销售（sales）', max: 6500},
-               { name: '管理（Administration）', max: 16000},
-               { name: '信息技术（Information Techology）', max: 30000},
-               { name: '客服（Customer Support）', max: 38000},
-               { name: '研发（Development）', max: 52000},
-               { name: '市场（Marketing）', max: 25000}
+               { name: '销售', max: 6500},
+               { name: '管理', max: 16000},
+               { name: '信息技术', max: 30000},
+               { name: '客服', max: 38000},
+               { name: '研发', max: 52000},
+               { name: '市场', max: 25000}
             ]
         },
+
         series: [{
+            type: 'bar',
+            stack: 'chart',
+            z: 3,
+            label: {
+                normal: {
+                    position: 'right',
+                    show: true
+                }
+            },
+            data: Object.keys(builderJson.charts).map(function (key) {  //======values[0].slice(1)
+                return builderJson.charts[key];
+            })
+        }, {
+            type: 'bar',
+            stack: 'chart',
+            silent: true,
+            itemStyle: {
+                normal: {
+                    color: '#eee'
+                }
+            },
+            data: Object.keys(builderJson.charts).map(function (key) {  //===
+                return builderJson.all - builderJson.charts[key];
+            })
+        }, {
+            type: 'bar',
+            stack: 'component',
+            z: 3,
+            label: {
+                normal: {
+                    position: 'right',
+                    show: true
+                }
+            },
+            data: Object.keys(builderJson.components).map(function (key) {  //=======values[1].slice(1)
+                return builderJson.components[key];
+            })
+        }, {
+            type: 'bar',
+            stack: 'component',
+            silent: true,
+            itemStyle: {
+                normal: {
+                    color: '#eee'
+                }
+            },
+            data: Object.keys(builderJson.components).map(function (key) {
+                return builderJson.all - builderJson.components[key];
+            })
+        },{
             name: '预算 vs 开销（Budget vs spending）',
             type: 'radar',
+            symbolSize:10,
+            itemStyle:{
+              borderWidth:2  
+            },
             // areaStyle: {normal: {}},
             data : [
                 {
                     value : [4300, 10000, 28000, 35000, 50000, 19000],//datas[0].values,
-                    name : '预算分配（Allocated Budget）'//data[0].name
+                    name : '预算分配（Allocated Budget）'//data[0][0]
                 },
                  {
                     value : [5000, 14000, 28000, 31000, 42000, 21000],//datas[1].values,
-                    name : '实际开销（Actual Spending）'//data[1].name
+                    name : '实际开销（Actual Spending）'//data[1][0]
                 }
             ]
         }]
-    };
-    Chart.setOption(option);
+    }
+bChart.setOption(baroption);
+    
 {{/block}}

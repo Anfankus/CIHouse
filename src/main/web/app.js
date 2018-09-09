@@ -29,7 +29,7 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-let loggerfile=fs.createWriteStream('./logs/access.log',{flags:'a',encoding:'utf-8'});
+let loggerfile=fs.createWriteStream('./logs/access.log',{flags:'a'});
 app.use(mylogger(loggerfile));
 
 app.use(require('koa-static')(__dirname + '/public'));

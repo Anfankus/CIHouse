@@ -15,12 +15,13 @@ router
             return false;
     })
     .get('/:ids', async (ctx, next) => {
-
+        //返回一个对象，{keys:[],values:[[]],x:[[]]}，分别代表表格键，表格值，图值
         //await hbase.get(ctx.id[0],ctx.id[1]).then(datas=>{}
         //companynames=datas.keys.slice(1)
         let data = {
             title:'企业信息对比',
-            keys:['-','1','2'],
+            //chartData:{keys[0]:}
+            keys:['-','com1','com2'],
             values:[['1','2','3'],['1','2','3'],['1','2','3']]
         };
 
