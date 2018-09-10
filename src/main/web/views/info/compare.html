@@ -16,45 +16,23 @@
 {{#block("body-js")}}
     $('.title-cell>div').css("background-color","#4bde51")
     let bChart = echarts.init(document.getElementById('barChart'),'default');
-    //let data={{{data}}}
-    var builderJson = {
-      "all": 10887,
-      "charts": {
-        "map": 3237,
-        "lines": 2164,
-        "bar": 7561,
-        "line": 7778,
-        "pie": 7355,
-        "scatter": 2405,
-        "candlestick": 1842,
-        "radar": 2090,
-        "heatmap": 1762,
-        "treemap": 1593,
-        "graph": 2060,
-        "boxplot": 1537
-      },
-      "components": {
-        "geo": 2788,
-        "title": 9575,
-        "legend": 9400,
-        "tooltip": 9466,
-        "grid": 9266,
-        "markPoint": 3419,
-        "markLine": 2984,
-        "timeline": 2739,
-        "dataZoom": 2744,
-        "visualMap": 2466,
-        "toolbox": 3034,
-        "polar": 1945
-      },
-      "ie": 9743
-    };
-    
+    let keys={{{this.chartkeys}}};
+    let values={{{this.chartvalues}}};
+
+    let cpv1=values[0].slice(1).map(each=>parseInt(each));
+    let cpv2=values[1].slice(1).map(each=>parseInt(each));
+    let radarmax=[];
+    let barmax=0;
+    for(let i=0;i<cpv1.length;i++){
+        radarmax[i]=Math.max(cpv1[i],cpv2[i]);
+        if(barmax<radarmax[i])
+            barmax=radarmax[i];
+    }
     let baroption = {    
         tooltip: {},
         title: [{
-            text: '在线构建',                                   //=========
-            subtext: '总计 ' + builderJson.all,                 //========
+            text: '财务信息对比',                                   //=========
+            //subtext: '总计 ' + builderJson.all,                 //========
             x: '25%',
             textAlign: 'center'
         }],
@@ -66,14 +44,14 @@
         }],
         xAxis: [{
             type: 'value',
-            max: builderJson.all,                               //=========
+            max: barmax,                               //=========
             splitLine: {
                 show: false
             }
         }],
         yAxis: [{
             type: 'category',
-            data: Object.keys(builderJson.charts),              //=========keys.slice(1)
+            data: keys.slice(1)
         }],
         radar: {
             // shape: 'circle',
@@ -96,14 +74,7 @@
             },
             center:['75%','50%'],
             radius:'65%',
-            indicator: [
-               { name: '销售', max: 6500},
-               { name: '管理', max: 16000},
-               { name: '信息技术', max: 30000},
-               { name: '客服', max: 38000},
-               { name: '研发', max: 52000},
-               { name: '市场', max: 25000}
-            ]
+            indicator: keys.slice(1).map((each,index)=>{return {name:each,max:radarmax(index)}})
         },
 
         series: [{
@@ -116,9 +87,7 @@
                     show: true
                 }
             },
-            data: Object.keys(builderJson.charts).map(function (key) {  //======values[0].slice(1)
-                return builderJson.charts[key];
-            })
+            data: cpv1
         }, {
             type: 'bar',
             stack: 'chart',
@@ -128,8 +97,8 @@
                     color: '#eee'
                 }
             },
-            data: Object.keys(builderJson.charts).map(function (key) {  //===
-                return builderJson.all - builderJson.charts[key];
+            data: cpv1.map(function (each) { 
+                return barmax - each;
             })
         }, {
             type: 'bar',
@@ -141,9 +110,7 @@
                     show: true
                 }
             },
-            data: Object.keys(builderJson.components).map(function (key) {  //=======values[1].slice(1)
-                return builderJson.components[key];
-            })
+            data: cpv2
         }, {
             type: 'bar',
             stack: 'component',
@@ -153,8 +120,8 @@
                     color: '#eee'
                 }
             },
-            data: Object.keys(builderJson.components).map(function (key) {
-                return builderJson.all - builderJson.components[key];
+            data: cpv2.map(function (each) {
+                return barmax - each;
             })
         },{
             name: '预算 vs 开销（Budget vs spending）',
@@ -166,12 +133,12 @@
             // areaStyle: {normal: {}},
             data : [
                 {
-                    value : [4300, 10000, 28000, 35000, 50000, 19000],//datas[0].values,
-                    name : '预算分配（Allocated Budget）'//data[0][0]
+                    value : cpv1,
+                    name : values[0][0]
                 },
                  {
-                    value : [5000, 14000, 28000, 31000, 42000, 21000],//datas[1].values,
-                    name : '实际开销（Actual Spending）'//data[1][0]
+                    value : cpv2,
+                    name : values[1][0]
                 }
             ]
         }]

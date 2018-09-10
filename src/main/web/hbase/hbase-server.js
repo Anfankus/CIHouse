@@ -2,7 +2,7 @@ var hbase = require('hbase');  //连接HBase的包
 
 //连接HBase
 var client=hbase({ 
-    host: '192.168.1.101',
+    host: '192.168.137.190',
     port: 8111
 });
 
@@ -307,10 +307,15 @@ function returnAreaInfo(x){
 
 //对比信息构造函数
 function Comparison(value1,value2){
-    this.keys=['公司全称','每股净资产','净利润','未分配利润','营业利润','总资产','总负债'];
+    this.keys=['公司全称','每股净资产（万元）','净利润（万元）','未分配利润（万元）','营业利润（万元）','总资产（万元）','总负债（万元）'];
     this.values=[];
-    this.values[0]=[value1[10],value1[21],value1[24],value1[25],value1[26],value1[27],value1[28]];
-    this.values[1]=[value2[10],value2[21],value2[24],value2[25],value2[26],value2[27],value2[18]];
+    this.values[0]=[value1[10],value1[21],value1[24],value1[25],value1[26],value1[27],value1[28]].map(each=>{
+        return each.slice(0,each.indexOf('.')-4);
+    });
+
+    this.values[1]=[value2[10],value2[21],value2[24],value2[25],value2[26],value2[27],value2[28]].map(each=>{
+        return each.slice(0,each.indexOf('.')-4);
+    });
 }
 
 //返回对比信息中间值
@@ -350,17 +355,14 @@ function returnComparison(x,y){
     return new Promise(function(resolve,rejected){
         var array=[];
         returnMid(x).then(async val=>{
-                array[0]=val;
+                array.push(val);
                 await returnMid(y).then(aa=>{
-                    array[1]=aa;
+                    array.push(aa);
                     resolve(new Comparison(array[0],array[1]));
                 })     
         });
       });
 }
-
-
-returnComparison('430002','430003').then(val=>console.log(val));
 
 //交互时服务器需要调用的函数
 module.exports={

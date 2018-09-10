@@ -9,10 +9,11 @@ const hbase = require('../hbase/hbase-server');
 const fs=require('fs');
 
 let data=fs.readFileSync('./public/json/keyword.json','utf8');
-let ws=fs.createWriteStream('./public/json/keyword.json',{flags:'w'});
 let dataJson=JSON.parse(data);
 setInterval(()=>{
+    let ws=fs.createWriteStream('./public/json/keyword.json',{flags:'w+'});
     ws.write(JSON.stringify(dataJson));
+    ws.close();
 },10000)
 router
     .prefix('/query')
