@@ -66,8 +66,15 @@ function basic(x){
 
 //简单信息构造函数
 function SimpleInfo(value){
-    let index=[1,10,3,15,17,9];
-    this.simpleinfo=index.map(each=>value[each]?value[each]:'-');
+    let index = [1, 10, 3, 15, 17, 9];
+    if (value) {
+        this.simpleinfo = index.map(each => value[each] ? value[each] : '-');
+        this.simpleinfo[3] = value[15].slice(0, this.simpleinfo[3].indexOf('.') + 2);
+        this.simpleinfo[4] = value[17].slice(0, this.simpleinfo[4].indexOf('.') + 2);
+        this.simpleinfo[5] = value[9].slice(0, this.simpleinfo[5].indexOf('.') + 2);
+    }
+    else
+        this.simpleinfo=[];
 }
 
 //通过名字返回简单信息

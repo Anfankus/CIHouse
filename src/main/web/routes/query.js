@@ -36,7 +36,8 @@ router
             else {
                 let id = query.search;
                 await hbase.simple_ID(id).then(data => {
-                    parameters.values.push(data.simpleinfo);
+                    if(data)
+                        parameters.values.push(data.simpleinfo);
                 })
             }
             parameters.count = parameters.values.length;
