@@ -233,7 +233,7 @@ input[type="search"]::-webkit-search-decoration {
       cursor: pointer;
   }
   .button1:hover{
-      background-color: #6170d3;
+      background-color: rgb(68, 61, 61);
   }
   .futitle{
       text-align: center;

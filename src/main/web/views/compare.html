@@ -1,0 +1,46 @@
+<!-- {{extend("./layout.html")}}
+
+{{#block("nav")}} -->
+    <!-- 这个是对 nav 这个 block 的实现 -->
+    
+<!-- {{/block}} 
+
+{{#block("body")}} -->
+<!-- <iframe id="content" src="/compare" style="border:0;width: 100%;height:100%;"></iframe> -->
+<!-- {{/block}} -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>CIHouse</title>
+        <link rel="stylesheet" href="/stylesheets/comparestyle.css">
+        <link rel="stylesheet" href="/stylesheets/util/bootstrap.min.css">
+        <script src="/javascripts/lib/jquery-3.3.1.min.js"></script>
+    </head>
+    <body>
+        <div class="page">
+            <div class="title">
+                <h1>CIHouse企业对比</h1>
+            </div>
+            <div class="dinput">
+                <form class="singlesearch" action="/query">
+                    <input class="searchbox" name="search" title="输入搜索词" placeholder="公司代码或公司名称关键字" aria-label="Search" role="combobox">
+                    <input class="searchbox" name="search" title="输入搜索词" placeholder="公司代码或公司名称关键字" aria-label="Search" role="combobox">
+                    <input type="submit" class="btn btn-outline-light my-sm-0" value="提交">
+                </form> 
+            </div>
+            <div id="section">
+                <iframe id="content" src="" style="border:0;width: 100%;height:100%;"></iframe>
+            </div>
+        </div>
+        
+        
+
+    <script type="text/javascript">
+        {{{block("body-js")}}}
+    </script>
+    <script src="/javascripts/lib/popper.min.js"></script>
+    <script src="/javascripts/lib/bootstrap.min.js"></script>
+
+    </body>
+</html>

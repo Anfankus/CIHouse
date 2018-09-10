@@ -4,6 +4,9 @@ const router = require('koa-router')()
 
 router
     .prefix('/compare')
+    .get('/',async(ctx,next)=>{
+        await ctx.render('./compare');
+    })
     .param('ids', async (ids, ctx, next) => {
         let re = /^\d{6}-\d{6}$/;
         if (re.test(ids)) {
@@ -22,7 +25,7 @@ router
 
         }
 
-        //await ctx.render('./compare',data);
+        await ctx.render('./compare',data);
     })
 
 module.exports = router
