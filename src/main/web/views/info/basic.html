@@ -1,10 +1,10 @@
-{{extend("./info/layout.html")}}
+{{extend("./layout.html")}}
 {{#block("head")}}
 <link rel="stylesheet" href="/stylesheets/util/list.css">
 {{/block}}
 {{#block( "body")}}
 <div class="col-5 mr-3 text-center" name={{this.title}} style="background-color: #f4f4f4;padding-top: 1rem;margin-left: 1.5rem;">
-    {{include ("./util/list.html",{title:listtitle,obj:object})}}
+    {{include ("../util/list.html",{title:listtitle,obj:object})}}
 </div>
 <div class="col-6 pt-3" >
     <h5 class="col-3 mt-3 tableTag">十大股东</h5>

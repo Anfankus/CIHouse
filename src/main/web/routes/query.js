@@ -6,7 +6,15 @@
 const router = require('koa-router')();
 
 const hbase = require('../hbase/hbase-server');
+const fs=require('fs');
 
+let data=fs.readFileSync('./public/json/keyword.json','utf8');
+let dataJson=JSON.parse(data);
+setInterval(()=>{
+    let ws=fs.createWriteStream('./public/json/keyword.json',{flags:'w+'});
+    ws.write(JSON.stringify(dataJson));
+    ws.close();
+},10000)
 router
     .prefix('/query')
     .get('/', async (ctx, next) => {
@@ -17,6 +25,7 @@ router
         };
         if (ctx.query.search) {
             let query = ctx.query;
+            dataJson[query.search]=dataJson[query.search]?dataJson[query.search]+1:1;
             if (isNaN(query.search)) {
                 let name = query.search;
                 await hbase.simple_name(name).then(data => {
@@ -27,7 +36,8 @@ router
             else {
                 let id = query.search;
                 await hbase.simple_ID(id).then(data => {
-                    parameters.values.push(data.simpleinfo);
+                    if(data)
+                        parameters.values.push(data.simpleinfo);
                 })
             }
             parameters.count = parameters.values.length;

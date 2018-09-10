@@ -1,4 +1,4 @@
-{{extend("./info/layout.html")}}
+{{extend("./layout.html")}}
 
 {{#block("head")}}
 <link rel="stylesheet" href="/stylesheets/util/list.css">
@@ -37,23 +37,7 @@ var map = Highcharts.mapChart('map', {
     symbolRadius: 0
   },
   colorAxis: {
-    dataClasses: [{
-        to: 20
-    }, {
-        from: 20,
-        to: 40
-    }, {
-        from: 40,
-        to: 60
-    }, {
-        from: 60,
-        to: 80
-    }, {
-        from: 80,
-        to: 100
-    }, {
-        from: 100
-    }]
+    dataClasses: nameMap['totalNum'][1]
 },
   series: [{
     data: {{{mapdata}}},

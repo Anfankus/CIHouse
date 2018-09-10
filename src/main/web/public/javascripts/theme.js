@@ -23,8 +23,9 @@
     echarts.registerTheme('default', {
         "color": [
             "#2b60ff",
-            "#7800f0",
             "#19cde9",
+            "#7800f0",
+
             "rgba(17,175,71,0.97)",
             "#f3e531",
             "#f44c35"
