@@ -8,7 +8,7 @@
 <div class="col-11 pt-3 ml-4 mb-4 text-center" name={{this.title}} style="padding-left: 7%;padding-right: 7%;background-color: #f4f4f4;">
     {{include ("./views/util/table.html",{keys:this.keys,values:this.values})}}
     <div class="col-12 p-0">
-        <div id="barChart" style="width:100%;height:600px;"></div>
+        <div id="barChart" style="width:100%;height:500px;"></div>
     </div>
 </div>
 
@@ -24,7 +24,7 @@
     let radarmax=[];
     let barmax=0;
     for(let i=0;i<cpv1.length;i++){
-        radarmax[i]=Math.max(cpv1[i],cpv2[i]);
+        radarmax[i]=Math.max(cpv1[i],cpv2[i])+300;
         if(barmax<radarmax[i])
             barmax=radarmax[i];
     }
@@ -38,8 +38,8 @@
         }],
         grid: [{
             top: 50,
-            left: 10,
-            width:'50%',
+            left: 0,
+            width:'55%',
             containLabel: true
         }],
         xAxis: [{
@@ -72,9 +72,9 @@
                     padding: [4,6]
                }
             },
-            center:['75%','50%'],
+            center:['78%','50%'],
             radius:'65%',
-            indicator: keys.slice(1).map((each,index)=>{return {name:each,max:radarmax(index)}})
+            indicator: keys.slice(1).map((each,index)=>{return {name:each,max:radarmax[index]}})
         },
 
         series: [{
@@ -94,7 +94,7 @@
             silent: true,
             itemStyle: {
                 normal: {
-                    color: '#eee'
+                    color: '#eaeaea'
                 }
             },
             data: cpv1.map(function (each) { 
@@ -117,14 +117,14 @@
             silent: true,
             itemStyle: {
                 normal: {
-                    color: '#eee'
+                    color: '#eaeaea'
                 }
             },
             data: cpv2.map(function (each) {
                 return barmax - each;
             })
         },{
-            name: '预算 vs 开销（Budget vs spending）',
+            //name: '预算 vs 开销（Budget vs spending）',
             type: 'radar',
             symbolSize:10,
             itemStyle:{

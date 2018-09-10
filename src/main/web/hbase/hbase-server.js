@@ -1,15 +1,16 @@
 var hbase = require('hbase');  //连接HBase的包
 
+let tablename='CIHouse';
 //连接HBase
 var client=hbase({ 
-    host: '192.168.137.190',
+    host: '192.168.137.25',
     port: 8111
 });
 
 //基本信息构造函数
 function BasicInfo(value){
     this.info={}
-    this.info["公司代码（元）"]=value[1]?value[1]:'-';                //公司代码
+    this.info["公司代码(元)"]=value[1]?value[1]:'-';                //公司代码
     this.info["公司全称"]=value[10]?value[10]:'-';                //企业全称
     this.info["公司简称"]=value[8]?value[8]:'-';               //公司简称
     this.info["行业分类"]=value[7]?value[7]:'-';              //行业分类           
@@ -35,7 +36,7 @@ function BasicInfo(value){
 //返回基本信息
 function basic(x){
     return new Promise(function(resolve,rejected){
-        client.table('CIHouse')
+        client.table(tablename)
     .scan({
          filter: {
             "op":"EQUAL",
@@ -80,7 +81,7 @@ function SimpleInfo(value){
 //通过名字返回简单信息
 function simple_name(value){
     return new Promise(function(resolve,rejected){
-        client.table('CIHouse')
+        client.table(tablename)
     .scan({
          filter: {
             "op":"EQUAL",
@@ -112,7 +113,7 @@ function simple_name(value){
 //通过ID返回简单信息
 function simple_ID(x){
     return new Promise(function(resolve,rejected){
-        client.table('CIHouse')
+        client.table(tablename)
     .scan({
          filter: {
             "op":"EQUAL",
@@ -145,21 +146,21 @@ function simple_ID(x){
 //财务信息构造函数
 function FinanceInfo(value){
     this.info={}
-    this.info["每股收益（元）"]=value[0]?value[0]:'-';               
-    this.info["每股净资产（元）"]=value[2]?value[2]:'-';             
-    this.info["每股净资产收益（元）"]=value[3]?value[3]:'-';              
-    this.info["净资产收益率（元）"]=value[4]?value[4]:'-';             
-    this.info["净利润（元）"]=value[5]?value[5]:'-';
-    this.info["未分配利润（元）"]=value[6]?value[6]:'-';
-    this.info["营业利润（元）"]=value[7]?value[7]:'-';
-    this.info["总资产（元）"]=value[8]?value[8]:'-';
-    this.info["总负债（元）"]=value[9]?value[9]:'-';
+    this.info["每股收益(元)"]=value[0]?value[0]:'-';               
+    this.info["每股净资产(元)"]=value[2]?value[2]:'-';             
+    this.info["每股净资产收益(元)"]=value[3]?value[3]:'-';              
+    this.info["净资产收益率(元)"]=value[4]?value[4]:'-';             
+    this.info["净利润(元)"]=value[5]?value[5]:'-';
+    this.info["未分配利润(元)"]=value[6]?value[6]:'-';
+    this.info["营业利润(元)"]=value[7]?value[7]:'-';
+    this.info["总资产(元)"]=value[8]?value[8]:'-';
+    this.info["总负债(元)"]=value[9]?value[9]:'-';
 }
 
 //返回财务信息
 function finance(x){
     return new Promise(function(resolve,rejected){
-        client.table('CIHouse')
+        client.table(tablename)
         .scan({
              filter: {
                 "op":"EQUAL",
@@ -252,7 +253,7 @@ function CashFlow(value){
 //返回历史数据信息(二维数组)
 function historyTable(x){
     return new Promise(function(resolve,rejected){
-        client.table('CIHouse')
+        client.table(tablename)
         .scan({
              filter: {
                 "op":"EQUAL",
@@ -314,7 +315,7 @@ function returnAreaInfo(x){
 
 //对比信息构造函数
 function Comparison(value1,value2){
-    this.keys=['公司全称','每股净资产（万元）','净利润（万元）','未分配利润（万元）','营业利润（万元）','总资产（万元）','总负债（万元）'];
+    this.keys=['公司全称','每股净资产(万)','净利润(万)','未分配利润(万)','营业利润(万)','总资产(万)','总负债(万)'];
     this.values=[];
     this.values[0]=[value1[10],value1[21],value1[24],value1[25],value1[26],value1[27],value1[28]].map(each=>{
         return each.slice(0,each.indexOf('.')-4);
@@ -328,7 +329,7 @@ function Comparison(value1,value2){
 //返回对比信息中间值
 function returnMid(x){
     return new Promise(function(resolve,rejected){
-        client.table('CIHouse')
+        client.table(tablename)
         .scan({
              filter: {
                 "op":"EQUAL",
