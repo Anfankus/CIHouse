@@ -20,7 +20,9 @@ router
             type=ctx.query.type;
         }
         let data=await hbase.returnAreaInfo(type).then(data=>data);
-        await ctx.render('./info/map',{title:'全国各省统计数据',mapdata:JSON.stringify(data.info)});
+        await ctx.render('./info/map',{title:'',mapdata:JSON.stringify(data.info)});
+        // await ctx.render('./info/map');
+
     })
     .post('/map',async (ctx,next)=>{
         let type=ctx.request.body.type;

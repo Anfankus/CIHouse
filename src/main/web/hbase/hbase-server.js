@@ -1,6 +1,6 @@
 var hbase = require('hbase');  //连接HBase的包
 
-let tablename='CIHouse';
+let tablename='backup';
 //连接HBase
 var client=hbase({ 
     host: '192.168.137.25',

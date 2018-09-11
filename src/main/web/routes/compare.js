@@ -28,7 +28,7 @@ router
             chartkeys:JSON.stringify(datas.keys),
             chartvalues:JSON.stringify(datas.values)
         };
-        await ctx.render('./info/compare', data);
+        await ctx.render('./info/compareinfo', data);
     })
 
 module.exports = router

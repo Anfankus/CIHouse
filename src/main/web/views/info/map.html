@@ -1,53 +1,103 @@
-{{extend("./views/info/layout.html")}}
+<!DOCTYPE html>
+<html>
 
-{{#block("head")}}
-<link rel="stylesheet" href="/stylesheets/util/list.css">
-<script src="/javascripts/mapevent.js"></script>
-{{/block}}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/util/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/titleTag.css">
+    <link rel="stylesheet" href="/stylesheets/util/list.css">
 
-{{#block("body")}}
-<div class="col-3">
-<ul class="list-group">
-    <a href="javascript:;" class="list-group-item active" name="totalNum">公司数量</a>
-    <a href="javascript:;" class="list-group-item" name="totalMoney">总资产</a>
-    <a href="javascript:;" class="list-group-item" name="tradingProfit">总利润</a>
-    <!-- <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item">Vestibulum at eros</a> -->
-  </ul></div>
-<div id="map"  style="width:800px;height: 600px;"></div>
-<script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
-<script src="https://data.jianshukeji.com/geochina/china.js"></script>
+    <script src="/javascripts/lib/jquery-3.3.1.min.js"></script>
+    <script src="/javascripts/lib/echarts.js"></script>
+    <script src="/javascripts/theme.js"></script>
+    <script src="/javascripts/mapevent.js"></script>
+</head>
 
-  {{/block}}
-{{#block("body-js")}}
-$('.title-cell>div').css("background-color","#00f1cf")
 
-//var data = [{"name":"北京","value":54},{"name":"天津","value":38},{"name":"河北","value":75},{"name":"山西","value":99},{"name":"内蒙古","value":98},{"name":"辽宁","value":41},{"name":"吉林","value":74},{"name":"黑龙江","value":5},{"name":"上海","value":12},{"name":"江苏","value":96},{"name":"浙江","value":71},{"name":"安徽","value":68},{"name":"福建","value":17},{"name":"江西","value":70},{"name":"山东","value":49},{"name":"河南","value":45},{"name":"湖北","value":65},{"name":"湖南","value":86},{"name":"广东","value":82},{"name":"广西","value":97},{"name":"海南","value":19},{"name":"重庆","value":11},{"name":"四川","value":75},{"name":"贵州","value":36},{"name":"云南","value":88},{"name":"西藏","value":27},{"name":"陕西","value":64},{"name":"甘肃","value":8},{"name":"青海","value":56},{"name":"宁夏","value":31},{"name":"新疆","value":13},{"name":"台湾","value":58},{"name":"香港","value":16},{"name":"澳门","value":65},{"name":"南海诸岛","value":74},{"name":"南海诸岛","value":65}];
-var map = Highcharts.mapChart('map', {
-  title: {
-    text: ''
-  },
-  colors: ['rgba(19,64,117,0.05)', 'rgba(19,64,117,0.4)',
-  'rgba(19,64,117,0.5)', 'rgba(19,64,117,0.6)', 'rgba(19,64,117,0.8)', 'rgba(19,64,117,1)'],
-  legend: {
-    layout: 'vertical',
-    align: 'right',
-    verticalAlign: 'bottom',
-    symbolRadius: 0
-  },
-  colorAxis: {
-    dataClasses: nameMap['totalNum'][1]
-},
-  series: [{
-    data: {{{mapdata}}},
-    name: '公司总数',
-    mapData: Highcharts.maps['cn/china'],
-    states: {
-      hover: {
-          color: '#a4edba'
-      }
-  },
-    joinBy: 'name'
-  }]
-});
-{{/block}}
+<body style="margin-top:20px;border: 0;background-color: rgba(32, 32, 32, 1);">
+    <div class="container-fluid">
+        <div class="row ml-4">
+            <div class="col-11 m-4 pb-3 pl-0 title-cell" style="padding-left: 6rem;border-bottom: 2px solid #f1f1f1;">
+                <ul class="list-group" style="flex-direction: row;">
+                    <a href="javascript:;" class="list-group-item active"style="
+                    border-top-left-radius: .25rem;
+                    border-top-right-radius: 0;
+                " name="totalNum">公司数量</a>
+                    <a href="javascript:;" class="list-group-item" name="totalMoney">总营收</a>
+                    <a href="javascript:;" class="list-group-item" style="
+                    border-top-right-radius: .25rem;
+                    border-bottom-left-radius: 0;
+                    margin-bottom: -1px;
+                " name="tradingProfit">总利润</a>
+                </ul>
+            </div>
+            <div class="col-3">
+                <div id="chartleft" style="width:100%;height:600px;"></div>
+            </div>
+            <div class="col-6">
+                <div id="map" style="width:100%;height: 600px;"></div>
+            </div>
+            <div class="col-3">
+                <div id="chartright" style="width:100%;height:600px;"></div>
+            </div>
+        </div>
+    </div>
+    <footer class="mt-4" style="text-align:center;background-color: #494949">
+        <div class="container">
+            <span style="color:white">CIHouse工作组</span>
+        </div>
+    </footer>
+    <script src="https://img.hcharts.cn/highmaps/highmaps.js"></script>
+    <script src="https://data.jianshukeji.com/geochina/china.js"></script>
+
+    <script type="text/javascript">
+        $('.title-cell>div').css("background-color", "#00f1cf")
+
+        //=========================地图=================================
+        //var data = [{"name":"北京","value":1211},{"name":"天津","value":500},{"name":"河北","value":75},{"name":"山西","value":99},{"name":"内蒙古","value":98},{"name":"辽宁","value":41},{"name":"吉林","value":74},{"name":"黑龙江","value":5},{"name":"上海","value":900},{"name":"江苏","value":750},{"name":"浙江","value":71},{"name":"安徽","value":68},{"name":"福建","value":17},{"name":"江西","value":70},{"name":"山东","value":49},{"name":"河南","value":45},{"name":"湖北","value":65},{"name":"湖南","value":86},{"name":"广东","value":82},{"name":"广西","value":97},{"name":"海南","value":19},{"name":"重庆","value":11},{"name":"四川","value":75},{"name":"贵州","value":36},{"name":"云南","value":88},{"name":"西藏","value":27},{"name":"陕西","value":64},{"name":"甘肃","value":8},{"name":"青海","value":56},{"name":"宁夏","value":31},{"name":"新疆","value":13},{"name":"台湾","value":58},{"name":"香港","value":16},{"name":"澳门","value":65},{"name":"南海诸岛","value":74},{"name":"南海诸岛","value":65}];
+        let mapdata = {{{mapdata}}};
+        var map = Highcharts.mapChart('map', {
+            chart: {
+                backgroundColor: 'rgba(32,32,32,1)',
+                marginLeft: 0,
+                marginRight: 0
+
+            },
+            title: {
+                text: '全国各省新三板公司数量',
+                style: {
+                    fontSize: '30px',
+                    color: 'white'
+                }
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'bottom',
+                symbolRadius: 0,
+                itemStyle: {
+                    color: 'white'
+                }
+            },
+            colorAxis: {
+                dataClasses: nameMap['totalNum'][1]
+            },
+            series: [{
+                data: mapdata,
+                name: '公司总数',
+                mapData: Highcharts.maps['cn/china'],
+                states: {
+                    hover: {
+                        color: '#a4edba'
+                    }
+                },
+                joinBy: 'name'
+            }]
+        });
+    </script>
+    <script src="/javascripts/lib/popper.min.js"></script>
+    <script src="/javascripts/lib/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+.page{
+    position:absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: url(../images/background.jpg);
+    z-index: -1;
+}
+.title{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+.zi{
+    text-align: center;
+    color: rgba(248, 233, 233, 0.692);
+    
+}
+.singlesearch{
+    position: relative;
+    display: inline-block;
+    zoom: 1;
+}
+ .singlesearch .searchbox{
+     display: inline-block;
+     width: 550px;
+     height: 40px;
+     margin: 10px auto;
+     box-shadow: 0 5px 15px #555;
+     /* font-size: 35px; */
+     padding: 10px 15px;
+     border: 1px solid #ddd;
+     border-radius: 3px;
+     vertical-align: middle;
+     margin-right: 40px;
+ }
+ /* .singlesearch .searchboxSubmit{
+     
+ } */
+  .btn-outline-light {
+     background-color: transparent;
+     display: inline-block;
+     width:80px;
+     height:40px;
+     vertical-align: middle;
+     cursor: pointer; 
+     overflow: hidden;
+     border: 0;
+   }
+   .btn {
+       display: inline-block;
+       text-align: center;
+       white-space: nowrap;
+       vertical-align: middle;
+       -webkit-user-select: none;
+       -moz-user-select: none;
+       -ms-user-select: none;
+       user-select: none;
+       padding: .375rem .75rem;
+   }
+   .dinput{
+       position: absolute;
+       left:100px;
+   }
+   #section{
+        /* padding: 25px 25px 80px 225px; */
+        top:180px;
+        right: 50px;
+        bottom: 10px;
+        left: 50px;
+        position: absolute;    
+        overflow: hidden;
+        background: url(../images/frame.jpg);
+        
+        border-radius: 15px;
+   }
+   .return{
+       position:absolute;
+       width:50px;
+       height: 50px;
+       left: 20px;
+       top: 10px;
+   }

@@ -145,4 +145,4 @@ hs_err_pid*
 /.idea
 /.vscode
 .DS_Store
-src/main/web/public/json/keyword.json
+/src/main/web/public/json/keyword.json
