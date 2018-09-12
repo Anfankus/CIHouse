@@ -1,294 +1,162 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CIHouse</title>
-    <link rel="stylesheet" href="/stylesheets/util/bootstrap.min.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+<title>CIHous管理人员后台</title>
+<link href="/stylesheets/admin/base.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/admin/home.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/admin/show.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-          <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-          <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-          <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-              <a class="nav-link" href="#">Sign out</a>
-            </li>
-          </ul>
-        </nav>
-    
-        <div class="container-fluid">
-          <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-              <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">
-                      <span data-feather="home"></span>
-                      Dashboard <span class="sr-only">(current)</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      <span data-feather="file"></span>
-                      Orders
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      <span data-feather="shopping-cart"></span>
-                      Products
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      <span data-feather="users"></span>
-                      Customers
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      <span data-feather="bar-chart-2"></span>
-                      Reports
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      <span data-feather="layers"></span>
-                      Integrations
-                    </a>
-                  </li>
-                </ul>
-    
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                  <span>Saved reports</span>
-                  <a class="d-flex align-items-center text-muted" href="#">
-                    <span data-feather="plus-circle"></span>
-                  </a>
-                </h6>
-                <ul class="nav flex-column mb-2">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      <span data-feather="file-text"></span>
-                      Current month
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      <span data-feather="file-text"></span>
-                      Last quarter
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      <span data-feather="file-text"></span>
-                      Social engagement
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      <span data-feather="file-text"></span>
-                      Year-end sale
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-    
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                  <div class="btn-group mr-2">
-                    <button class="btn btn-sm btn-outline-secondary">Share</button>
-                    <button class="btn btn-sm btn-outline-secondary">Export</button>
-                  </div>
-                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                    <span data-feather="calendar"></span>
-                    This week
-                  </button>
-                </div>
-              </div>
-    
-              <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
-    
-              <h2>Section title</h2>
-              <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Header</th>
-                      <th>Header</th>
-                      <th>Header</th>
-                      <th>Header</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1,001</td>
-                      <td>Lorem</td>
-                      <td>ipsum</td>
-                      <td>dolor</td>
-                      <td>sit</td>
-                    </tr>
-                    <tr>
-                      <td>1,002</td>
-                      <td>amet</td>
-                      <td>consectetur</td>
-                      <td>adipiscing</td>
-                      <td>elit</td>
-                    </tr>
-                    <tr>
-                      <td>1,003</td>
-                      <td>Integer</td>
-                      <td>nec</td>
-                      <td>odio</td>
-                      <td>Praesent</td>
-                    </tr>
-                    <tr>
-                      <td>1,003</td>
-                      <td>libero</td>
-                      <td>Sed</td>
-                      <td>cursus</td>
-                      <td>ante</td>
-                    </tr>
-                    <tr>
-                      <td>1,004</td>
-                      <td>dapibus</td>
-                      <td>diam</td>
-                      <td>Sed</td>
-                      <td>nisi</td>
-                    </tr>
-                    <tr>
-                      <td>1,005</td>
-                      <td>Nulla</td>
-                      <td>quis</td>
-                      <td>sem</td>
-                      <td>at</td>
-                    </tr>
-                    <tr>
-                      <td>1,006</td>
-                      <td>nibh</td>
-                      <td>elementum</td>
-                      <td>imperdiet</td>
-                      <td>Duis</td>
-                    </tr>
-                    <tr>
-                      <td>1,007</td>
-                      <td>sagittis</td>
-                      <td>ipsum</td>
-                      <td>Praesent</td>
-                      <td>mauris</td>
-                    </tr>
-                    <tr>
-                      <td>1,008</td>
-                      <td>Fusce</td>
-                      <td>nec</td>
-                      <td>tellus</td>
-                      <td>sed</td>
-                    </tr>
-                    <tr>
-                      <td>1,009</td>
-                      <td>augue</td>
-                      <td>semper</td>
-                      <td>porta</td>
-                      <td>Mauris</td>
-                    </tr>
-                    <tr>
-                      <td>1,010</td>
-                      <td>massa</td>
-                      <td>Vestibulum</td>
-                      <td>lacinia</td>
-                      <td>arcu</td>
-                    </tr>
-                    <tr>
-                      <td>1,011</td>
-                      <td>eget</td>
-                      <td>nulla</td>
-                      <td>Class</td>
-                      <td>aptent</td>
-                    </tr>
-                    <tr>
-                      <td>1,012</td>
-                      <td>taciti</td>
-                      <td>sociosqu</td>
-                      <td>ad</td>
-                      <td>litora</td>
-                    </tr>
-                    <tr>
-                      <td>1,013</td>
-                      <td>torquent</td>
-                      <td>per</td>
-                      <td>conubia</td>
-                      <td>nostra</td>
-                    </tr>
-                    <tr>
-                      <td>1,014</td>
-                      <td>per</td>
-                      <td>inceptos</td>
-                      <td>himenaeos</td>
-                      <td>Curabitur</td>
-                    </tr>
-                    <tr>
-                      <td>1,015</td>
-                      <td>sodales</td>
-                      <td>ligula</td>
-                      <td>in</td>
-                      <td>libero</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </main>
-          </div>
-        </div>
-    
-        <!-- lib/bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="/javascripts/lib/jquery-3.3.1.min.js"></script>
-        <script src="/javascripts/lib/popper.min.js"></script>
-        <script src="/javascripts/lib/bootstrap.min.js"></script>
-        
-        <!-- Icons -->
-        <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-        <script>
-          feather.replace()
-        </script>
-    
-        <!-- Graphs -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-        <script>
-          var ctx = document.getElementById("myChart");
-          var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-              datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-              }]
-            },
-            options: {
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    beginAtZero: false
-                  }
-                }]
-              },
-              legend: {
-                display: false,
-              }
-            }
-          });
-        </script>
-      </body>
+
+	<div class="index-page">
+		<div class="solution-more">
+			<div class="solution-more-slide">
+				<div class="container">
+					<div class="hd">
+						<ul>
+							<li class="item-1 on"><i></i><div class="text"><h3>欢迎光临首页</h3><p>在这里了解我们</p></div></li>
+							<li class="item-2"><i></i><div class="text"><h3>服务日志查询</h3><p>为您监控一切数据</p></div></li>
+							<li class="item-3"><i></i><div class="text"><h3>数据量化分析</h3><p>关键信息全部收录</p></div></li>
+							<li class="item-4"><i></i><div class="text"><h3>更多功能</h3><p>我们会做得更好</p></div></li>
+						</ul>
+					</div>
+					<ul class="bd" style="position: relative; width: 1920px; height: 600px;">
+						<li class="item-1" style="position: absolute; width: 1920px; left: 0px; top: 0px; display: list-item;">
+							<div class="container">
+								<div class="inner">
+									<h2>CIHouse新三板企业查询</h2>
+									<dl class="intro">
+										<dt>行业背景</dt>
+										<dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随着中国经济快速增长，市场对征信系统提出了迫切需求，中国征信行业成为市场近期的热点行业。随着市场需求的爆发，越来越多的玩家进入征信市场，宏源证券研究所研究员闻学臣更是认为中国征信业进入到了2.0时代。通过与美国征信市场规模比较可粗略推算得出，中国仅个人征信市场就有1000亿元的空间，而目前中国整个征信市场规模为20亿元，未来增长空间巨大。
+												而随着随着大数据时代的到来，数据规模越来越大，数据维度越来越多，征信企业在征信数据源和征信模型方面都有较多的创新和突破，进一步改善征信体系——而互联网数据，就是重要的数据源之一。</dd>
+										<dt>&nbsp;</dt>
+										<dt>竞争优势</dt>
+										<dd>1.满足征信企业的大量企业数据采集需求	 </dd>
+										<dd>2.无缝与本地数据分析系统对接，根据关联字段关联数据集合，快速生成征信报告	 </dd>
+										<dd>3.大幅度削减人力成本和硬件成本	 </dd>
+									</dl>
+								</div>
+							</div>
+						</li>
+						<li class="item-2" style="position: absolute; width: 1920px; left: 0px; top: 0px; display: none;">
+							<div class="container">
+								<div class="inner">
+									<h2>服务日志查询</h2>
+									<div class="exhibition02">
+											<table id="daydatatable" >
+												  <th>当前服务日志查询</th>       
+												  <tr id="ta0" class="blt">   <td>利</td>     </tr>
+												  <tr id="ta1" class="alt">   <td>国</td>     </tr>
+												  <tr id="ta2" class="blt">   <td>家</td>     </tr>
+												  <tr id="ta3" class="alt">   <td>生</td>     </tr>
+												  <tr id="ta4" class="blt">   <td>死</td>     </tr>
+												  <tr id="ta5" class="alt">   <td>以</td>     </tr>
+												  <tr id="ta6" class="blt">   <td>岂</td>     </tr>
+												  <tr id="ta7"  class="alt">   <td>因</td>     </tr>
+												  <tr id="ta8" class="blt">   <td>祸</td>     </tr>
+												  <tr id="ta9"  class="alt">   <td>福</td>     </tr>
+												  <tr id="ta10" class="blt">   <td>避</td>     </tr>
+												  <tr id="ta11" class="alt">   <td>趋</td>     </tr>
+												  <tr id="ta12" class="blt">   <td>之</td>     </tr>
+												  <tr id="ta13"  class="alt">   <td>林</td>     </tr>
+												  <tr id="ta14"  class="blt">   <td>则</td>     </tr>
+												  <tr id="ta15"  class="alt">   <td>林</td>     </tr>
+											</table>
+											<a id="btn1" href="###" >首页</a><a>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+											<a id="btn2" href="###" >上一页</a><a>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+											<a id="btn3" href="###" >下一页</a><a>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+											<a>转到 </a><input id="changePage" type="text" size="1" maxlength="4" /><a>页 </a><a href="###" id="btn5">跳转</a>
+													<dt>&nbsp;</dt>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="item-3" style="position: absolute; width: 1920px; left: 0px; top: 0px; display: none;">
+							<div class="container">
+								<div class="inner">				
+										<div id="content">
+											<div class="legend">
+													<h2 id="thetilte">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;热点关键词统计</h2>		
+												<div class="skills">
+													<ul>
+														<li id="Nam1" class="Name1">Name1</li>
+														<li id="Nam2" class="Name2">Name2</li>
+														<li id="Nam3" class="Name3">Name3</li>
+														<li id="Nam4" class="Name4">Name4</li>
+														<li id="Nam5" class="Name5">Name5</li>
+													</ul>
+												</div>
+											</div>
+											<div id="diagram"></div>
+										</div>					
+										<div class="get">
+											<div class="arc">
+												<span id="Na1" class="text">Name1</span>
+												<input id="String1" type="hidden" class="percent" value="95" />
+												<input type="hidden" class="color" value="#97BE0D" />
+											</div>
+											<div class="arc">
+												<span id="Na2" class="text">Name2</span>
+												<input id="String2" type="hidden" class="percent" value="90" />
+												<input type="hidden" class="color" value="#D84F5F" />
+											</div>
+											<div class="arc">
+												<span id="Na3" class="text">Name3</span>
+												<input id="String3" type="hidden" class="percent" value="80" />
+												<input type="hidden" class="color" value="#88B8E6" />
+											</div>
+											<div class="arc">
+												<span id="Na4" class="text">Name4</span>
+												<input id="String4" type="hidden" class="percent" value="53" />
+												<input type="hidden" class="color" value="#BEDBE9" />
+											</div>
+											<div class="arc">
+												<span id="Na5" class="text">Name5</span>
+												<input id="String5" type="hidden" class="percent" value="45" />
+												<input type="hidden" class="color" value="#EDEBEE" />
+											</div>
+										</div>
+								</div>
+							</div>
+						</li>
+						<li class="item-4" style="position: absolute; width: 1920px; left: 0px; top: 0px; display: none;">
+							<div class="container">
+								<div class="inner">
+									<h2>感谢您的使用！</h2>
+									<dl class="intro">
+										<dt>更多功能，我们正在研发当中，敬请期待！</dt>
+										<dt>如果您在使用过程中遇到了什么问题，欢迎联系我们！</dt>
+									</dl><dt>&nbsp;</dt><dt>&nbsp;</dt><dt>&nbsp;</dt><dt>&nbsp;</dt><dt>&nbsp;</dt><dt>&nbsp;</dt><dt>&nbsp;</dt><dt>&nbsp;</dt><dt>&nbsp;</dt><dt>&nbsp;</dt>
+									<div class="example">
+										<h3>点击下方联系我们</h3>
+										<ul>
+											<li><img src="/images/admin/logo1.png" alt=""></li>
+											<li><img src="/images/admin/logo2.png" alt=""></li>
+											<li><img src="/images/admin/logo3.png" alt=""></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript" src="/javascripts/admin/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/admin/communication.js"></script>
+<script type="text/javascript" src="/javascripts/admin/SuperSlide.js"></script>
+<script type="text/javascript" src="/javascripts/admin/raphael.js"></script>
+<script type="text/javascript" src="/javascripts/admin/table.js"></script>
+<script type="text/javascript">
+	$(".solution-more-slide").slide({
+		effect: 'fold'
+	});
+</script>
+</body>
 </html>

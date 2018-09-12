@@ -17,7 +17,8 @@ router
         })
     })
     .get('/2', async (ctx, next) => {
-
+        let data=fs.readFileSync('./public/json/keyword.json','utf8');
+        ctx.body=data;
     })
 async function readLines(x) {
     return new Promise(async (resolve, rejected) => {
