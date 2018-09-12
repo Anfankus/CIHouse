@@ -1,0 +1,26 @@
+
+.exhibition02{width:100%;height:100%;}
+.newload{position:absolute;margin: 0% 5% 0% 70%;top:2.5%;}
+#daydatatable {margin:0% 0%;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;width:90%;border-collapse:collapse;}
+#daydatatable td, #daydatatable th  {font-size:1em;border:1px solid rgb(0, 0, 0);padding:3px 7px 2px 7px;}
+#daydatatable th  {font-size:1.1em;text-align:left;padding-top:5px;padding-bottom:4px;
+                   background-color:rgb(0, 0, 0);color:white;}
+#daydatatable tr.alt td {color:#000000;background-color:rgb(173, 173, 173); }
+#daydatatable tr.blt td {color:white;background-color:rgba(0, 0, 0, 0.219); }
+
+
+#content{position:relative;margin:0px auto;width:900px;height:600px;right:10%;bottom:20%;}
+.legend{float:left;width:250px;margin-top:140px;}
+#thetilte{margin:0px,auto,auto,100px;}
+#content h1{font-family:'Cabin Sketch', arial, serif;text-shadow:3px 3px 0 #ddd;color:#193340;font-size:40px;height:48px;line-height:48px;margin-bottom:40px;text-align:right;}
+/* skills */
+.skills{float:left;clear:both;width:100%;}
+.skills ul,.skills li{display:block;list-style:none;margin:0;padding:0;}
+.skills li{float:right;clear:both;padding:0 15px;height:35px;line-height:35px;color:#fff;margin-bottom:1px;font-size:18px;}
+.skills .Name1{background:#97BE0D;color:black}
+.skills .Name2{background:#D84F5F;color:black}
+.skills .Name3{background:#88B8E6;color:black}
+.skills .Name4{background:#BEDBE9;color:black}
+.skills .Name5{background:#EDEBEE;color:black}
+#diagram{float:right;width:600px;height:600px;}
+.get{display:none;}
