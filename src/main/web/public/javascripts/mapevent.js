@@ -26,44 +26,44 @@ let nameMap={'totalNum':['各省新三板公司总数',[{
     color:'rgb(247,238,173)'
 }, {
     from: 10,
-    to: 20,
+    to: 30,
     color:'#f2d643'
 }, {
-    from: 20,
-    to: 40,
+    from: 30,
+    to: 80,
     color:'#ffb248'
 }, {
-    from: 40,
-    to: 80,
+    from: 80,
+    to: 200,
     color:'#eb8146'
 }, {
-    from: 80,
-    to: 150,
+    from: 200,
+    to: 400,
     color:'#d95850'
 }, {
-    from: 150,
+    from: 400,
     color:'#893448'
 }],2],'tradingProfit':['各省公司总利润',[{
-    to: 10,
+    to: 5,
     color:'rgb(247,238,173)'
+}, {
+    from: 5,
+    to: 10,
+    color:'#f2d643'
 }, {
     from: 10,
     to: 20,
-    color:'#f2d643'
+    color:'#ffb248'
 }, {
     from: 20,
     to: 40,
-    color:'#ffb248'
+    color:'#eb8146'
 }, {
     from: 40,
     to: 80,
-    color:'#eb8146'
-}, {
-    from: 80,
-    to: 150,
     color:'#d95850'
 }, {
-    from: 150,
+    from: 80,
     color:'#893448'
 }],3]};
 

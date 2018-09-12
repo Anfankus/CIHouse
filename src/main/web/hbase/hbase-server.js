@@ -1,10 +1,10 @@
-var hbase = require('hbase');  //连接HBase的包
+﻿var hbase = require('hbase');  //连接HBase的包
 
-let tablename='backup';
+let tablename='CIHouse';
 //连接HBase
 var client=hbase({ 
-    host: '192.168.137.25',
-    port: 8111
+    host: '192.168.131.140',
+    port: 8585
 });
 
 //基本信息构造函数
