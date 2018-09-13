@@ -24,7 +24,7 @@
 }
  .singlesearch .searchbox{
      display: inline-block;
-     width: 550px;
+     width: 200px;
      height: 40px;
      margin: 10px auto;
      box-shadow: 0 5px 15px #555;
@@ -61,7 +61,8 @@
    }
    .dinput{
        position: absolute;
-       left:100px;
+       left:550px;
+       top:13%;
    }
    #section{
         /* padding: 25px 25px 80px 225px; */
